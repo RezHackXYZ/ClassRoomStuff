@@ -1,13 +1,23 @@
 <script>
 	import { newGame, WordLegnth } from "../logic.svelte.js";
 
-	let LetersSelected = WordLegnth.v;
+	let data = {
+		3: [20, 7, 8, 2],
+		4: [10, 20, 15, 30],
+		5: [12, 18, 25, 30],
+		6: [15, 25, 35, 40],
+		7: [20, 30, 40, 50],
+		8: [25, 35, 45, 55],
+		9: [30, 40, 50, 60, 5, 54, 54, 43],
+		10: [35, 45, 55, 65],
+	};
 
-	export let dataPoints = [5, 7, 8, 2]; // Expecting an array of numbers, e.g., [10, 20, 15, 30]
+	let LetersSelected = "5";
+
+	let dataPoints = data[LetersSelected];
 
 	import { onMount } from "svelte";
 	import Chart from "chart.js/auto";
-	import { afterUpdate } from "svelte";
 
 	let canvas;
 	let chart;
@@ -40,26 +50,38 @@
 		});
 	});
 
-	afterUpdate(() => {
-		if (chart) {
-			chart.data.labels = dataPoints.map((_, i) => `Point ${i + 1}`);
-			chart.data.datasets[0].data = dataPoints;
-			chart.update();
-		}
-	});
-
-	setTimeout(() => {
-		dataPoints = [5, 7, 8, 2, 10, 12, 15, 20];
-	}, 1000);
+	let Avgguesses = (
+		dataPoints.reduce((acc, val) => acc + val, 0) / dataPoints.length
+	).toFixed(2);
+	let TotalWins = dataPoints.length;
 </script>
 
 <div id="root">
 	<p>
 		Stats For:
-		<select>
+		<select
+			bind:value={LetersSelected}
+			onchange={() => {
+				dataPoints = data[LetersSelected];
+				if (chart) {
+					chart.data.labels = dataPoints.map(
+						(_, i) => `Point ${i + 1}`
+					);
+					chart.data.datasets[0].data = dataPoints;
+					chart.update();
+				}
+				Avgguesses = (
+					dataPoints.reduce((acc, val) => acc + val, 0) /
+					dataPoints.length
+				).toFixed(2);
+				TotalWins = dataPoints.length;
+				console.log(TotalWins);
+				console.log(dataPoints);
+			}}
+		>
 			<option value="3">3 Letters</option>
 			<option value="4">4 Letters</option>
-			<option value="5">5 Letters</option>
+			<option value="5" selected>5 Letters</option>
 			<option value="6">6 Letters</option>
 			<option value="7">7 Letters</option>
 			<option value="8">8 Letters</option>
@@ -71,11 +93,11 @@
 	<div id="toprow">
 		<div class="toprow">
 			<h2>Total WINS</h2>
-			<h1>00</h1>
+			<h1>{TotalWins}</h1>
 		</div>
 		<div class="toprow">
 			<h2>Avg No. of guesses</h2>
-			<h1>00</h1>
+			<h1>{Avgguesses}</h1>
 		</div>
 	</div>
 	<canvas bind:this={canvas}></canvas>
