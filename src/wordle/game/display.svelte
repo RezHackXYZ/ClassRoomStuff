@@ -1,9 +1,9 @@
 <script>
-	import { CurrentWord, words,WordLegnth } from "./logic.svelte.js";
+	import { CurrentWord, words, WordLegnth } from "../logic.svelte.js";
 </script>
 
 <div id="DisplayOfWords">
-	{#each words as word}
+	{#each words.v as word}
 		<div class="word">
 			{#each word as letter}
 				<span class={letter[1]}>{letter[0]}</span>
@@ -11,8 +11,8 @@
 		</div>
 	{/each}
 	<div class="word">
-		{#each Array(WordLegnth) as _, i}
-		<span>{CurrentWord.v[i] || ''}</span>
+		{#each Array(WordLegnth.v) as _, i}
+			<span>{CurrentWord.v[i] || ""}</span>
 		{/each}
 	</div>
 </div>

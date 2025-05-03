@@ -1,10 +1,10 @@
 <script>
-	import { keys, ButtonPressed } from "./logic.svelte.js";
+	import { keys, ButtonPressed } from "../logic.svelte.js";
 </script>
 
 <div id="root">
 	<div class="word">
-		{#each keys.slice(0, 10) as key}
+		{#each keys.v.slice(0, 10) as key}
 			<button on:click={() => ButtonPressed(key[0])} class={key[1]}
 				>{key[0]}</button
 			>
@@ -12,14 +12,14 @@
 	</div>
 
 	<div class="word">
-		{#each keys.slice(10, 19) as key}
+		{#each keys.v.slice(10, 19) as key}
 			<button on:click={() => ButtonPressed(key[0])} class={key[1]}
 				>{key[0]}</button
 			>
 		{/each}
 	</div>
 	<div class="word">
-		{#each keys.slice(19) as key}
+		{#each keys.v.slice(19) as key}
 			<button on:click={() => ButtonPressed(key[0])} class={key[1]}
 				>{key[0]}</button
 			>

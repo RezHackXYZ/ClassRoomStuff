@@ -2,46 +2,91 @@ import wordExists from "word-exists";
 import { generate } from "random-words";
 import { onMount } from "svelte";
 
-export let WordLegnth = 5; 
+export let WordLegnth = $state({ v: 5 });
 
-let CorrectWord = generate({ minLength: WordLegnth, maxLength: WordLegnth });
+let CorrectWord = generate({
+	minLength: WordLegnth.v,
+	maxLength: WordLegnth.v,
+});
 console.log("CorrectWord: ", CorrectWord);
-export let words = $state([]);
+export let words = $state({ v: [] });
 export let CurrentWord = $state({ v: [] });
-export let keys = $state([
-	["Q", "n"],
-	["W", "n"],
-	["E", "n"],
-	["R", "n"],
-	["T", "n"],
-	["Y", "n"],
-	["U", "n"],
-	["I", "n"],
-	["O", "n"],
-	["P", "n"],
-	["A", "n"],
-	["S", "n"],
-	["D", "n"],
-	["F", "n"],
-	["G", "n"],
-	["H", "n"],
-	["J", "n"],
-	["K", "n"],
-	["L", "n"],
-	["⌫", "o"],
-	["Z", "n"],
-	["X", "n"],
-	["C", "n"],
-	["V", "n"],
-	["B", "n"],
-	["N", "n"],
-	["M", "n"],
-	["⏎", "o"],
-]);
+export let keys = $state({
+	v: [
+		["Q", "n"],
+		["W", "n"],
+		["E", "n"],
+		["R", "n"],
+		["T", "n"],
+		["Y", "n"],
+		["U", "n"],
+		["I", "n"],
+		["O", "n"],
+		["P", "n"],
+		["A", "n"],
+		["S", "n"],
+		["D", "n"],
+		["F", "n"],
+		["G", "n"],
+		["H", "n"],
+		["J", "n"],
+		["K", "n"],
+		["L", "n"],
+		["⌫", "o"],
+		["Z", "n"],
+		["X", "n"],
+		["C", "n"],
+		["V", "n"],
+		["B", "n"],
+		["N", "n"],
+		["M", "n"],
+		["⏎", "o"],
+	],
+});
+
+export function newGame() {
+	CorrectWord = generate({
+		minLength: WordLegnth.v,
+		maxLength: WordLegnth.v,
+	});
+	console.log("CorrectWord: ", CorrectWord);
+	words.v = [];
+	CurrentWord.v = [];
+	keys.v = [
+		["Q", "n"],
+		["W", "n"],
+		["E", "n"],
+		["R", "n"],
+		["T", "n"],
+		["Y", "n"],
+		["U", "n"],
+		["I", "n"],
+		["O", "n"],
+		["P", "n"],
+		["A", "n"],
+		["S", "n"],
+		["D", "n"],
+		["F", "n"],
+		["G", "n"],
+		["H", "n"],
+		["J", "n"],
+		["K", "n"],
+		["L", "n"],
+		["⌫", "o"],
+		["Z", "n"],
+		["X", "n"],
+		["C", "n"],
+		["V", "n"],
+		["B", "n"],
+		["N", "n"],
+		["M", "n"],
+		["⏎", "o"],
+	];
+}
 
 function GameWin() {
 	alert("You win!");
-	document.location.reload();
+	newGame();
 }
 
 function SendWord(word) {
@@ -77,7 +122,7 @@ function SendWord(word) {
 			: [word[i].toUpperCase(), "w"];
 	}
 
-	words.push(result);
+	words.v.push(result);
 
 	setTimeout(() => {
 		document.getElementById("DisplayOfWords").scrollTo({
@@ -88,17 +133,17 @@ function SendWord(word) {
 
 	// Update keyboard status
 	for (let [letter, status] of result) {
-		let keyIndex = keys.findIndex(
+		let keyIndex = keys.v.findIndex(
 			(k) => k[0].toLowerCase() === letter.toLowerCase()
 		);
 		if (keyIndex !== -1) {
-			let current = keys[keyIndex][1];
+			let current = keys.v[keyIndex][1];
 			if (status === "c") {
-				keys[keyIndex][1] = "c";
+				keys.v[keyIndex][1] = "c";
 			} else if (status === "d" && current === "n") {
-				keys[keyIndex][1] = "d";
+				keys.v[keyIndex][1] = "d";
 			} else if (status === "w" && current === "n") {
-				keys[keyIndex][1] = "w";
+				keys.v[keyIndex][1] = "w";
 			}
 		}
 	}
@@ -116,7 +161,7 @@ export function ButtonPressed(key) {
 	});
 
 	if (key === "⏎") {
-		if (CurrentWord.v.length === WordLegnth) {
+		if (CurrentWord.v.length === WordLegnth.v) {
 			let word = CurrentWord.v.join("").toUpperCase();
 			if (wordExists(word)) {
 				SendWord(CurrentWord.v);
@@ -130,7 +175,7 @@ export function ButtonPressed(key) {
 		CurrentWord.v.pop();
 		return;
 	}
-	if (CurrentWord.v.length === WordLegnth) {
+	if (CurrentWord.v.length === WordLegnth.v) {
 		return;
 	}
 
