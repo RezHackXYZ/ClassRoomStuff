@@ -1,8 +1,8 @@
 <script>
-	import { CurrentWord, words } from "./logic.svelte.js";
+	import { CurrentWord, words,WordLegnth } from "./logic.svelte.js";
 </script>
 
-<div id="root">
+<div id="DisplayOfWords">
 	{#each words as word}
 		<div class="word">
 			{#each word as letter}
@@ -11,16 +11,14 @@
 		</div>
 	{/each}
 	<div class="word">
-		<span>{CurrentWord.v[0]}</span>
-		<span>{CurrentWord.v[1]}</span>
-		<span>{CurrentWord.v[2]}</span>
-		<span>{CurrentWord.v[3]}</span>
-		<span>{CurrentWord.v[4]}</span>
+		{#each Array(WordLegnth) as _, i}
+		<span>{CurrentWord.v[i] || ''}</span>
+		{/each}
 	</div>
 </div>
 
 <style>
-	#root {
+	#DisplayOfWords {
 		height: calc(100% - 320px);
 		border: 2px solid #202020;
 		margin: 20px;
@@ -58,18 +56,18 @@
 
 	/* width */
 	::-webkit-scrollbar {
-		width: 20px;
+		width: 10px;
 	}
 
 	/* Track */
 	::-webkit-scrollbar-track {
-		box-shadow: inset 0 0 5px grey;
+		border: 1px solid #5c5c5c;
 		border-radius: 10px;
 	}
 
 	/* Handle */
 	::-webkit-scrollbar-thumb {
-		background: red;
+		background: #3f3f3f;
 		border-radius: 10px;
 	}
 </style>

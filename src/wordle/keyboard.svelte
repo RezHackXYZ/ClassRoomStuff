@@ -13,15 +13,15 @@
 
 	<div class="word">
 		{#each keys.slice(10, 19) as key}
-		<button on:click={() => ButtonPressed(key[0])} class={key[1]}
-			>{key[0]}</button
+			<button on:click={() => ButtonPressed(key[0])} class={key[1]}
+				>{key[0]}</button
 			>
 		{/each}
 	</div>
 	<div class="word">
 		{#each keys.slice(19) as key}
-		<button on:click={() => ButtonPressed(key[0])} class={key[1]}
-			>{key[0]}</button
+			<button on:click={() => ButtonPressed(key[0])} class={key[1]}
+				>{key[0]}</button
 			>
 		{/each}
 	</div>
@@ -43,9 +43,9 @@
 	}
 
 	button {
-		background-color: #202020;
+		background: none;
 		font-family: "JetBrains Mono", monospace;
-		color: #808080;
+		color: #888;
 		width: 80px;
 		height: 70px;
 		display: flex;
@@ -66,6 +66,6 @@
 		background-color: #2b2b2b;
 	}
 	.o {
-		background-color: #202829;
+		background-color: #00202c;
 	}
 </style>

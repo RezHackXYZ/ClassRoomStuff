@@ -1,7 +1,11 @@
 import wordExists from "word-exists";
-import {generate} from "random-words";
+import { generate } from "random-words";
+import { onMount } from "svelte";
 
-export let CorrectWord = generate({ minLength: 5, maxLength: 5 });
+export let WordLegnth = 5; 
+
+let CorrectWord = generate({ minLength: WordLegnth, maxLength: WordLegnth });
+console.log("CorrectWord: ", CorrectWord);
 export let words = $state([]);
 export let CurrentWord = $state({ v: [] });
 export let keys = $state([
@@ -35,12 +39,85 @@ export let keys = $state([
 	["⏎", "o"],
 ]);
 
-function SendWord(word) {}
+function GameWin() {
+	alert("You win!");
+	document.location.reload();
+}
+
+function SendWord(word) {
+	let result = Array(word.length).fill(null);
+	let used = Array(CorrectWord.length).fill(false);
+
+	// First pass: exact matches
+	for (let i = 0; i < word.length; i++) {
+		if (word[i].toLowerCase() === CorrectWord[i].toLowerCase()) {
+			result[i] = [word[i].toUpperCase(), "c"];
+			used[i] = true;
+		}
+	}
+
+	// Second pass: wrong place but correct letter
+	for (let i = 0; i < word.length; i++) {
+		if (result[i]) continue;
+
+		let found = false;
+		for (let j = 0; j < CorrectWord.length; j++) {
+			if (
+				!used[j] &&
+				word[i].toLowerCase() === CorrectWord[j].toLowerCase()
+			) {
+				found = true;
+				used[j] = true;
+				break;
+			}
+		}
+
+		result[i] = found
+			? [word[i].toUpperCase(), "d"]
+			: [word[i].toUpperCase(), "w"];
+	}
+
+	words.push(result);
+
+	setTimeout(() => {
+		document.getElementById("DisplayOfWords").scrollTo({
+			top: document.getElementById("DisplayOfWords").scrollHeight,
+			behavior: "smooth",
+		});
+	}, 100);
+
+	// Update keyboard status
+	for (let [letter, status] of result) {
+		let keyIndex = keys.findIndex(
+			(k) => k[0].toLowerCase() === letter.toLowerCase()
+		);
+		if (keyIndex !== -1) {
+			let current = keys[keyIndex][1];
+			if (status === "c") {
+				keys[keyIndex][1] = "c";
+			} else if (status === "d" && current === "n") {
+				keys[keyIndex][1] = "d";
+			} else if (status === "w" && current === "n") {
+				keys[keyIndex][1] = "w";
+			}
+		}
+	}
+
+	// Check for win
+	if (result.every(([_, status]) => status === "c")) {
+		GameWin();
+	}
+}
 
 export function ButtonPressed(key) {
+	document.getElementById("DisplayOfWords").scrollTo({
+		top: document.getElementById("DisplayOfWords").scrollHeight,
+		behavior: "smooth",
+	});
+
 	if (key === "⏎") {
-		if (CurrentWord.v.length === 5) {
-			let word = CurrentWord.v.join("");
+		if (CurrentWord.v.length === WordLegnth) {
+			let word = CurrentWord.v.join("").toUpperCase();
 			if (wordExists(word)) {
 				SendWord(CurrentWord.v);
 				CurrentWord.v = [];
@@ -53,9 +130,20 @@ export function ButtonPressed(key) {
 		CurrentWord.v.pop();
 		return;
 	}
-	if (CurrentWord.v.length === 5) {
+	if (CurrentWord.v.length === WordLegnth) {
 		return;
 	}
 
 	CurrentWord.v.push(key);
+}
+export function handleKey(event) {
+	const key = event.key.toLowerCase();
+
+	if (key === "enter") {
+		ButtonPressed("⏎");
+	} else if (key === "backspace") {
+		ButtonPressed("⌫");
+	} else if (/^[a-z]$/.test(key)) {
+		ButtonPressed(key.toUpperCase());
+	}
 }
