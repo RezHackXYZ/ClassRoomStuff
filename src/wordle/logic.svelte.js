@@ -41,10 +41,29 @@ export let words = $state([
 	],
 ]);
 
-export let CurrentWord = $state([]);
+export let CurrentWord = $state({v:[]});
 
 export function ButtonPressed(key) {
-	CurrentWord.push(key);
+	if (key === "↵") {
+		if (CurrentWord.v.length === 5) {
+			let word = CurrentWord.v.join("");
+			if (commonWords.map((entry) => entry.word).includes(word)) {
+				words.push(CurrentWord.v);
+				CurrentWord.v = [];
+			} else {
+				alert("Not a valid word");
+			}
+		}
+		return;
+	} else if (key === "⇦") {
+		CurrentWord.v.pop();
+		return;
+	}
+	if (CurrentWord.v.length === 5) {
+		return;
+	}
+
+	CurrentWord.v.push(key);
 }
 
 function getRandomWord() {

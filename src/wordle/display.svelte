@@ -11,11 +11,11 @@
 		</div>
 	{/each}
 	<div class="word">
-		<span>{CurrentWord[0]}</span>
-		<span>{CurrentWord[1]}</span>
-		<span>{CurrentWord[2]}</span>
-		<span>{CurrentWord[3]}</span>
-		<span>{CurrentWord[4]}</span>
+		<span>{CurrentWord.v[0]}</span>
+		<span>{CurrentWord.v[1]}</span>
+		<span>{CurrentWord.v[2]}</span>
+		<span>{CurrentWord.v[3]}</span>
+		<span>{CurrentWord.v[4]}</span>
 	</div>
 </div>
 
