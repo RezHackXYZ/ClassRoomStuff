@@ -25,7 +25,7 @@
 		border: 2px solid #202020;
 		margin: 20px;
 		border-radius: 10px;
-		overflow-y: scroll;
+		overflow-y: auto;
 	}
 
 	.word {

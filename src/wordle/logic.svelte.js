@@ -1,5 +1,9 @@
-import commonWords from "common-words";
+import wordExists from "word-exists";
+import {generate} from "random-words";
 
+export let CorrectWord = generate({ minLength: 5, maxLength: 5 });
+export let words = $state([]);
+export let CurrentWord = $state({ v: [] });
 export let keys = $state([
 	["Q", "n"],
 	["W", "n"],
@@ -20,7 +24,7 @@ export let keys = $state([
 	["J", "n"],
 	["K", "n"],
 	["L", "n"],
-	["⇦", "o"],
+	["⌫", "o"],
 	["Z", "n"],
 	["X", "n"],
 	["C", "n"],
@@ -28,34 +32,24 @@ export let keys = $state([
 	["B", "n"],
 	["N", "n"],
 	["M", "n"],
-	["↵", "o"],
+	["⏎", "o"],
 ]);
 
-export let words = $state([
-	[
-		["R", "c"],
-		["A", "d"],
-		["D", "w"],
-		["I", "w"],
-		["O", "w"],
-	],
-]);
-
-export let CurrentWord = $state({v:[]});
+function SendWord(word) {}
 
 export function ButtonPressed(key) {
-	if (key === "↵") {
+	if (key === "⏎") {
 		if (CurrentWord.v.length === 5) {
 			let word = CurrentWord.v.join("");
-			if (commonWords.map((entry) => entry.word).includes(word)) {
-				words.push(CurrentWord.v);
+			if (wordExists(word)) {
+				SendWord(CurrentWord.v);
 				CurrentWord.v = [];
 			} else {
 				alert("Not a valid word");
 			}
 		}
 		return;
-	} else if (key === "⇦") {
+	} else if (key === "⌫") {
 		CurrentWord.v.pop();
 		return;
 	}
@@ -64,11 +58,4 @@ export function ButtonPressed(key) {
 	}
 
 	CurrentWord.v.push(key);
-}
-
-function getRandomWord() {
-	let fiveLetterWords = commonWords
-		.map((entry) => entry.word)
-		.filter((word) => word.length === 5);
-	return fiveLetterWords[Math.floor(Math.random() * fiveLetterWords.length)];
 }

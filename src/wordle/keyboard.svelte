@@ -46,7 +46,7 @@
 		background-color: #202020;
 		font-family: "JetBrains Mono", monospace;
 		color: #808080;
-		width: 70px;
+		width: 80px;
 		height: 70px;
 		display: flex;
 		justify-content: center;
