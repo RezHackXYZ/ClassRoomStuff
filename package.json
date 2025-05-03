@@ -15,6 +15,7 @@
 		"vite": "^6.2.4"
 	},
 	"dependencies": {
+		"chart.js": "^4.4.9",
 		"random-words": "^2.0.1",
 		"word-exists": "^1.0.0"
 	}
