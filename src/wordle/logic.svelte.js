@@ -210,7 +210,7 @@ export let data = $state({
 
 let WordleGamesData = localStorage.getItem("WordleGamesData") || "";
 
-if (WordleGamesData == "") {
+if (WordleGamesData != "") {
 	data.value = JSON.parse(WordleGamesData);
 } else {
 	data.value = {

@@ -17,6 +17,7 @@
 	"dependencies": {
 		"chart.js": "^4.4.9",
 		"random-words": "^2.0.1",
+		"svelte-spa-router": "^4.0.1",
 		"word-exists": "^1.0.0"
 	}
 }
