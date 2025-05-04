@@ -41,81 +41,90 @@
 
 <div id="root">
 	<div id="wrap">
-		<div class="rowOfNumbers" bind:this={hour1}>
-			<h1>0</h1>
-			<h1>1</h1>
-			<h1>2</h1>
-			<h1>3</h1>
-			<h1>4</h1>
-			<h1>5</h1>
-			<h1>6</h1>
-			<h1>7</h1>
-			<h1>8</h1>
-			<h1>9</h1>
+		<div id="time">
+			<div class="rowOfNumbers" bind:this={hour1}>
+				<h1>0</h1>
+				<h1>1</h1>
+				<h1>2</h1>
+				<h1>3</h1>
+				<h1>4</h1>
+				<h1>5</h1>
+				<h1>6</h1>
+				<h1>7</h1>
+				<h1>8</h1>
+				<h1>9</h1>
+			</div>
+			<div class="rowOfNumbers" bind:this={hour2}>
+				<h1>0</h1>
+				<h1>1</h1>
+				<h1>2</h1>
+				<h1>3</h1>
+				<h1>4</h1>
+				<h1>5</h1>
+				<h1>6</h1>
+				<h1>7</h1>
+				<h1>8</h1>
+				<h1>9</h1>
+			</div>
+			<h1 id="colen">:</h1>
+			<div class="rowOfNumbers" bind:this={min1}>
+				<h1>0</h1>
+				<h1>1</h1>
+				<h1>2</h1>
+				<h1>3</h1>
+				<h1>4</h1>
+				<h1>5</h1>
+				<h1>6</h1>
+				<h1>7</h1>
+				<h1>8</h1>
+				<h1>9</h1>
+			</div>
+			<div class="rowOfNumbers" bind:this={min2}>
+				<h1>0</h1>
+				<h1>1</h1>
+				<h1>2</h1>
+				<h1>3</h1>
+				<h1>4</h1>
+				<h1>5</h1>
+				<h1>6</h1>
+				<h1>7</h1>
+				<h1>8</h1>
+				<h1>9</h1>
+			</div>
+			<h1 id="thedot">.</h1>
+			<div class="rowOfNumbersSec" bind:this={sec1}>
+				<h1>0</h1>
+				<h1>1</h1>
+				<h1>2</h1>
+				<h1>3</h1>
+				<h1>4</h1>
+				<h1>5</h1>
+				<h1>6</h1>
+				<h1>7</h1>
+				<h1>8</h1>
+				<h1>9</h1>
+			</div>
+			<div class="rowOfNumbersSec" bind:this={sec2}>
+				<h1>0</h1>
+				<h1>1</h1>
+				<h1>2</h1>
+				<h1>3</h1>
+				<h1>4</h1>
+				<h1>5</h1>
+				<h1>6</h1>
+				<h1>7</h1>
+				<h1>8</h1>
+				<h1>9</h1>
+			</div>
+			<h1 id="amorpm">{AMorPM}</h1>
 		</div>
-		<div class="rowOfNumbers" bind:this={hour2}>
-			<h1>0</h1>
-			<h1>1</h1>
-			<h1>2</h1>
-			<h1>3</h1>
-			<h1>4</h1>
-			<h1>5</h1>
-			<h1>6</h1>
-			<h1>7</h1>
-			<h1>8</h1>
-			<h1>9</h1>
+		<div id="date">
+			<h2>
+				{new Date().toLocaleString("en-US", { weekday: "short" })} {new Date().getDate()},
+				{new Date().toLocaleString("en-US", { month: "short" })}
+				{new Date().getFullYear()}
+			</h2>
 		</div>
-		<h1 id="colen">:</h1>
-		<div class="rowOfNumbers" bind:this={min1}>
-			<h1>0</h1>
-			<h1>1</h1>
-			<h1>2</h1>
-			<h1>3</h1>
-			<h1>4</h1>
-			<h1>5</h1>
-			<h1>6</h1>
-			<h1>7</h1>
-			<h1>8</h1>
-			<h1>9</h1>
-		</div>
-		<div class="rowOfNumbers" bind:this={min2}>
-			<h1>0</h1>
-			<h1>1</h1>
-			<h1>2</h1>
-			<h1>3</h1>
-			<h1>4</h1>
-			<h1>5</h1>
-			<h1>6</h1>
-			<h1>7</h1>
-			<h1>8</h1>
-			<h1>9</h1>
-		</div>
-		<h1 id="thedot">.</h1>
-		<div class="rowOfNumbersSec" bind:this={sec1}>
-			<h1>0</h1>
-			<h1>1</h1>
-			<h1>2</h1>
-			<h1>3</h1>
-			<h1>4</h1>
-			<h1>5</h1>
-			<h1>6</h1>
-			<h1>7</h1>
-			<h1>8</h1>
-			<h1>9</h1>
-		</div>
-		<div class="rowOfNumbersSec" bind:this={sec2}>
-			<h1>0</h1>
-			<h1>1</h1>
-			<h1>2</h1>
-			<h1>3</h1>
-			<h1>4</h1>
-			<h1>5</h1>
-			<h1>6</h1>
-			<h1>7</h1>
-			<h1>8</h1>
-			<h1>9</h1>
-		</div>
-		<h1 id="amorpm">{AMorPM}</h1>
 	</div>
 </div>
 
@@ -123,16 +132,20 @@
 	#root {
 		display: grid;
 		place-items: center;
-		height: 100%;
+		height: 50%;
 	}
 
 	#wrap {
+		background-color: #252525;
+		padding: 20px 70px;
+		border-radius: 20px;
+	}
+
+	#time {
 		display: flex;
 		justify-content: center;
 		align-items: baseline;
-		background-color: #252525;
-        padding: 20px 70px;
-        border-radius: 20px;
+        margin: -30px;
 	}
 
 	#colen {
@@ -193,4 +206,11 @@
 		margin-left: 30px;
 		color: #585858;
 	}
+
+    h2 {
+        margin: 0;
+        font-size: 40px;
+        color: #888;
+        text-align: center;
+    }
 </style>
