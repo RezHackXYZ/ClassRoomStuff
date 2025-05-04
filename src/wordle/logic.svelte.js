@@ -87,7 +87,7 @@ export function newGame() {
 function GameWin() {
 	alert("You win!");
 	data.value[WordLegnth.v].push(words.v.length);
-	
+	localStorage.setItem("WordleGamesData", JSON.stringify(data.value));
 	newGame();
 }
 
@@ -207,3 +207,20 @@ export let data = $state({
 		10: [],
 	},
 });
+
+let WordleGamesData = localStorage.getItem("WordleGamesData") || "";
+
+if (WordleGamesData == "") {
+	data.value = JSON.parse(WordleGamesData);
+} else {
+	data.value = {
+		3: [],
+		4: [],
+		5: [],
+		6: [],
+		7: [],
+		8: [],
+		9: [],
+		10: [],
+	};
+}
