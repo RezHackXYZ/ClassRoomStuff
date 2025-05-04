@@ -1,20 +1,10 @@
-<script module>
-	import { newGame, WordLegnth } from "../logic.svelte.js";
+<script>
+	import { data } from "../logic.svelte.js";
 
-	let data = {
-		3: [],
-		4: [],
-		5: [],
-		6: [],
-		7: [],
-		8: [],
-		9: [],
-		10: [],
-	};
-
+	// svelte-ignore non_reactive_update
 	let LetersSelected = "5";
 
-	let dataPoints = data[LetersSelected];
+	let dataPoints = data.value[LetersSelected];
 
 	import { onMount } from "svelte";
 	import Chart from "chart.js/auto";
@@ -31,7 +21,7 @@
 				datasets: [
 					{
 						label: "Number Of Guesses Taken to Win",
-						data: dataPoints,
+						data: $state.snapshot(dataPoints),
 						borderColor: "rgba(75, 192, 192, 1)",
 						backgroundColor: "rgba(75, 192, 192, 0.2)",
 						fill: true,
@@ -50,16 +40,30 @@
 		});
 	});
 
-    
-	export function SetdataTo(NewData) {
-		data = NewData;
-	}
+	let Avgguesses = $state(
+		(
+			dataPoints.reduce((acc, val) => acc + val, 0) / dataPoints.length
+		).toFixed(2)
+	);
+	let TotalWins = $state(dataPoints.length);
 
-	let Avgguesses = (
-		dataPoints.reduce((acc, val) => acc + val, 0) / dataPoints.length
-	).toFixed(2);
-    
-	let TotalWins = dataPoints.length;
+	$effect(() => {
+		const snapshot = JSON.stringify(data.value);
+		UpdateChart(data.value);
+	});
+
+	function UpdateChart(val) {
+		dataPoints = data.value[LetersSelected];
+		if (chart) {
+			chart.data.labels = dataPoints.map((_, i) => `Point ${i + 1}`);
+			chart.data.datasets[0].data = $state.snapshot(dataPoints);
+			chart.update();
+		}
+		Avgguesses = (
+			dataPoints.reduce((acc, val) => acc + val, 0) / dataPoints.length
+		).toFixed(2);
+		TotalWins = dataPoints.length;
+	}
 </script>
 
 <div id="root">
@@ -68,12 +72,12 @@
 		<select
 			bind:value={LetersSelected}
 			onchange={() => {
-				dataPoints = data[LetersSelected];
+				dataPoints = data.value[LetersSelected];
 				if (chart) {
 					chart.data.labels = dataPoints.map(
 						(_, i) => `Point ${i + 1}`
 					);
-					chart.data.datasets[0].data = dataPoints;
+					chart.data.datasets[0].data = $state.snapshot(dataPoints);
 					chart.update();
 				}
 				Avgguesses = (
@@ -81,8 +85,6 @@
 					dataPoints.length
 				).toFixed(2);
 				TotalWins = dataPoints.length;
-				console.log(TotalWins);
-				console.log(dataPoints);
 			}}
 		>
 			<option value="3">3 Letters</option>

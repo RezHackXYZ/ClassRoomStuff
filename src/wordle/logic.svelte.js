@@ -1,6 +1,5 @@
 import wordExists from "word-exists";
 import { generate } from "random-words";
-import { SetdataTo } from "./InfoAndSetings/stats.svelte";
 
 export let WordLegnth = $state({ v: 5 });
 
@@ -87,6 +86,8 @@ export function newGame() {
 
 function GameWin() {
 	alert("You win!");
+	data.value[WordLegnth.v].push(words.v.length);
+	
 	newGame();
 }
 
@@ -193,3 +194,16 @@ export function handleKey(event) {
 		ButtonPressed(key.toUpperCase());
 	}
 }
+
+export let data = $state({
+	value: {
+		3: [],
+		4: [],
+		5: [],
+		6: [],
+		7: [],
+		8: [],
+		9: [],
+		10: [],
+	},
+});
