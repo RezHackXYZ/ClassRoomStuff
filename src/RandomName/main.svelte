@@ -1,14 +1,8 @@
 <script>
-	import Keyboard from "./game/keyboard.svelte";
-	import Display from "./game/display.svelte";
-	import { onMount } from "svelte";
-	import { handleKey } from "./logic.svelte.js";
-	import Right from "./InfoAndSetings/main.svelte";
-	import { OpenTab } from "./InfoAndSetings/main.svelte";
 
-	onMount(() => {
-		window.addEventListener("keydown", handleKey);
-	});
+function EditList() {
+        console.log("Edit list of names");
+    }
 </script>
 
 <div id="nav">
@@ -28,11 +22,11 @@
 			</span></button
 		></a
 	>
-	<h1>Wordle</h1>
+	<h1>Random Name</h1>
 	<div>
 		<button
 			aria-label="Back to main menu"
-			onclick={() => OpenTab("WordLength")}
+			onclick={() => EditList()}
 			><span class="front"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -41,36 +35,14 @@
 					width="24px"
 					fill="#FFFFFF"
 					><path
-						d="M320-80 160-240l160-160 57 56-64 64h334l-63-64 56-56 160 160L640-80l-57-56 64-64H313l63 64-56 56ZM200-480v-400h80v400h-80Zm240 0v-400h80v400h-80Zm240 0v-400h80v400h-80Z"
+						d="M400-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM80-160v-112q0-33 17-62t47-44q51-26 115-44t141-18h14q6 0 12 2-8 18-13.5 37.5T404-360h-4q-71 0-127.5 18T180-306q-9 5-14.5 14t-5.5 20v32h252q6 21 16 41.5t22 38.5H80Zm560 40-12-60q-12-5-22.5-10.5T584-204l-58 18-40-68 46-40q-2-14-2-26t2-26l-46-40 40-68 58 18q11-8 21.5-13.5T628-460l12-60h80l12 60q12 5 22.5 11t21.5 15l58-20 40 70-46 40q2 12 2 25t-2 25l46 40-40 68-58-18q-11 8-21.5 13.5T732-180l-12 60h-80Zm40-120q33 0 56.5-23.5T760-320q0-33-23.5-56.5T680-400q-33 0-56.5 23.5T600-320q0 33 23.5 56.5T680-240ZM400-560q33 0 56.5-23.5T480-640q0-33-23.5-56.5T400-720q-33 0-56.5 23.5T320-640q0 33 23.5 56.5T400-560Zm0-80Zm12 400Z"
 					/></svg
-				> Change word legnth
-			</span></button
-		>
-		<button
-			aria-label="Back to main menu"
-			onclick={() => OpenTab("Stats")}
-			><span class="front"
-				><svg
-					xmlns="http://www.w3.org/2000/svg"
-					height="24px"
-					viewBox="0 -960 960 960"
-					width="24px"
-					fill="#FFFFFF"
-					><path
-						d="m105-399-65-47 200-320 120 140 160-260 120 180 135-214 65 47-198 314-119-179-152 247-121-141-145 233Zm475 159q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29ZM784-80 676-188q-21 14-45.5 21t-50.5 7q-75 0-127.5-52.5T400-340q0-75 52.5-127.5T580-520q75 0 127.5 52.5T760-340q0 26-7 50.5T732-244l108 108-56 56Z"
-					/></svg
-				> Stats
+				> Edit list of names
 			</span></button
 		>
 	</div>
 </div>
-<div id="root">
-	<div id="left">
-		<Display />
-		<Keyboard />
-	</div>
-	<Right />
-</div>
+<div id="root"></div>
 
 <style>
 	#nav {
