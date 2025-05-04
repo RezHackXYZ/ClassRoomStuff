@@ -1,5 +1,6 @@
 <script>
 	import { newGame, WordLegnth } from "../logic.svelte.js";
+	import { TabOpen } from "./main.svelte";
 
 	let LetersSelected = WordLegnth.v;
 </script>
@@ -18,6 +19,7 @@
 		onclick={() => {
 			WordLegnth.v = LetersSelected;
 			newGame();
+			TabOpen.v = "none";
 		}}
 		>Start New Game with Word legnth of {LetersSelected} letters
 	</button>
@@ -34,6 +36,7 @@
 		padding: 10px;
 		margin: 20px;
 		border-radius: 10px;
+		width: 400px;
 	}
 	h4 {
 		text-align: center;

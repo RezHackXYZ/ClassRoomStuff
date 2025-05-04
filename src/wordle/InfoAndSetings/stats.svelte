@@ -1,8 +1,8 @@
 <script>
-	import { data } from "../logic.svelte.js";
+	import { data, WordLegnth } from "../logic.svelte.js";
 
 	// svelte-ignore non_reactive_update
-	let LetersSelected = "5";
+	let LetersSelected = JSON.stringify(WordLegnth.v);
 
 	let dataPoints = data.value[LetersSelected];
 
@@ -122,6 +122,7 @@
 		padding: 10px;
 		margin: 20px;
 		border-radius: 10px;
+		width: 700px;
 	}
 	h2,
 	h1,
