@@ -1,15 +1,15 @@
-<script>
+<script module>
 	import { newGame, WordLegnth } from "../logic.svelte.js";
 
 	let data = {
-		3: [20, 7, 8, 2],
-		4: [10, 20, 15, 30],
-		5: [12, 18, 25, 30],
-		6: [15, 25, 35, 40],
-		7: [20, 30, 40, 50],
-		8: [25, 35, 45, 55],
-		9: [30, 40, 50, 60, 5, 54, 54, 43],
-		10: [35, 45, 55, 65],
+		3: [],
+		4: [],
+		5: [],
+		6: [],
+		7: [],
+		8: [],
+		9: [],
+		10: [],
 	};
 
 	let LetersSelected = "5";
@@ -50,9 +50,15 @@
 		});
 	});
 
+    
+	export function SetdataTo(NewData) {
+		data = NewData;
+	}
+
 	let Avgguesses = (
 		dataPoints.reduce((acc, val) => acc + val, 0) / dataPoints.length
 	).toFixed(2);
+    
 	let TotalWins = dataPoints.length;
 </script>
 

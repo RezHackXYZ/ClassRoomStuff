@@ -1,6 +1,6 @@
 import wordExists from "word-exists";
 import { generate } from "random-words";
-import { onMount } from "svelte";
+import { SetdataTo } from "./InfoAndSetings/stats.svelte";
 
 export let WordLegnth = $state({ v: 5 });
 
@@ -8,6 +8,7 @@ let CorrectWord = generate({
 	minLength: WordLegnth.v,
 	maxLength: WordLegnth.v,
 });
+
 console.log("CorrectWord: ", CorrectWord);
 export let words = $state({ v: [] });
 export let CurrentWord = $state({ v: [] });
