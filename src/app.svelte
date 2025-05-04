@@ -2,10 +2,12 @@
 	import Router from "svelte-spa-router";
 	import Wordle from "./wordle/game.svelte";
 	import TypeSelector from "./SelectionMenue/TypeSelector.svelte";
+	import IdleScreen from "./IdleScreen/main.svelte";
 
 	let routes = {
 		"/": TypeSelector,
 		"/Wordle": Wordle,
+		"/IdleScreen": IdleScreen,
 	};
 </script>
 
