@@ -132,7 +132,7 @@
 	#root {
 		display: grid;
 		place-items: center;
-		height: 50%;
+		
 	}
 
 	#wrap {

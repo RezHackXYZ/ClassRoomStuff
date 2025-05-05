@@ -94,16 +94,6 @@ function EditList() {
 		background-color: #121212;
 		color: white;
 	}
-
-	#left {
-		width: 100%;
-		height: 100%;
-		border-radius: 20px;
-		margin: 20px;
-		margin-top: 5px;
-		border: 2px solid #444;
-		font-family: "JetBrains Mono", monospace;
-	}
 	h1 {
 		text-align: center;
 		margin: 5px 0px;

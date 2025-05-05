@@ -1,5 +1,10 @@
-<script>
-	let table = {
+<script module>
+	export function newTable(timetable) {
+		localStorage.setItem("TimeTable", JSON.stringify(timetable));
+		table = timetable;
+	}
+
+	let table = $state({
 		Times: [
 			"07:50 - 08:50",
 			"08:50 - 09:40",
@@ -14,26 +19,26 @@
 			"Sanskrit",
 			"Math",
 			"Lunch",
-			"Social Science",
 			"Hindi",
+			"Social Science",
 			"Science",
 		],
 		Tuesday: [
 			"English",
-			"GK",
+			"Art & Craft",
 			"Math",
 			"Lunch",
-			"Social Science",
 			"Hindi",
+			"Social Science",
 			"Science",
 		],
 		Wednesday: [
 			"English",
-			"Art & Craft",
+			"GK",
 			"Math",
 			"Lunch",
-			"Social Science",
 			"Hindi",
+			"Social Science",
 			"Science",
 		],
 		Thursday: [
@@ -41,8 +46,8 @@
 			"Sanskrit",
 			"Math",
 			"Lunch",
-			"Social Science",
 			"Hindi",
+			"Social Science",
 			"Science",
 		],
 		Friday: [
@@ -50,11 +55,19 @@
 			"Computers",
 			"Math",
 			"Lunch",
-			"Social Science",
 			"Hindi",
+			"Social Science",
 			"Science",
 		],
-	};
+	});
+
+	let TempTimeTable = localStorage.getItem("TimeTable") || "";
+
+	if (TempTimeTable != "") {
+		table = JSON.parse(TempTimeTable);
+	} else {
+		newTable(TempTimeTable);
+	}
 </script>
 
 <div id="root">
@@ -102,7 +115,6 @@
 	#root {
 		display: grid;
 		place-items: center;
-		height: 50%;
 	}
 
 	#wrap {
@@ -119,12 +131,12 @@
 	}
 
 	span {
-		font-size: 25px;
+		font-size: 20px;
 		color: white;
 		background-color: #3f3f3f;
-		padding: 10px;
+		padding: 5px;
 		border-radius: 10px;
-		width: 170px;
+		width: 140px;
 		text-align: center;
 	}
 
@@ -132,7 +144,7 @@
 		background-color: #30492e;
 	}
 	.DayOfWeek {
-		width: 150px;
+		width: 120px;
 		background-color: #30492e;
 	}
 </style>
