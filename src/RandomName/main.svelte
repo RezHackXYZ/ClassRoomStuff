@@ -6,48 +6,48 @@
 		console.log("Edit list of names");
 	}
 
-export let RandomNamesState = $state({
-NotSelectedYet: [
-"John",
-"Jane",
-"Alice",
-"Bob",
-"Charlie",
-"Diana",
-"Eve",
-"Frank",
-"Grace",
-"Hank",
-],
-Selected: [
-"John",
-"Jane",
-"Alice",
-"Bob",
-"Charlie",
-"Diana",
-"Eve",
-"Frank",
-"Grace",
-"Hank",
-],
-Absent: [
-"John",
-"Jane",
-"Alice",
-"Bob",
-"Charlie",
-"Diana",
-"Eve",
-"Frank",
-"Grace",
-"Hank",
-],
-selectedStudent: "none :(",
-});
+	export let RandomNamesState = $state({
+		NotSelectedYet: [
+			"John",
+			"Jane",
+			"Alice",
+			"Bob",
+			"Charlie",
+			"Diana",
+			"Eve",
+			"Frank",
+			"Grace",
+			"Hank",
+		],
+		Selected: [
+			"John",
+			"Jane",
+			"Alice",
+			"Bob",
+			"Charlie",
+			"Diana",
+			"Eve",
+			"Frank",
+			"Grace",
+			"Hank",
+		],
+		Absent: [
+			"John",
+			"Jane",
+			"Alice",
+			"Bob",
+			"Charlie",
+			"Diana",
+			"Eve",
+			"Frank",
+			"Grace",
+			"Hank",
+		],
+		selectedStudent: "none :(",
+	});
 
 	export function SelectStudent() {
-		if (RandomNamesState.NotSelectedYet.length > 0) {
+		if (RandomNamesState.NotSelectedYet.length != 0) {
 			let randomIndex = Math.floor(
 				Math.random() * RandomNamesState.NotSelectedYet.length
 			);

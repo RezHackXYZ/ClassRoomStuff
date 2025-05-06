@@ -4,9 +4,9 @@
 
 <div id="root">
 	<p>The Selected Student is</p>
-	<p>thier name has bean auto moved to the Selected list</p>
-
 	<h1>{RandomNamesState.selectedStudent}</h1>
+	<p>(The Selected Student's name will be auto moved to the Selected list)</p>
+
 	<button
 		aria-label="Back to main menu"
 		onclick={() => {
