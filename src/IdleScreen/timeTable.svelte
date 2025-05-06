@@ -4,7 +4,7 @@
 		table = timetable;
 	}
 
-	let table = $state({
+	let TempelateTable = {
 		Times: [
 			"07:50 - 08:50",
 			"08:50 - 09:40",
@@ -59,14 +59,16 @@
 			"Social Science",
 			"Science",
 		],
-	});
+	};
+
+	let table = $state();
 
 	let TempTimeTable = localStorage.getItem("TimeTable") || "";
 
 	if (TempTimeTable != "") {
 		table = JSON.parse(TempTimeTable);
 	} else {
-		newTable(TempTimeTable);
+		newTable($state.snapshot(TempelateTable));
 	}
 </script>
 

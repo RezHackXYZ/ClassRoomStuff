@@ -4,12 +4,14 @@
 	import TypeSelector from "./SelectionMenue/TypeSelector.svelte";
 	import IdleScreen from "./IdleScreen/main.svelte";
 	import RandomName from "./RandomName/main.svelte";
+	import announcer from "./announcer/main.svelte";
 
 	let routes = {
 		"/": TypeSelector,
 		"/Wordle": Wordle,
 		"/IdleScreen": IdleScreen,
 		"/RandomName": RandomName,
+		"/announcer": announcer,
 	};
 </script>
 
