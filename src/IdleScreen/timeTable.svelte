@@ -4,7 +4,7 @@
 		table = timetable;
 	}
 
-	let TempelateTable = {
+	let TemplateTable = {
 		Times: [
 			"07:50 - 08:50",
 			"08:50 - 09:40",
@@ -68,7 +68,7 @@
 	if (TempTimeTable != "") {
 		table = JSON.parse(TempTimeTable);
 	} else {
-		newTable($state.snapshot(TempelateTable));
+		newTable($state.snapshot(TemplateTable));
 	}
 </script>
 

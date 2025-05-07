@@ -8,40 +8,6 @@
 
 <div id="root">
 	<div
-		id="NotSelectedYet"
-		on:dragover|preventDefault
-		role="list"
-		aria-label="drag name to this list!"
-		on:drop={(event) => {
-			event.preventDefault();
-			if (DragTempName !== "na") {
-				RandomNamesState.NotSelectedYet.push(DragTempName);
-				DragTempName = "na";
-			}
-		}}
-	>
-		<h1>Not Selected Yet</h1>
-		<div class="wrap">
-			{#each RandomNamesState.NotSelectedYet as name, i}
-				<span
-					class="NotSelectedYet"
-					draggable="true"
-					role="listitem"
-					aria-label="drag name to different list!"
-					on:dragstart={() => {
-						setTimeout(() => {
-							RandomNamesState.NotSelectedYet.splice(i, 1);
-							DragTempName = name;
-						}, 100);
-					}}
-				>
-					{name}
-				</span>
-			{/each}
-		</div>
-	</div>
-	<hr />
-	<div
 		id="Selected"
 		on:dragover|preventDefault
 		role="list"
@@ -65,6 +31,40 @@
 					on:dragstart={() => {
 						setTimeout(() => {
 							RandomNamesState.Selected.splice(i, 1);
+							DragTempName = name;
+						}, 100);
+					}}
+				>
+					{name}
+				</span>
+			{/each}
+		</div>
+	</div>
+	<hr />
+	<div
+		id="NotSelectedYet"
+		on:dragover|preventDefault
+		role="list"
+		aria-label="drag name to this list!"
+		on:drop={(event) => {
+			event.preventDefault();
+			if (DragTempName !== "na") {
+				RandomNamesState.NotSelectedYet.push(DragTempName);
+				DragTempName = "na";
+			}
+		}}
+	>
+		<h1>Not Selected Yet</h1>
+		<div class="wrap">
+			{#each RandomNamesState.NotSelectedYet as name, i}
+				<span
+					class="NotSelectedYet"
+					draggable="true"
+					role="listitem"
+					aria-label="drag name to different list!"
+					on:dragstart={() => {
+						setTimeout(() => {
+							RandomNamesState.NotSelectedYet.splice(i, 1);
 							DragTempName = name;
 						}, 100);
 					}}

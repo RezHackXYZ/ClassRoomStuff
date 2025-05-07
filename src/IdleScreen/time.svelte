@@ -120,7 +120,8 @@
 		</div>
 		<div id="date">
 			<h2>
-				{new Date().toLocaleString("en-US", { weekday: "short" })} {new Date().getDate()},
+				{new Date().toLocaleString("en-US", { weekday: "short" })}
+				{new Date().getDate()},
 				{new Date().toLocaleString("en-US", { month: "short" })}
 				{new Date().getFullYear()}
 			</h2>
@@ -132,7 +133,6 @@
 	#root {
 		display: grid;
 		place-items: center;
-		
 	}
 
 	#wrap {
@@ -145,7 +145,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: baseline;
-        margin: -30px;
+		margin: -30px;
 	}
 
 	#colen {
@@ -207,10 +207,10 @@
 		color: #585858;
 	}
 
-    h2 {
-        margin: 0;
-        font-size: 40px;
-        color: #888;
-        text-align: center;
-    }
+	h2 {
+		margin: 0;
+		font-size: 40px;
+		color: #888;
+		text-align: center;
+	}
 </style>

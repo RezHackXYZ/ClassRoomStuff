@@ -1,49 +1,13 @@
 <script module>
 	import Selector from "./selector.svelte";
 	import TopDisplay from "./TopDisplay.svelte";
-
-	function EditList() {
-		console.log("Edit list of names");
-	}
+	import EditNameOfStudents from "./EditNameOfStudents.svelte";
 
 	export let RandomNamesState = $state({
-		NotSelectedYet: [
-			"John",
-			"Jane",
-			"Alice",
-			"Bob",
-			"Charlie",
-			"Diana",
-			"Eve",
-			"Frank",
-			"Grace",
-			"Hank",
-		],
-		Selected: [
-			"John",
-			"Jane",
-			"Alice",
-			"Bob",
-			"Charlie",
-			"Diana",
-			"Eve",
-			"Frank",
-			"Grace",
-			"Hank",
-		],
-		Absent: [
-			"John",
-			"Jane",
-			"Alice",
-			"Bob",
-			"Charlie",
-			"Diana",
-			"Eve",
-			"Frank",
-			"Grace",
-			"Hank",
-		],
-		selectedStudent: "none :(",
+		NotSelectedYet: [],
+		Selected: [],
+		Absent: [],
+		selectedStudent: "None yet!",
 	});
 
 	export function SelectStudent() {
@@ -53,13 +17,40 @@
 			);
 			RandomNamesState.selectedStudent =
 				RandomNamesState.NotSelectedYet[randomIndex];
-			RandomNamesState.Selected.push(
-				RandomNamesState.NotSelectedYet[randomIndex]
-			);
+
+			RandomNamesState.Selected = [
+				RandomNamesState.NotSelectedYet[randomIndex],
+				...RandomNamesState.Selected,
+			];
 			RandomNamesState.NotSelectedYet.splice(randomIndex, 1);
 		} else {
 			alert("All students have been selected.");
 		}
+	}
+
+	let TabOpen = $state({
+		v: false,
+	});
+
+	export function newNames(Names) {
+		localStorage.setItem("Names", JSON.stringify(Names));
+		RandomNamesState.NotSelectedYet = Names;
+		RandomNamesState.Selected = [];
+		RandomNamesState.Absent = [];
+		RandomNamesState.selectedStudent = "None yet!";
+	}
+
+	let TempelateNames = ["John", "Jane", "Alice", "Bob"];
+
+	let TempNames = localStorage.getItem("Names") || "";
+
+	if (TempNames != "") {
+		RandomNamesState.NotSelectedYet = JSON.parse(TempNames);
+		RandomNamesState.Selected = [];
+		RandomNamesState.Absent = [];
+		RandomNamesState.selectedStudent = "None yet!";
+	} else {
+		newNames($state.snapshot(TempelateNames));
 	}
 </script>
 
@@ -81,9 +72,11 @@
 				</span></button
 			></a
 		>
-		<h1>Random Name</h1>
+		<h1>Random student selector</h1>
 		<div>
-			<button aria-label="Back to main menu" onclick={() => EditList()}
+			<button
+				aria-label="Back to main menu"
+				onclick={() => (TabOpen.v = true)}
 				><span class="front"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -100,10 +93,23 @@
 		</div>
 	</div>
 	<div id="root">
-		<div id="listWrap"><TopDisplay /></div>
 		<Selector />
+		<div id="listWrap"><TopDisplay /></div>
 	</div>
 </div>
+
+{#if TabOpen.v !== false}
+	<div id="UperLayer">
+		<div id="wrapClose">
+			<EditNameOfStudents />
+			<button
+				class="close"
+				onclick={() => (TabOpen.v = false)}
+				aria-label="close">CLOSE</button
+			>
+		</div>
+	</div>
+{/if}
 
 <style>
 	#wrap {
@@ -181,5 +187,33 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+	}
+	#UperLayer {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		backdrop-filter: blur(5px);
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#wrapClose {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.close {
+		background-color: #2b2b2b;
+		color: #888;
+		border: none;
+		padding: 10px 20px;
+		border-radius: 5px;
+		cursor: pointer;
+		align-self: center;
 	}
 </style>
