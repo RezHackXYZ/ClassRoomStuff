@@ -25,5 +25,4 @@
 		"checkJs": true,
 		"types": ["svelte", "estree"]
 	},
-	"exclude": ["wordle/**/*", "IdleScreen/**/*", "SelectionMenue/**/*"]
 }
