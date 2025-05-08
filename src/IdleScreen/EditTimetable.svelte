@@ -16,6 +16,7 @@
 							onchange={() => {
 								newTable(table);
 							}}
+							
 							bind:value={time}
 						/>
 					{/each}

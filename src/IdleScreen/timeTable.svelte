@@ -81,33 +81,73 @@
 			{/each}
 		</div>
 		<div class="Row">
-			<span class="DayOfWeek">Monday</span>
+			{#if new Date().getDay() == 1}
+				<span class="DayOfWeek NavHighlight">Monday</span>
+			{:else}
+				<span class="DayOfWeek">Monday</span>
+			{/if}
 			{#each table.Monday as time}
-				<span>{time}</span>
+				{#if new Date().getDay() == 1}
+					<span class="highlight">{time}</span>
+				{:else}
+					<span>{time}</span>
+				{/if}
 			{/each}
 		</div>
 		<div class="Row">
-			<span class="DayOfWeek">Tuesday</span>
+			{#if new Date().getDay() == 2}
+				<span class="DayOfWeek NavHighlight">Tuesday</span>
+			{:else}
+				<span class="DayOfWeek">Tuesday</span>
+			{/if}
 			{#each table.Tuesday as time}
-				<span>{time}</span>
+				{#if new Date().getDay() == 2}
+					<span class="highlight">{time}</span>
+				{:else}
+					<span>{time}</span>
+				{/if}
 			{/each}
 		</div>
 		<div class="Row">
-			<span class="DayOfWeek">Wednesday</span>
+			{#if new Date().getDay() == 3}
+				<span class="DayOfWeek NavHighlight">Wednesday</span>
+			{:else}
+				<span class="DayOfWeek">Wednesday</span>
+			{/if}
 			{#each table.Wednesday as time}
-				<span>{time}</span>
+				{#if new Date().getDay() == 3}
+					<span class="highlight">{time}</span>
+				{:else}
+					<span>{time}</span>
+				{/if}
 			{/each}
 		</div>
 		<div class="Row">
-			<span class="DayOfWeek">Thursday</span>
+			{#if new Date().getDay() == 4}
+				<span class="DayOfWeek NavHighlight">Thursday</span>
+			{:else}
+				<span class="DayOfWeek">Thursday</span>
+			{/if}
 			{#each table.Thursday as time}
-				<span>{time}</span>
+				{#if new Date().getDay() == 4}
+					<span class="highlight">{time}</span>
+				{:else}
+					<span>{time}</span>
+				{/if}
 			{/each}
 		</div>
 		<div class="Row">
-			<span class="DayOfWeek">Friday</span>
+			{#if new Date().getDay() == 5}
+				<span class="DayOfWeek NavHighlight">Friday</span>
+			{:else}
+				<span class="DayOfWeek">Friday</span>
+			{/if}
 			{#each table.Friday as time}
-				<span>{time}</span>
+				{#if new Date().getDay() == 5}
+					<span class="highlight">{time}</span>
+				{:else}
+					<span>{time}</span>
+				{/if}
 			{/each}
 		</div>
 	</div>
@@ -131,7 +171,6 @@
 		display: flex;
 		gap: 5px;
 	}
-
 	span {
 		font-size: 20px;
 		color: white;
@@ -141,12 +180,19 @@
 		width: 140px;
 		text-align: center;
 	}
-
 	.Header > span {
 		background-color: #30492e;
 	}
 	.DayOfWeek {
 		width: 120px;
 		background-color: #30492e;
+	}
+	.highlight {
+		background-color: #707070;
+		display: block;
+	}
+	.NavHighlight {
+		background-color: #3b8235;
+		display: block;
 	}
 </style>
