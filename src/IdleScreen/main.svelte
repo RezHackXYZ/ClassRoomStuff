@@ -1,4 +1,4 @@
-<script>
+<script module>
 	import Time from "./time.svelte";
 	import TimeTable from "./timeTable.svelte";
 	import EditTimetableDiv from "./EditTimetable.svelte";
@@ -8,7 +8,9 @@
 		TabOpen.v = true;
 	}
 
-	let TabOpen = { v: false };
+	let TabOpen = $state({ v: false });
+
+	export let ShowSeconds = $state({ v: true });
 </script>
 
 <div id="wrap">
@@ -33,6 +35,15 @@
 		<div>
 			<button
 				aria-label="Back to main menu"
+				onclick={() => {
+					ShowSeconds.v = !ShowSeconds.v;
+					localStorage.setItem("ShowSeconds", String(ShowSeconds.v));
+				}}
+				><span class="front"
+					>{#if ShowSeconds.v}Disable Seconds{:else}Enable Seconds{/if}</span
+				></button
+			><button
+				aria-label="Back to main menu"
 				onclick={() => EditTimetable()}
 				><span class="front"
 					><svg
@@ -56,7 +67,7 @@
 </div>
 
 {#if TabOpen.v !== false}
-	<div id="UperLayer">
+	<div id="UpperLayer">
 		<div id="wrapClose">
 			<EditTimetableDiv />
 			<button
@@ -138,7 +149,7 @@
 		color: #444;
 	}
 
-	#UperLayer {
+	#UpperLayer {
 		position: absolute;
 		top: 0;
 		left: 0;
