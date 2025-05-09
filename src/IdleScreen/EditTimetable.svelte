@@ -25,10 +25,10 @@
 					<span class="DayOfWeek">Monday</span>
 					{#each table.Monday as time}
 						<input
-							type="text"
+							type="text"      
 							onchange={() => {
 								newTable(table);
-							}}
+							}}       
 							bind:value={time}
 						/>
 					{/each}
