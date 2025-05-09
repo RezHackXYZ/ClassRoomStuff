@@ -23,6 +23,7 @@
 		 * Disable this if you'd like to use dynamic types.
 		 */
 		"checkJs": true,
-		"types": ["svelte", "estree"]
-	},
+		"types": ["svelte", "estree"],
+		"exclude": ["node_modules", "package.json", "package-lock.json"]
+	}
 }
