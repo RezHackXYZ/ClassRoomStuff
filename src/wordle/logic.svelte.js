@@ -1,5 +1,6 @@
 import wordExists from "word-exists";
-import { generate } from "random-words";
+import { generate } from "random-words";	import {ShowAlert} from "../app.svelte";
+
 
 export let WordLegnth = $state({ v: 5 });
 
@@ -85,7 +86,7 @@ export function newGame() {
 }
 
 function GameWin() {
-	alert("You win!");
+	ShowAlert("You win!", "success");
 	data.value[WordLegnth.v].push(words.v.length);
 	localStorage.setItem("WordleGamesData", JSON.stringify(data.value));
 	newGame();
@@ -169,7 +170,7 @@ export function ButtonPressed(key) {
 				SendWord(CurrentWord.v);
 				CurrentWord.v = [];
 			} else {
-				alert("Not a valid word");
+				ShowAlert("Not a valid word", "error");
 			}
 		}
 		return;

@@ -45,7 +45,7 @@
 		DecideScrool(hour2, parseInt(hours[1]), 200, 10);
 		DecideScrool(min1, parseInt(minutes[0]), 200, 6);
 		DecideScrool(min2, parseInt(minutes[1]), 200, 10);
-		if (ShowSeconds.v) {
+		if (ShowSeconds) {
 			DecideScrool(sec1, parseInt(seconds[0]), 75, 6);
 			DecideScrool(sec2, parseInt(seconds[1]), 75, 10);
 		}

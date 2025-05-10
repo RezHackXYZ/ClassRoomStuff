@@ -55,7 +55,7 @@
 	function UpdateChart(val) {
 		dataPoints = data.value[LetersSelected];
 		if (chart) {
-			chart.data.labels = dataPoints.map((_, i) => `Point ${i + 1}`);
+			chart.data.labels = dataPoints.map((_, i) => `Game ${i + 1}`);
 			chart.data.datasets[0].data = $state.snapshot(dataPoints);
 			chart.update();
 		}

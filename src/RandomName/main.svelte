@@ -2,6 +2,7 @@
 	import Selector from "./selector.svelte";
 	import TopDisplay from "./TopDisplay.svelte";
 	import EditNameOfStudents from "./EditNameOfStudents.svelte";
+	import {ShowAlert} from "../app.svelte";
 
 	export let RandomNamesState = $state({
 		NotSelectedYet: [],
@@ -24,7 +25,7 @@
 			];
 			RandomNamesState.NotSelectedYet.splice(randomIndex, 1);
 		} else {
-			alert("All students have been selected.");
+			ShowAlert("All students have been selected.", "warning");
 		}
 	}
 

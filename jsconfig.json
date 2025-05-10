@@ -24,6 +24,12 @@
 		 */
 		"checkJs": true,
 		"types": ["svelte", "estree"],
-		"exclude": ["node_modules", "package.json", "package-lock.json"]
+		"exclude": [
+			"node_modules",
+			"package.json",
+			"package-lock.json",
+			"src/Confetti.js",
+			""
+		]
 	}
 }

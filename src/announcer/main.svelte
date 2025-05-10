@@ -97,26 +97,4 @@
 		text-decoration: none;
 		color: #444;
 	}
-	#UperLayer {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		backdrop-filter: blur(5px);
-		background-color: rgba(0, 0, 0, 0.5);
-		z-index: 1;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.close {
-		background-color: #2b2b2b;
-		color: #888;
-		border: none;
-		padding: 10px 20px;
-		border-radius: 5px;
-		cursor: pointer;
-		align-self: center;
-	}
 </style>
