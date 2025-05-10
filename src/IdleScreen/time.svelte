@@ -10,6 +10,22 @@
 	let sec2;
 	let AmOrPm;
 
+	function DecideScrool(Object, currentTime, legnth, LastZeroPos) {
+		if (currentTime == 0) {
+			if (Object.scrollTop != 0) {
+				Object.scrollTop = LastZeroPos * legnth;
+				setTimeout(() => {
+					Object.scroll({
+						top: 0,
+						behavior: "instant",
+					});
+				}, 500);
+			}
+		} else {
+			Object.scrollTop = currentTime * legnth;
+		}
+	}
+
 	function updateTime() {
 		const now = new Date();
 
@@ -25,85 +41,13 @@
 		const minutes = now.getMinutes().toString().padStart(2, "0");
 		const seconds = now.getSeconds().toString().padStart(2, "0");
 
-		// Hour1
-		if (parseInt(hours[0]) == 0) {
-			hour1.scrollTop = 2 * 200;
-		} else if (parseInt(hours[0]) == 1) {
-			hour1.scroll({
-				top: 0,
-				behavior: "instant",
-			});
-			hour1.scrollTop = parseInt(hours[0]) * 200;
-		} else {
-			hour1.scrollTop = parseInt(hours[0]) * 200;
-		}
-
-		// Hour2
-		if (parseInt(hours[1]) == 0) {
-			hour2.scrollTop = 10 * 200;
-		} else if (parseInt(hours[1]) == 1) {
-			hour2.scroll({
-				top: 0,
-				behavior: "instant",
-			});
-			hour2.scrollTop = parseInt(hours[1]) * 200;
-		} else {
-			hour2.scrollTop = parseInt(hours[1]) * 200;
-		}
-
-		// Minute1
-		if (parseInt(minutes[0]) == 0) {
-			min1.scrollTop = 6 * 200;
-		} else if (parseInt(minutes[0]) == 1) {
-			min1.scroll({
-				top: 0,
-				behavior: "instant",
-			});
-			min1.scrollTop = parseInt(minutes[0]) * 200;
-		} else {
-			min1.scrollTop = parseInt(minutes[0]) * 200;
-		}
-
-		// Minute2
-		if (parseInt(minutes[1]) == 0) {
-			min2.scrollTop = 10 * 200;
-		} else if (parseInt(minutes[1]) == 1) {
-			min2.scroll({
-				top: 0,
-				behavior: "instant",
-			});
-			min2.scrollTop = parseInt(minutes[1]) * 200;
-		} else {
-			min2.scrollTop = parseInt(minutes[1]) * 200;
-		}
-
-		// Seconds
+		DecideScrool(hour1, parseInt(hours[0]), 200, 2);
+		DecideScrool(hour2, parseInt(hours[1]), 200, 10);
+		DecideScrool(min1, parseInt(minutes[0]), 200, 6);
+		DecideScrool(min2, parseInt(minutes[1]), 200, 10);
 		if (ShowSeconds.v) {
-			// Second1
-			if (parseInt(seconds[0]) == 0) {
-				sec1.scrollTop = 6 * 75;
-			} else if (parseInt(seconds[0]) == 1) {
-				sec1.scroll({
-					top: 0,
-					behavior: "instant",
-				});
-				sec1.scrollTop = parseInt(seconds[0]) * 75;
-			} else {
-				sec1.scrollTop = parseInt(seconds[0]) * 75;
-			}
-
-			// Second2
-			if (parseInt(seconds[1]) == 0) {
-				sec2.scrollTop = 10 * 75;
-			} else if (parseInt(seconds[1]) == 1) {
-				sec2.scroll({
-					top: 0,
-					behavior: "instant",
-				});
-				sec2.scrollTop = parseInt(seconds[1]) * 75;
-			} else {
-				sec2.scrollTop = parseInt(seconds[1]) * 75;
-			}
+			DecideScrool(sec1, parseInt(seconds[0]), 75, 6);
+			DecideScrool(sec2, parseInt(seconds[1]), 75, 10);
 		}
 	}
 
