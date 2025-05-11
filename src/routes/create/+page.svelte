@@ -12,11 +12,7 @@
 			alert('Please fill in the question for each question.');
 			return;
 		}
-		if (
-			questions.some((question) =>
-				question.answers.some((answer) => answer === '')
-			)
-		) {
+		if (questions.some((question) => question.answers.some((answer) => answer === ''))) {
 			alert('Please fill in each of the options for each question.');
 			return;
 		}
@@ -25,7 +21,7 @@
 			return;
 		}
 
-        alert('Game started!');
+		alert('Game started!');
 	}
 </script>
 
