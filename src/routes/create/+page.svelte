@@ -1,27 +1,37 @@
 <script>
-	let questions = $state([
+	import { supabase } from '$lib/supabase';
+	import { goto } from '$app/navigation';
+	let questions = [
 		{
 			name: '',
 			answers: ['', '', '', ''],
 			correctAnswer: undefined
 		}
-	]);
+	];
 
-	function startGame() {
-		if (questions.some((question) => question.name === '')) {
-			alert('Please fill in the question for each question.');
-			return;
-		}
-		if (questions.some((question) => question.answers.some((answer) => answer === ''))) {
-			alert('Please fill in each of the options for each question.');
-			return;
-		}
-		if (questions.some((question) => question.correctAnswer === undefined)) {
-			alert('Please select a correct answer for each question.');
+	async function startGame() {
+		if (questions.some((q) => q.name === '')) return alert('Please fill all questions');
+		if (questions.some((q) => q.answers.some((a) => a === ''))) return alert('Fill all options');
+		if (questions.some((q) => q.correctAnswer === undefined))
+			return alert('Select correct answers');
+
+		const gamePin = Math.floor(Math.random() * 1000000)
+			.toString()
+			.padStart(6, '0');
+
+		const { error } = await supabase.from('games').insert({
+			gamePIN: gamePin,
+			gameStatus: 'lobby',
+			questions: questions,
+			players: []
+		});
+
+		if (error) {
+			alert('Failed to create game: ' + error.message + '\n\nPlease try again.');
 			return;
 		}
 
-		alert('Game started!');
+		goto('/host/' + gamePin);
 	}
 </script>
 

@@ -3,5 +3,6 @@
 	"editor.inlineSuggest.enabled": true,
 	"editor.quickSuggestions": {
 		"strings": true
-	}
+	},
+	"cSpell.words": ["SUPABASE"]
 }
