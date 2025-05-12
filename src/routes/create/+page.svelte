@@ -1,13 +1,14 @@
 <script>
 	import { supabase } from '$lib/supabase';
 	import { goto } from '$app/navigation';
-	let questions = [
+	let questions = $state([
 		{
 			name: '',
 			answers: ['', '', '', ''],
-			correctAnswer: undefined
+			correctAnswer: undefined,
+			playersCompelted: 0
 		}
-	];
+	]);
 
 	async function startGame() {
 		if (questions.some((q) => q.name === '')) return alert('Please fill all questions');
@@ -22,7 +23,7 @@
 		const { error } = await supabase.from('games').insert({
 			gamePIN: gamePin,
 			gameStatus: 'lobby',
-			questions: questions,
+			questions: $state.snapshot(questions),
 			players: []
 		});
 
@@ -37,6 +38,43 @@
 
 <div class="bg-grey-900 flex justify-center p-5">
 	<div class="flex flex-col items-center justify-center gap-1 rounded-lg bg-gray-900 p-8 shadow-lg">
+		<button
+			onclick={() => {
+				questions = [
+					{
+						name: 'Is hack club awesome?',
+						answers: ['its ok', 'its the BEST place in the world', 'nahh its bad', 'Gu Gu Ga Ga'],
+						correctAnswer: 1,
+						playersCompelted: 0
+					},
+					{
+						name: 'Who is the best programer in the world?',
+						answers: ['Sundar Pichai', 'Bill Gates', 'RezHackXYZ', 'Elon musk'],
+						correctAnswer: 2,
+						playersCompelted: 0
+					},
+					{
+						name: 'What was the 5/11 incident?',
+						answers: [
+							'mass pings of @/birds',
+							'twin towers getting blasted by planes',
+							'the opening ceremony of the store of 7/11 on the 5/11 date',
+							'the opening ceremony of the competitor store of 7/11'
+						],
+						correctAnswer: 0,
+						playersCompelted: 0
+					}
+				];
+			}}
+			class="-mt-5 mb-3 flex h-fit cursor-pointer items-center justify-center rounded-xl bg-green-700 p-2 transition-all hover:scale-110 hover:-rotate-10"
+			><svg
+				xmlns="http://www.w3.org/2000/svg"
+				height="24px"
+				viewBox="0 -960 960 960"
+				width="24px"
+				fill="#FFFFFF"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" /></svg
+			>Use demo questions</button
+		>
 		{#each questions as question, i}
 			<div class="flex items-center gap-3">
 				<div
@@ -77,10 +115,16 @@
 					<div class="flex flex-col gap-2">
 						{#each question.answers as answer, i2}
 							<div class="flex items-center gap-2">
-								<input type="radio" value={i2} name={i} bind:group={question.correctAnswer} /><input
+								<input
+									type="radio"
+									value={i2}
+									name={i}
+									bind:group={question.correctAnswer}
+									class="input"
+								/><input
 									placeholder="Option {i2 + 1}"
 									bind:value={question.answers[i2]}
-									class="rounded-lg bg-gray-800 p-1 text-center text-white"
+									class="w-[500px] rounded-lg bg-gray-800 p-1 text-center text-white"
 								/>
 							</div>
 						{/each}
@@ -94,7 +138,8 @@
 					questions.push({
 						name: '',
 						answers: ['', '', '', ''],
-						correctAnswer: undefined
+						correctAnswer: undefined,
+						playersCompelted: 0
 					});
 				}}
 				class="flex h-fit cursor-pointer items-center justify-center rounded-xl bg-green-700 p-2 transition-all hover:scale-110 hover:-rotate-10"

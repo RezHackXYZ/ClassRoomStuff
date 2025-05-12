@@ -32,7 +32,7 @@
 			return;
 		}
 
-		goto('/play/' + pin, {
+		goto('/play-lobby/' + pin, {
 			state: {
 				name
 			}

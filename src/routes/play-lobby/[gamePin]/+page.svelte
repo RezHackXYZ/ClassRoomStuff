@@ -6,8 +6,29 @@
 
 	export let data;
 	const gamePin = data.gamePin;
+	const name = $page.state?.name;
 
 	let players = [];
+
+	async function addPlayer() {
+		const { data: gameData, error } = await supabase
+			.from('games')
+			.select('players')
+			.eq('gamePIN', Number(gamePin))
+			.maybeSingle();
+
+		let updatedPlayers = gameData.players || [];
+
+		const alreadyExists = updatedPlayers.some((p) => p.name === name);
+		if (!alreadyExists) {
+			updatedPlayers.push({ name: name, score: 0 });
+
+			const { error: updateError } = await supabase
+				.from('games')
+				.update({ players: updatedPlayers })
+				.eq('gamePIN', Number(gamePin));
+		}
+	}
 
 	// Subscribe to realtime changes in players
 	function subscribeToPlayers() {
@@ -28,7 +49,32 @@
 			.subscribe();
 	}
 
+	function subscribeToGameStatus() {
+		supabase
+			.channel(`status-${gamePin}`)
+			.on(
+				'postgres_changes',
+				{
+					event: 'UPDATE',
+					schema: 'public',
+					table: 'games',
+					filter: `gamePIN=eq.${gamePin}`
+				},
+				(payload) => {
+					if (payload.new.gameStatus === 'started') {
+						goto(`/play/${gamePin}`, {
+							state: {
+								name
+							}
+						});
+					}
+				}
+			)
+			.subscribe();
+	}
 	onMount(async () => {
+		await addPlayer();
+
 		const { data: gameData } = await supabase
 			.from('games')
 			.select('players')
@@ -40,6 +86,7 @@
 		}
 
 		subscribeToPlayers();
+		subscribeToGameStatus();
 	});
 </script>
 
@@ -47,7 +94,7 @@
 	<div
 		class="flex max-w-[700px] flex-col items-center justify-center gap-1 rounded-lg bg-gray-900 p-8 shadow-lg"
 	>
-		<h1 class="m-[0] text-9xl">HOSTING</h1>
+		<h1 class="m-[0] text-9xl">PLAYING</h1>
 		<h1 class="m-[0] text-7xl">Game Pin:</h1>
 		<h1 class="m-[0] rounded-2xl bg-gray-700 pt-1.5 pr-2 pb-0 pl-2 font-mono text-5xl">
 			{gamePin}
@@ -61,21 +108,5 @@
 				>
 			{/each}
 		</div>
-		<button
-			class="mt-5 cursor-pointer rounded-2xl bg-green-700 p-2 text-4xl transition-all hover:scale-110 hover:-rotate-10"
-			on:click={async () => {
-				if (players.length > 0) {
-					if (confirm('Are you sure you want to start the game?')) {
-						await supabase
-							.from('games')
-							.update({ gameStatus: 'started' })
-							.eq('gamePIN', Number(data.gamePin));
-						goto(`/hostgame/${gamePin}`);
-					}
-				} else {
-					alert('You need at least one player to start the game.');
-				}
-			}}>Start the game</button
-		>
 	</div>
 </div>
