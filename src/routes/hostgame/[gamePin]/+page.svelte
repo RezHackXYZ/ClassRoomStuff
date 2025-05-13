@@ -16,14 +16,23 @@
 	async function NewUpdate(question) {
 		if (question[currentQuestion].playersCompelted == Totalplayers) {
 			currentQuestion++;
-			await supabase
-				.from('games')
-				.update({ gameStatus: `${currentQuestion}` })
-				.eq('gamePIN', Number(data.gamePin));
+			
+			if (currentQuestion > questions.length) {
+				await supabase
+					.from('games')
+					.update({ gameStatus: `completed` })
+					.eq('gamePIN', Number(data.gamePin));
+				goto(`/results/${gamePin}`);
+			} else {
+				await supabase
+					.from('games')
+					.update({ gameStatus: `${currentQuestion}` })
+					.eq('gamePIN', Number(data.gamePin));
+			}
+
 			PeopleAwnseredQ = 0;
 		} else {
 			PeopleAwnseredQ = question[currentQuestion].playersCompelted;
-			
 		}
 	}
 

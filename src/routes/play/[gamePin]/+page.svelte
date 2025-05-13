@@ -26,10 +26,18 @@
 				},
 				(payload) => {
 					if (payload.new.gameStatus != gameStatus) {
-						gameStatus = payload.new.gameStatus;
-						isWait = false;
-						Selected = null;
-						currentQuestion = Number(gameStatus);
+						if (payload.new.questions == 'completed') {
+							goto(`/results/${gamePin}`, {
+								state: {
+									name
+								}
+							});
+						} else {
+							gameStatus = payload.new.gameStatus;
+							isWait = false;
+							Selected = null;
+							currentQuestion = Number(gameStatus);
+						}
 					}
 				}
 			)
