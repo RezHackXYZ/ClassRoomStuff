@@ -2,27 +2,21 @@ import { supabase } from '$lib/supabase';
 
 export async function createGame(questions, gamePin) {
 	// Insert the game into the GAMES table
-	const { data: gameData, error: gameError } = await supabase
-		.from('games')
-		.insert({
-			creator: 'anonymous', // Replace with actual creator if available
-			creationdate: new Date().toISOString(),
-			status: 'lobby',
-			GamePIN: gamePin
-		})
-		.select('id')
-		.single();
+	const { data: gameData, error: gameError } = await supabase.from('games').insert({
+		creator: 'anonymous',
+		creationdate: new Date().toISOString(),
+		status: 'lobby',
+		gamepin: gamePin
+	});
 
 	if (gameError) {
 		alert('Failed to create game: ' + gameError.message + '\n\nPlease try again.');
 		return;
 	}
 
-	const gameid = gameData.id;
-
 	// Prepare questions and answers for batch insertion
 	const questionsData = questions.map((q, index) => ({
-		gameid: gameid,
+		gameid: gamePin,
 		questionstext: q.name,
 		correctanswer: q.correctAnswer
 	}));
@@ -53,6 +47,4 @@ export async function createGame(questions, gamePin) {
 		alert('Failed to insert answers: ' + answersError.message + '\n\nPlease try again.');
 		return;
 	}
-
-	alert('Game created successfully!');
 }

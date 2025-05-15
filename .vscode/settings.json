@@ -8,7 +8,10 @@
 		"correctanswer",
 		"creationdate",
 		"gameid",
+		"gamepin",
+		"hostgame",
 		"kahoot",
+		"playername",
 		"questionid",
 		"questionstext",
 		"SUPABASE"
