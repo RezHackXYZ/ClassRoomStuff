@@ -4,5 +4,13 @@
 	"editor.quickSuggestions": {
 		"strings": true
 	},
-	"cSpell.words": ["SUPABASE"]
+	"cSpell.words": [
+		"correctanswer",
+		"creationdate",
+		"gameid",
+		"kahoot",
+		"questionid",
+		"questionstext",
+		"SUPABASE"
+	]
 }
