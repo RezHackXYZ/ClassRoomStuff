@@ -1,5 +1,7 @@
 <div id="root">
-	<h1>ClassRoomStuff</h1>
+	<img
+		src="https://hc-cdn.hel1.your-objectstorage.com/s/v3/77e7a04f27807b4e0c16bcda09ea222f9e091616_group_18.svg" id="logo"
+	/>
 	<h2>
 		A collection of awesome tools, games, and more — made to be used in any
 		classroom!
@@ -237,5 +239,11 @@
 		margin: 0;
 		color: #aaaaaa;
 		font-size: 30px;
+	}
+
+	#logo {
+		width: 500px;
+		margin-bottom: 20px;
+		align-self: center;
 	}
 </style>
