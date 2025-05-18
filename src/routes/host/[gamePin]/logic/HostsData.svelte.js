@@ -1,6 +1,6 @@
 export let players = $state({ v: [] });
 export let Status = $state({ v: "lobby" });
-export let questions = $state({ v: [] });
+export let questions = { v: [] };
 export let CurrentQuestion = $state({ v: -1 });
 
 export let currentQuestion = $state({ v: 0 });

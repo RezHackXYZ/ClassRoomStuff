@@ -1,4 +1,3 @@
-import { goto } from "$app/navigation";
 import { addPlayer } from "./InsertPlayerInDB.js";
 import { validateGamePin } from "./validateGamePin.js";
 import { Checking } from "./JoinGameData.svelte.js";
@@ -12,11 +11,9 @@ export async function joinGame(pin, name) {
 		return;
 	}
 
-	addPlayer(name, pin);
-	
+	let id = await addPlayer(name, pin);
+
 	Checking.v = false;
 
-	goto("/play/" + pin, {
-		state: { name },
-	});
+	window.location.href = `./play/${pin}?name=${name}&playerid=${id}`;
 }

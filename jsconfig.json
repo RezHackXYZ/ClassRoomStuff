@@ -7,6 +7,5 @@
 		"module": "es2015",
 		"types": ["svelte"]
 	},
-	"include": ["src/**/*"],
-	"exclude": ["node_modules/*"],
+	"exclude": ["**/node_modules/**", "**/build/**", "**/.svelte-kit/**", "**/out/**", "!src/**"],
 }

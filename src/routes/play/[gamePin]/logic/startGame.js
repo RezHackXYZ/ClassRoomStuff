@@ -1,6 +1,6 @@
 import { supabase } from "$lib/supabase.js";
 import { LobbyConnection } from "./UpdatePlayersList.js";
-import { questions, Status, CurrentQuestion, currentQuestion } from "./HostsData.svelte.js";
+import { questions, Status, CurrentQuestion } from "./HostsData.svelte.js";
 
 export async function startGame(gamePin) {
 	await supabase.removeChannel(LobbyConnection);
@@ -18,7 +18,7 @@ export async function startGame(gamePin) {
 
 	await supabase
 		.from("games")
-		.update({ status: `question-${currentQuestion.v}` })
+		.update({ status: `question-${CurrentQuestion.v}` })
 		.eq("gamepin", gamePin);
 
     

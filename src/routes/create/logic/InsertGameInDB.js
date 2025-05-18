@@ -1,7 +1,7 @@
 import { supabase } from '$lib/supabase';
 
 export async function createGame(questions, gamePin) {
-	// Insert the game into the GAMES table
+
 	const { data: gameData, error: gameError } = await supabase.from('games').insert({
 		creator: 'anonymous',
 		creationdate: new Date().toISOString(),

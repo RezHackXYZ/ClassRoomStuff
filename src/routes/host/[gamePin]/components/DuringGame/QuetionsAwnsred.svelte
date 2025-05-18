@@ -7,7 +7,7 @@
 	<div class="flex-1 rounded-full border-2 border-gray-600">
 		<div
 			class="h-4 rounded-full bg-green-600 transition-all duration-500"
-			style="width: {(currentQuestion.v + 1 / totalQuetions.v) * 100}%;"
+			style="width: {(currentQuestion.v / totalQuetions.v) * 100}%;"
 		></div>
 	</div>
 </div>

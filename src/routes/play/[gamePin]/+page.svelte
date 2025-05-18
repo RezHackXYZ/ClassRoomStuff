@@ -1,11 +1,12 @@
 <script>
-	import PlayingDisplay from "./components/DuringGame/display.svelte";
-
+	import AwnserQuetion from "./components/awnseringQuetions/display.svelte";
 	import LobbyDisplay from "./components/lobby/display.svelte";
 	import { Status } from "./logic/HostsData.svelte.js";
 	import { AutoUpdatePlayersList } from "./logic/UpdatePlayersList.js";
 	import { GetCurrentPlayers } from "./logic/GetCurrentPlayers.js";
+	import { IntializeGameStart } from "./logic/IntializeGameStart.js";
 	import { onMount } from "svelte";
+	import { name,playerid } from "./logic/HostsData.svelte.js";
 
 	export let data;
 	const gamePin = data.gamePin;
@@ -13,6 +14,10 @@
 	onMount(() => {
 		GetCurrentPlayers(gamePin);
 		AutoUpdatePlayersList(gamePin);
+		IntializeGameStart(gamePin);
+
+		name.v = new URLSearchParams(new URL(window.location.href).search).get("name");
+		playerid.v = new URLSearchParams(new URL(window.location.href).search).get("playerid");
 	});
 </script>
 
@@ -23,7 +28,7 @@
 		{#if Status.v == "lobby"}
 			<LobbyDisplay {gamePin} />
 		{:else if Status.v == "started"}
-			<PlayingDisplay />
+			<AwnserQuetion />
 		{/if}
 	</div>
 </div>

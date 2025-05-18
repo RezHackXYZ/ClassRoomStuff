@@ -1,6 +1,7 @@
 import { supabase } from "$lib/supabase.js";
 import { LobbyConnection } from "./UpdatePlayersList.js";
 import { questions, Status, CurrentQuestion, currentQuestion } from "./HostsData.svelte.js";
+import { WaitForAwnser } from "./WaitForAwnser.js";
 
 export async function startGame(gamePin) {
 	await supabase.removeChannel(LobbyConnection);
@@ -12,14 +13,10 @@ export async function startGame(gamePin) {
 		.select("*")
 		.eq("gameid", Number(gamePin))
 		.order("id", { ascending: true });
+
 	questions.v = data;
 
 	CurrentQuestion.v = 0;
 
-	await supabase
-		.from("games")
-		.update({ status: `question-${currentQuestion.v}` })
-		.eq("gamepin", gamePin);
-
-    
+	WaitForAwnser(0, gamePin);
 }
