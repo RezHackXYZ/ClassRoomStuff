@@ -1,6 +1,6 @@
 # DaKahootClone
 
-![DaKahootClone's logo](https://placehold.co/400x400?text=logo+[tba])
+![DaKahootClone's logo](https://hc-cdn.hel1.your-objectstorage.com/s/v3/ddf135d610705bd8bb75ea59bd4e232e2b294e4b_group_12.svg)
 
 The best ever kahoot clone.
 
