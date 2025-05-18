@@ -1,18 +1,25 @@
-# DB Diagrams
+# DaKahootClone
+
+![DaKahootClone's logo](https://placehold.co/400x400?text=logo+[tba])
+
+The best ever kahoot clone.
+
+A project by [RezHackXYZ](https://rezhack.xyz) for [Neighborhood](https://neighborhood.hackclub.com/)
+
+(⚠️ This project is one of a bunch of tools that are part of a larger project.
+See the [original project repo](https://github.com/RezHackXYZ/ClassRoomStuff) for the full collection.)
+
+👉 **[Try It Now](https://kahoot-clone-rezhackxyz.vercel.app/)**
+
+---
+
+## Tech Stack
+
+- SvelteKit
+- JavaScript
+- Supabase
 
 ## Current DB Diagram
-
-```mermaid
-    erDiagram
-        GAMES {
-            int GamePIN PK
-            string gameStatus
-            json questions
-            jsonb players
-        }
-```
-
-## Goal MVP DB Diagram
 
 ```mermaid
     erDiagram
@@ -48,6 +55,4 @@
     QUESTIONS ||--o{ ANSWERS : has_answers
     QUESTIONS ||--o{ ANSWEREDBY : has_answeredby
     GAMES ||--o{ PLAYERS : has_players
-
-
 ```
