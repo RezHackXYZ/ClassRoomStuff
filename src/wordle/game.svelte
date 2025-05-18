@@ -46,9 +46,7 @@
 				> Change word legnth
 			</span></button
 		>
-		<button
-			aria-label="Back to main menu"
-			onclick={() => OpenTab("Stats")}
+		<button aria-label="Back to main menu" onclick={() => OpenTab("Stats")}
 			><span class="front"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"

@@ -3,5 +3,5 @@
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode"
 	},
-	"cSpell.words": ["kokoro"]
+	"cSpell.words": ["Kahoot", "kokoro"]
 }

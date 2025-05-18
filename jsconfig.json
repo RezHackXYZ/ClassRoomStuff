@@ -26,10 +26,10 @@
 		"types": ["svelte", "estree"],
 		"exclude": [
 			"node_modules",
-			"package.json",
-			"package-lock.json",
-			"src/Confetti.js",
-			""
+			"**/node_modules/*",
+			".git",
+			"**/*",
+			"!src/wordle/**/*"
 		]
 	}
 }
