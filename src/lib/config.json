@@ -1,0 +1,60 @@
+{
+	"AnswersSymbolAndColor": [
+		{
+			"Color": "#6E0000",
+			"SelectedColor": "#AA2222",
+			"HoverBorderColor": "#FF5D5D",
+			"SelectedBorderColor": "#FF0000",
+			"Symbol": "nf-md-triangle"
+		},
+		{
+			"Color": "#00316E",
+			"SelectedColor": "#2255AA",
+			"HoverBorderColor": "#5D9CFF",
+			"SelectedBorderColor": "#0000FF",
+			"Symbol": "nf-fa-square"
+		},
+		{
+			"Color": "#6E6E00",
+			"SelectedColor": "#AAAA22",
+			"HoverBorderColor": "#FFFF5D",
+			"SelectedBorderColor": "#DDFF00",
+			"Symbol": "nf-fa-circle"
+		},
+		{
+			"Color": "#006E00",
+			"SelectedColor": "#22AA22",
+			"HoverBorderColor": "#5DFF5D",
+			"SelectedBorderColor": "#00ff00",
+			"Symbol": "nf-fa-diamond"
+		},
+		{
+			"Color": "#4B0082",
+			"SelectedColor": "#7F33B5",
+			"HoverBorderColor": "#B066FF",
+			"SelectedBorderColor": "#9932CC",
+			"Symbol": "nf-md-star"
+		},
+		{
+			"Color": "#FF8C00",
+			"SelectedColor": "#FFB347",
+			"HoverBorderColor": "#FFD580",
+			"SelectedBorderColor": "#FFA500",
+			"Symbol": "nf-md-hexagon"
+		},
+		{
+			"Color": "#008B8B",
+			"SelectedColor": "#33CCCC",
+			"HoverBorderColor": "#66FFFF",
+			"SelectedBorderColor": "#00CED1",
+			"Symbol": "nf-md-octagon"
+		},
+		{
+			"Color": "#8B4513",
+			"SelectedColor": "#CD853F",
+			"HoverBorderColor": "#DEB887",
+			"SelectedBorderColor": "#A0522D",
+			"Symbol": "nf-md-heart"
+		}
+	]
+}

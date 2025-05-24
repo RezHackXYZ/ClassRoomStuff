@@ -1,6 +1,6 @@
 import { supabase } from "$lib/supabase.js";
 import { onNewPlayerAwnsered } from "./onNewPlayerAwnsered.js";
-import { currentQuestion, questions } from "./HostsData.svelte.js";
+import { currentQuestion, questions, CurrentQuestionDetails } from "./HostsData.svelte.js";
 
 let WaitingForAwnserConection;
 
@@ -29,4 +29,23 @@ export async function WaitForAwnser(questionid, gamePin) {
 			},
 		)
 		.subscribe();
+
+	const { data: questionsData } = await supabase
+		.from("questions")
+		.select("id,questionstext,correctanswer")
+		.eq("gameid", Number(gamePin))
+		.order("id", { ascending: true });
+
+	const { data: answers } = await supabase
+		.from("answers")
+		.select("content")
+		.eq("questionid", Number(questionsData[currentQuestion.v].id))
+		.order("id", { ascending: true });
+
+	CurrentQuestionDetails.v = {
+		question: questionsData[currentQuestion.v].questionstext,
+		correctAnswer: questionsData[currentQuestion.v].correctanswer,
+		answers: answers.map((answer) => answer.content),
+		questionid: questionsData[currentQuestion.v].id,
+	};
 }

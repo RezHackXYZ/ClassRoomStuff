@@ -5,6 +5,7 @@ import {
 	isWait,
 	Selected,
 	playerid,
+	TotalQuestions,
 } from "./HostsData.svelte.js";
 import { supabase } from "$lib/supabase.js";
 
@@ -22,6 +23,8 @@ export async function NewStatus(NewStatus, gamePin) {
 		.select("id,questionstext,correctanswer")
 		.eq("gameid", Number(gamePin))
 		.order("id", { ascending: true });
+
+	TotalQuestions.v = questionsData.length;
 
 	const { data: answers } = await supabase
 		.from("answers")
