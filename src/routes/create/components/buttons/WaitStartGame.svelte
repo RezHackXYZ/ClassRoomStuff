@@ -1,10 +1,10 @@
 <script>
-	import { startGame } from '../../logic/StartGame.js';
+	import { startGame } from "../../logic/StartGame.js";
 </script>
 
 <button
 	onclick={startGame}
-	class="flex h-fit cursor-pointer items-center justify-center gap-1 rounded-xl bg-gray-700 p-2"
+	class="flex h-fit cursor-pointer items-center justify-center gap-1 rounded-xl bg-gray-700 p-2 transition-all hover:scale-110"
 	><svg
 		xmlns="http://www.w3.org/2000/svg"
 		height="24px"

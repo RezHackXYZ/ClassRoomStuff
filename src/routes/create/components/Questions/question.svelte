@@ -1,5 +1,6 @@
 <script>
 	import DeleteQuestion from "../buttons/DeleteQuestion.svelte";
+	import GenerateOptionsUsingAI from "../buttons/GenerateOptionsUsingAI.svelte";
 	import Answers from "./answers.svelte";
 	import { questions } from "../../logic/GameCreateData.svelte.js";
 
@@ -20,16 +21,13 @@
 			<select
 				bind:value={questions.v[index].answers.length}
 				onchange={(e) => {
-					const newLength = parseInt(e.target.value);
+					const newLength = questions.v[index].answers.length;
 					const currentAnswers = questions.v[index].answers;
 
 					if (newLength > currentAnswers.length) {
 						// Add more answers
 						while (questions.v[index].answers.length < newLength) {
-							questions.v[index].answers = [
-								...questions.v[index].answers,
-								{ text: "", correct: false },
-							];
+							questions.v[index].answers.push("");
 						}
 					} else if (newLength < currentAnswers.length) {
 						// Remove excess answers
@@ -47,9 +45,11 @@
 		</div>
 
 		<div class="flex flex-col gap-2">
-			{#each questions.v[index].answers as answer, answersIndex}
+			{#each questions.v[index].answers as _, answersIndex}
 				<Answers questionsIndex={index} {answersIndex} />
 			{/each}
 		</div>
+		<input type="file">
+		<GenerateOptionsUsingAI {index} />
 	</div>
 </div>
