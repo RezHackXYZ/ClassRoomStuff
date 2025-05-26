@@ -49,7 +49,6 @@
 				<Answers questionsIndex={index} {answersIndex} />
 			{/each}
 		</div>
-		<input type="file">
 		<GenerateOptionsUsingAI {index} />
 	</div>
 </div>

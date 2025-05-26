@@ -1,8 +1,34 @@
 <script>
 	let { children } = $props();
+
+	import { confettiAnimation } from "./Confetti.js";
+	let ShowAlertDiv = $state(false);
+	let ShowAlertText = $state("this Code is bad");
+	let ShowAlertType = $state("Error");
+
+	export function ShowAlert(text, type) {
+		ShowAlertDiv = true;
+		ShowAlertType = type;
+
+		ShowAlertText = text;
+		setTimeout(() => {
+			ShowAlertDiv = false;
+		}, 1500);
+
+		if (type == "success") {
+			confettiAnimation();
+		}
+	}
 </script>
 
-<div class="h-full text-white">{@render children()}</div>
+<div id="root">
+	<div class="h-full text-white">{@render children()}</div>
+</div>
+{#if ShowAlertDiv == true}
+	<div id="alert">
+		<h1 class={ShowAlertType}>{ShowAlertText}</h1>
+	</div>
+{/if}
 
 <style>
 	@import "https://www.nerdfonts.com/assets/css/webfont.css";
@@ -13,5 +39,34 @@
 		background-color: black;
 		font-family: "Comfortaa", sans-serif;
 		font-weight: 300;
+	}
+
+	#root {
+		height: 100%;
+		margin: 0;
+		font-family: "Sour Gummy", sans-serif;
+	}
+
+	#alert {
+		position: fixed;
+		top: 10px;
+		color: white;
+		left: 50%;
+		transform: translate(-50%, 0);
+		h1 {
+			margin: 0;
+			padding: 10px 20px;
+			border-radius: 20px;
+			font-family: "Sour Gummy", sans-serif;
+		}
+		.error {
+			background-color: #830000;
+		}
+		.warning {
+			background-color: #975b00;
+		}
+		.success {
+			background-color: #006b00;
+		}
 	}
 </style>
