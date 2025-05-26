@@ -12,7 +12,7 @@
 	<div id="wrap">
 		<div id="left">
 			<div class="Header Row">
-				<span class="DayOfWeek" style="Opacity: 0;"></span>
+				<span class="DayOfWeek" ></span>
 				{#each table.Times as time}
 					<input
 						type="text"

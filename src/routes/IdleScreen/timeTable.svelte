@@ -63,13 +63,13 @@
 
 	let table = $state();
 
-	let TempTimeTable = localStorage.getItem("TimeTable") || "";
+	/*let TempTimeTable = localStorage.getItem("TimeTable") || "";
 
 	if (TempTimeTable != "") {
 		table = JSON.parse(TempTimeTable);
 	} else {
 		newTable($state.snapshot(TemplateTable));
-	}
+	}*/
 </script>
 
 <div id="root">
