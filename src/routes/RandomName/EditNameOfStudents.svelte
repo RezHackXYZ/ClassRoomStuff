@@ -1,5 +1,5 @@
 <script>
-	import { newNames, RandomNamesState } from "./main.svelte";
+	import { newNames, RandomNamesState } from "./+page.svelte";
 
 	let names =
 		RandomNamesState.NotSelectedYet.join("\n") +
@@ -13,8 +13,8 @@
 
 <div id="root">
 	<div id="root">
-        <h1>Edit Names</h1>
-        <p></p>
+		<h1>Edit Names</h1>
+		<p></p>
 		<textarea
 			bind:value={names}
 			id="box"

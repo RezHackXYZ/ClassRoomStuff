@@ -1,9 +1,7 @@
 <script context="module">
-	import { RandomNamesState } from "./main.svelte";
+	import { RandomNamesState } from "./+page.svelte";
 
 	let DragTempName = "na";
-
-	import "drag-drop-touch";
 </script>
 
 <div id="root">

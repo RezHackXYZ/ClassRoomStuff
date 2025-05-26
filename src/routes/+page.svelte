@@ -6,9 +6,8 @@
 	/>
 	<h2>A collection of awesome tools, games, and more — made to be used in any classroom!</h2>
 	<h3>MAIN</h3>
-
 	<div id="items2">
-		<a href="/KahhotClone">
+		<a href="/kahootclone">
 			<button class="button2">
 				<span class="front2">
 					<svg
@@ -22,8 +21,8 @@
 						/></svg
 					>
 					DaKahootClone
-					<p>The best ever kahoot clone.</p></span
-				>
+					<p>The best ever kahoot clone.</p>
+				</span>
 			</button></a
 		>
 	</div>
@@ -47,7 +46,7 @@
 				>
 			</button></a
 		>
-		<a href="#/RandomName">
+		<a href="/RandomName">
 			<button>
 				<span class="front">
 					<svg
@@ -65,7 +64,7 @@
 				>
 			</button></a
 		>
-		<a href="#/Wordle">
+		<a href="/wordle">
 			<button>
 				<span class="front">
 					<svg
@@ -84,7 +83,7 @@
 			</button></a
 		>
 
-		<a href="#/announcer">
+		<a href="/announcer">
 			<button>
 				<span class="front">
 					<svg

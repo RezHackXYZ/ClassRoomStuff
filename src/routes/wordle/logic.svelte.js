@@ -1,6 +1,6 @@
 import wordExists from "word-exists";
 import { generate } from "random-words";
-import { ShowAlert } from "../+layout.svelte";
+import toast from "svelte-5-french-toast";
 
 export let WordLegnth = $state({ v: 5 });
 
@@ -87,6 +87,8 @@ export function newGame() {
 
 function GameWin() {
 	ShowAlert("You win!", "success");
+	toast.success("You win!");
+
 	data.value[WordLegnth.v].push(words.v.length);
 	localStorage.setItem("WordleGamesData", JSON.stringify(data.value));
 	newGame();

@@ -1,5 +1,5 @@
 <script>
-	import { RandomNamesState, SelectStudent } from "./main.svelte";
+	import { RandomNamesState, SelectStudent } from "./+page.svelte";
 </script>
 
 <div id="root">

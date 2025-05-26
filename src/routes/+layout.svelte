@@ -1,38 +1,17 @@
 <script>
+	export const prerender = true;
+	import { Toaster } from "svelte-5-french-toast";
 	let { children } = $props();
-
-	import { confettiAnimation } from "./Confetti.js";
-	let ShowAlertDiv = $state(false);
-	let ShowAlertText = $state("this Code is bad");
-	let ShowAlertType = $state("Error");
-
-	export function ShowAlert(text, type) {
-		ShowAlertDiv = true;
-		ShowAlertType = type;
-
-		ShowAlertText = text;
-		setTimeout(() => {
-			ShowAlertDiv = false;
-		}, 1500);
-
-		if (type == "success") {
-			confettiAnimation();
-		}
-	}
 </script>
 
+<Toaster />
 <div id="root">
 	<div class="h-full text-white">{@render children()}</div>
 </div>
-{#if ShowAlertDiv == true}
-	<div id="alert">
-		<h1 class={ShowAlertType}>{ShowAlertText}</h1>
-	</div>
-{/if}
 
 <style>
 	@import "https://www.nerdfonts.com/assets/css/webfont.css";
-	@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
+	@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=JetBrains+Mono:wght@200&family=Sour+Gummy:wght@300&display=swap");
 	@import "tailwindcss";
 
 	:root {

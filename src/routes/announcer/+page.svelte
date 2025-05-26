@@ -1,0 +1,20 @@
+<script>
+	import List from "./components/CommonAnounceedTexts/list.svelte";
+	import Add from "./components/CustomText/add.svelte";
+	import CustomText from "./components/CustomText/CustomText.svelte";
+
+	import { onMount } from "svelte";
+	import { LoadMostUsedAnnouncement } from "./logic/LoadMostUsedAnnouncement.js";
+	onMount(() => LoadMostUsedAnnouncement());
+</script>
+
+<div class="flex h-full flex-col items-center justify-center gap-5 p-5">
+	<div class="w-fit rounded-2xl bg-gray-900 p-3">
+		<h1 class="text-center text-4xl">Most Announced announcements</h1>
+		<List />
+		<hr class="my-5 w-full border-gray-600" />
+		<h1 class="text-center text-4xl">Or announce something else</h1>
+		<CustomText />
+		<Add />
+	</div>
+</div>

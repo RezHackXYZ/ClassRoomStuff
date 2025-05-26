@@ -15,7 +15,7 @@
 
 <div id="wrap">
 	<div id="nav">
-		<a href="#/" aria-label="Back to main menu"
+		<a href="/" aria-label="Back to main menu"
 			><button aria-label="Back to main menu"
 				><span class="front"
 					><svg
