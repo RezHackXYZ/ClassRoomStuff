@@ -17,13 +17,15 @@
 		"@tailwindcss/postcss": "^4.1.6",
 		"@tailwindcss/vite": "^4.0.0",
 		"autoprefixer": "^10.4.21",
+		"daisyui": "^5.0.38",
 		"eslint-config-prettier": "^10.0.1",
+		"postcss": "^8.5.3",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"sv-popup": "^0.5.3",
 		"svelte": "^5.0.0",
-		"tailwindcss": "^4.0.0",
+		"tailwindcss": "^4.1.7",
 		"vite": "^6.0.0"
 	},
 	"dependencies": {

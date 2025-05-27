@@ -19,7 +19,7 @@
 
 <div
 	style="--height: {size == 'small' ? '75px' : '200px'};"
-	class="flex h-(--height) flex-col overflow-y-hidden scroll-smooth"
+	class="flex h-(--height) flex-col overflow-y-hidden scroll-smooth" 
 	bind:this={thisRow}
 >
 	{#each Array(digits) as _, i}

@@ -120,12 +120,6 @@
 		justify-content: center;
 	}
 
-	h1 {
-		text-align: center;
-		margin: 0;
-		font-size: 60px;
-	}
-
 	h2 {
 		text-align: center;
 		margin: 0;

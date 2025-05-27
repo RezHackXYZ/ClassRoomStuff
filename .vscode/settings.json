@@ -4,6 +4,7 @@
 	"editor.quickSuggestions": {
 		"strings": true
 	},
+	"css.customData": [".vscode/tailwind.json"],
 	"cSpell.words": [
 		"correctanswer",
 		"creationdate",
