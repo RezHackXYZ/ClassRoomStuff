@@ -9,7 +9,7 @@
 </script>
 
 <div class="flex h-17/20 items-center justify-center border-2 border-amber-400">
-	<div class="w-2/3 gap-3 flex flex-col items-center">
+	<div class="flex w-2/3 min-w-[600px] flex-col items-center gap-3">
 		{#if FlagAscii == true}
 			<Ascii />
 		{:else}

@@ -1,5 +1,5 @@
 <script>
-	import "./app.css";
+	import "./tailwind.css";
 
 	import { Toaster } from "svelte-5-french-toast";
 	let { children } = $props();
