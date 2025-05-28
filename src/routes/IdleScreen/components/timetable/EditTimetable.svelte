@@ -49,7 +49,7 @@
 		<button
 			onclick={() => {
 				timetableData.v = data;
-				localStorage.setItem("TimetableData", JSON.stringify(data));
+				localStorage.setItem("timetableData", JSON.stringify(data));
 				colseModal.v = true;
 			}}
 			class="btn green mt-3">SAVE</button
