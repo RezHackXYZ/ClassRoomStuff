@@ -1,0 +1,9 @@
+{
+	"tailwindCSS.emmetCompletions": true,
+	"editor.inlineSuggest.enabled": true,
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"css.customData": [".vscode/tailwind.json"]
+}

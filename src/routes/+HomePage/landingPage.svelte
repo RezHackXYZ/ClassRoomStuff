@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-	import Ascii from "./ascii.svelte";
+	import Ascii from "./ascisi.svelte";
 
 	let FlagAscii = false;
 	onMount(() => {
@@ -8,8 +8,11 @@
 	});
 </script>
 
+
+
+                           
 <div class="flex h-17/20 items-center justify-center border-2 border-amber-400">
-	<div class="flex w-2/3 min-w-[600px] flex-col items-center gap-3">
+											<div class="flex w-2/3 min-w-[600px] flex-col items-center gap-3">
 		{#if FlagAscii == true}
 			<Ascii />
 		{:else}
