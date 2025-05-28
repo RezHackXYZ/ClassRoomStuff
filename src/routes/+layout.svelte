@@ -1,6 +1,4 @@
 <script>
-	export const prerender = true;
-
 	import "./app.css";
 
 	import { Toaster } from "svelte-5-french-toast";
