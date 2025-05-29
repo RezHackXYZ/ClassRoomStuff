@@ -43,7 +43,9 @@
 
 	let TempelateNames = ["John", "Jane", "Alice", "Bob"];
 
-	let TempNames = localStorage.getItem("Names") || "";
+	//let TempNames = localStorage.getItem("Names") || "";
+	let TempNames = "";
+
 
 	if (TempNames != "") {
 		RandomNamesState.NotSelectedYet = JSON.parse(TempNames);
