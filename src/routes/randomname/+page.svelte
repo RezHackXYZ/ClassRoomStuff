@@ -34,7 +34,7 @@
 	});
 
 	export function newNames(Names) {
-		localStorage.setItem("Names", JSON.stringify(Names));
+		//localStorage.setItem("Names", JSON.stringify(Names));
 		RandomNamesState.NotSelectedYet = Names;
 		RandomNamesState.Selected = [];
 		RandomNamesState.Absent = [];
