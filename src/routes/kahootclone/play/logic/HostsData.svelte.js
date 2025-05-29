@@ -1,0 +1,9 @@
+export let players = $state({ v: {} });
+export let Status = $state({ v: "lobby" });
+export let questions = $state({ v: {} });
+export let CurrentQuestion = $state({ v: null });
+export let TotalQuestions = $state({ v: 0 });
+export let Selected = $state({ v: null });
+export let isWait = $state({ v: true });
+export let name = $state({ v: "" });
+export let playerid = $state({ v: null });

@@ -1,7 +1,9 @@
 {
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"[svelte]": {
-		"editor.defaultFormatter": "svelte.svelte-vscode"
+	"tailwindCSS.emmetCompletions": true,
+	"editor.inlineSuggest.enabled": true,
+	"editor.quickSuggestions": {
+		"strings": true
 	},
-	"cSpell.words": ["Kahoot", "kokoro"]
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"css.customData": [".vscode/tailwind.json"]
 }
