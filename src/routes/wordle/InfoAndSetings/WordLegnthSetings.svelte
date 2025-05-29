@@ -7,20 +7,14 @@
 
 <div id="root">
 	<h4>Select The Word legnth (between 3 and 10 letters)</h4>
-	<input
-		type="range"
-		id="vol"
-		name="vol"
-		min="3"
-		max="10"
-		bind:value={LetersSelected}
-	/>
+	<input type="range" id="vol" name="vol" min="3" max="10" bind:value={LetersSelected} />
 	<button
 		onclick={() => {
 			WordLegnth.v = LetersSelected;
 			newGame();
 			TabOpen.v = "none";
 		}}
+		class="btn"
 		>Start New Game with Word legnth of {LetersSelected} letters
 	</button>
 </div>
