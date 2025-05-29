@@ -30,7 +30,7 @@
 	{
 		"name": "Time&Table",
 		"description": "The perfect idle screen when theres no teacher with the timetable, time and date!",
-		"link": "/randomname",
+		"link": "/IdleScreen",
 		"icon": "nf-cod-table",
 		"image": "https://placehold.co/1800x1000?text=screenshot+TBA"
 	}
