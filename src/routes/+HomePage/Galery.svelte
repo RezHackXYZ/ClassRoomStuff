@@ -2,7 +2,7 @@
 	import tools from "./tools.json"
 </script>
 
-<div class="flex items-center justify-center p-3">
+<div id="galarry" class="flex items-center justify-center p-3">
     <div
 		class="flex flex-wrap justify-center gap-5"
 	>

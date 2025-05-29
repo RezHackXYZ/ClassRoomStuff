@@ -43,9 +43,17 @@
 		</div>
 		<RightCards />
 	</div>
-	<div class="m-3 w-fit rounded-full bg-gray-900 px-3 py-1 text-xl text-gray-500">
-		<i class="nf-fa-angles_down nf"></i>
-		Scroll to see more tools!
-		<i class="nf-fa-angles_down nf"></i>
-	</div>
+	<a
+		href="#galarry"
+		on:click|preventDefault={() => {
+			const el = document.getElementById("galarry");
+			if (el) el.scrollIntoView({ behavior: "smooth" });
+		}}
+	>
+		<div class="m-3 w-fit rounded-full bg-gray-900 px-3 py-1 text-xl text-gray-500">
+			<i class="nf-fa-angles_down nf"></i>
+			Scroll to see more tools!
+			<i class="nf-fa-angles_down nf"></i>
+		</div></a
+	>
 </div>
