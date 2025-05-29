@@ -9,8 +9,8 @@
 	});
 </script>
 
-<div class="flex  flex-col h-full justify-between items-center">
-	<div class="flex h-full items-center justify-around w-full">
+<div class="flex h-full flex-col items-center justify-between">
+	<div class="flex h-full w-full items-center justify-around">
 		<div class="flex w-[600px] flex-col items-baseline gap-3">
 			{#if FlagAscii == true}
 				<Ascii />
@@ -23,18 +23,27 @@
 			{/if}
 			<h1 class="text-center text-5xl">
 				The
-				<span class="rounded-full bg-blue-800 px-3 py-1 text-3xl">
-					<i class="nf nf-cod-sparkle"></i> ultimate <i class="nf nf-cod-sparkle"></i>
+				<span class="inline-block">
+					<span class="inline-flex items-center gap-1 rounded-full bg-blue-800 px-3 py-1 text-3xl">
+						<i class="nf nf-cod-sparkle"></i>
+						<span>ultimate</span>
+						<i class="nf nf-cod-sparkle"></i>
+					</span>
 				</span>
 				classroom
-				<span class="rounded-full bg-green-800 px-3 py-1 text-3xl">
-					<i class="nf nf-cod-tools"></i> toolkit <i class="nf nf-cod-tools"></i>
-				</span> for all the teachers and students needs!
+				<span class="inline-block">
+					<span class="inline-flex items-center gap-1 rounded-full bg-green-800 px-3 py-1 text-3xl">
+						<i class="nf nf-cod-tools"></i>
+						<span>toolkit</span>
+						<i class="nf nf-cod-tools"></i>
+					</span>
+				</span>
+				for all the teachers and students needs!
 			</h1>
 		</div>
 		<RightCards />
 	</div>
-	<div class="rounded-full bg-gray-900 px-3 py-1 text-xl text-gray-500 w-fit m-3">
+	<div class="m-3 w-fit rounded-full bg-gray-900 px-3 py-1 text-xl text-gray-500">
 		<i class="nf-fa-angles_down nf"></i>
 		Scroll to see more tools!
 		<i class="nf-fa-angles_down nf"></i>
