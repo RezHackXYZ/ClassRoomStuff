@@ -1,8 +1,9 @@
 <script>
 	import LandingPage from "./+HomePage/landingPage.svelte";
-	import ToolsBelt from "./+HomePage/ToolsBelt.svelte";
-
+	import Galery from "./+HomePage/Galery.svelte";
+	import Footer from "./+HomePage/footer.svelte";
 </script>
 
 <LandingPage />
-			<ToolsBelt />
+<Galery />
+<Footer />
