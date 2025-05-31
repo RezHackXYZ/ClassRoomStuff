@@ -1,11 +1,12 @@
 import { createGame } from "./InsertGameInDB.js";
 import { questions,Wait } from "./GameCreateData.svelte.js";
+import toast from "svelte-5-french-toast";
 
 export async function startGame() {
-	if (questions.v.some((q) => q.name === "")) return alert("Please fill all questions");
-	if (questions.v.some((q) => q.answers.some((a) => a === ""))) return alert("Fill all options");
+	if (questions.v.some((q) => q.name === "")) return toast.error("Please fill all questions");
+	if (questions.v.some((q) => q.answers.some((a) => a === ""))) return toast.error("Fill all options");
 	if (questions.v.some((q) => q.correctAnswer === undefined))
-		return alert("Select correct answers");
+		return toast.error("Select correct answers");
 
 	const gamePin = Math.floor(Math.random() * 1000000)
 		.toString()

@@ -1,5 +1,6 @@
 import { questions } from "./GameCreateData.svelte.js";
 import { AiPrompts } from "$lib/config.js";
+import toast from "svelte-5-french-toast";
 
 export function GenerateOptionsUsingAI(index) {
 	fetch("https://ai.hackclub.com/chat/completions", {
@@ -26,9 +27,9 @@ export function GenerateOptionsUsingAI(index) {
 			questions.v[index].name = question;
 		})
 		.catch((error) => {
-			alert("Error:" + error);
+			toast.error("Error:" + error);
 			return;
 		});
 
-	alert("added!");
+	toast.success("added!");
 }

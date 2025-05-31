@@ -53,6 +53,13 @@
 			{/each}
 		</div>
 		<GenerateOptionsUsingAI {index} />
-		<input type="file" onchange={() => UpLoadFiles(files[0])} bind:files accept="image/*,video/*" />
+		<input
+			type="file"
+			onchange={async () => {
+				questions.v[index].media = await UpLoadFiles(files[0]);
+			}}
+			bind:files
+			accept="image/*,video/*"
+		/>
 	</div>
 </div>

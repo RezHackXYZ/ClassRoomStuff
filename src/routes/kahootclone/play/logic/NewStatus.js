@@ -11,7 +11,7 @@ import { supabase } from "$lib/supabase.js";
 
 export async function NewStatus(NewStatus, gamePin) {
 	if (NewStatus == "completed") {
-		window.location.replace("/results?gamepin" + gamePin  + "&playerID=" + playerid.v);
+		window.location.replace("/kahootclone/results?gamepin=" + gamePin  + "&playerID=" + playerid.v);
 		return;
 	}
 
@@ -20,7 +20,7 @@ export async function NewStatus(NewStatus, gamePin) {
 
 	const { data: questionsData } = await supabase
 		.from("questions")
-		.select("id,questionstext,correctanswer")
+		.select("*")
 		.eq("gameid", Number(gamePin))
 		.order("id", { ascending: true });
 
@@ -37,6 +37,7 @@ export async function NewStatus(NewStatus, gamePin) {
 		correctAnswer: questionsData[CurrentQuestion.v].correctanswer,
 		answers: answers.map((answer) => answer.content),
 		questionid: questionsData[CurrentQuestion.v].id,
+		media: questionsData[CurrentQuestion.v].media || null,
 	};
 
 	isWait.v = false;

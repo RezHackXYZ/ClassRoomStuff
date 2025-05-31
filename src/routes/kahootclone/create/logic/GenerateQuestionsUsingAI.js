@@ -1,5 +1,6 @@
 import { questions } from "./GameCreateData.svelte.js";
 import { AiPrompts } from "$lib/config.js";
+import toast from "svelte-5-french-toast";
 
 export function GenerateQuestionsUsingAI() {
 	let topic = window.prompt(
@@ -30,9 +31,9 @@ export function GenerateQuestionsUsingAI() {
 			questions.v = JSON.parse(data.choices[0].message.content);
 		})
 		.catch((error) => {
-			alert("Error:" + error);
+			toast.error("Error:" + error);
 			return;
 		});
 
-	alert("added!");
+	toast.success("added!");
 }

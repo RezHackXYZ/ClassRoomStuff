@@ -1,4 +1,6 @@
 import { supabase } from "$lib/supabase";
+import toast from "svelte-5-french-toast";
+
 
 export async function createGame(questions, gamePin) {
 	const { data: gameData, error: gameError } = await supabase.from("games").insert({
@@ -9,7 +11,7 @@ export async function createGame(questions, gamePin) {
 	});
 
 	if (gameError) {
-		alert("Failed to create game: " + gameError.message + "\n\nPlease try again.");
+		toast.error("Failed to create game: " + gameError.message + "\n\nPlease try again.");
 		return;
 	}
 
@@ -18,6 +20,7 @@ export async function createGame(questions, gamePin) {
 		gameid: gamePin,
 		questionstext: q.name,
 		correctanswer: q.correctAnswer,
+		media: q.media || null,
 	}));
 
 	const { data: questionsResult, error: questionsError } = await supabase
@@ -26,7 +29,7 @@ export async function createGame(questions, gamePin) {
 		.select("id");
 
 	if (questionsError) {
-		alert("Failed to insert questions: " + questionsError.message + "\n\nPlease try again.");
+		toast.error("Failed to insert questions: " + questionsError.message + "\n\nPlease try again.");
 		return;
 	}
 
@@ -43,9 +46,9 @@ export async function createGame(questions, gamePin) {
 	const { error: answersError } = await supabase.from("answers").insert(answersData);
 
 	if (answersError) {
-		alert("Failed to insert answers: " + answersError.message + "\n\nPlease try again.");
+		toast.error("Failed to insert answers: " + answersError.message + "\n\nPlease try again.");
 		return;
 	}
 
-	window.location.href = `/host?gamepin=${gamePin}` ;
+	window.location.href = `/kahootclone/host?gamepin=${gamePin}`;
 }

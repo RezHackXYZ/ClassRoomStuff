@@ -1,4 +1,6 @@
+
 import { DefaultQuestions } from "$lib/config.js";
+import toast from "svelte-5-french-toast";
 
 export let Wait = $state({ v: false });
 export let questions = $state({
@@ -29,6 +31,6 @@ export function DeleteQuestion(index) {
 			questions.v.splice(index, 1);
 		}
 	} else {
-		alert("You need at least one question.");
+		toast.error("You need at least one question.");
 	}
 }

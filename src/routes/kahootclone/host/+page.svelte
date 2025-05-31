@@ -2,18 +2,20 @@
 	import PlayingDisplay from "./components/DuringGame/display.svelte";
 
 	import LobbyDisplay from "./components/lobby/display.svelte";
-	import { Status } from "./logic/HostsData.svelte.js";
+	import { Status,gamePin } from "./logic/HostsData.svelte.js";
 	import { AutoUpdatePlayersList } from "./logic/UpdatePlayersList.js";
 	import { GetCurrentPlayers } from "./logic/GetCurrentPlayers.js";
 	import { onMount } from "svelte";
-
-	let gamePin;
-
+	
 	onMount(() => {
-		gamePin = new URLSearchParams(new URL(window.location.href).search).get("gamepin");
-		
-		GetCurrentPlayers(gamePin);
-		AutoUpdatePlayersList(gamePin);
+		gamePin.v = new URLSearchParams(new URL(window.location.href).search).get("gamepin");
+
+
+
+		console.log("Game Pin: " + gamePin.v);
+
+		GetCurrentPlayers(gamePin.v);
+		AutoUpdatePlayersList(gamePin.v);
 	});
 </script>
 
@@ -22,7 +24,7 @@
 		class="flex max-w-[700px] flex-col items-center justify-center gap-1 rounded-lg bg-gray-900 p-8 shadow-lg"
 	>
 		{#if Status.v == "lobby"}
-			<LobbyDisplay {gamePin} />
+			<LobbyDisplay/>
 		{:else if Status.v == "started"}
 			<PlayingDisplay />
 		{/if}

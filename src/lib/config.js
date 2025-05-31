@@ -1,59 +1,59 @@
 export let AnswersSymbolAndColorScheme = [
 	{
-		color: "#6E0000",
-		selectedColor: "#AA2222",
-		hoverBorderColor: "#FF5D5D",
-		selectedBorderColor: "#FF0000",
-		symbol: "nf-md-triangle",
+		Color: "#6E0000",
+		SelectedColor: "#AA2222",
+		HoverBorderColor: "#FF5D5D",
+		SelectedBorderColor: "#FF0000",
+		Symbol: "nf-md-triangle",
 	},
 	{
-		color: "#00316E",
-		selectedColor: "#2255AA",
-		hoverBorderColor: "#5D9CFF",
-		selectedBorderColor: "#0000FF",
-		symbol: "nf-fa-square",
+		Color: "#00316E",
+		SelectedColor: "#2255AA",
+		HoverBorderColor: "#5D9CFF",
+		SelectedBorderColor: "#0000FF",
+		Symbol: "nf-fa-square",
 	},
 	{
-		color: "#6E6E00",
-		selectedColor: "#AAAA22",
-		hoverBorderColor: "#FFFF5D",
-		selectedBorderColor: "#DDFF00",
-		symbol: "nf-fa-circle",
+		Color: "#6E6E00",
+		SelectedColor: "#AAAA22",
+		HoverBorderColor: "#FFFF5D",
+		SelectedBorderColor: "#DDFF00",
+		Symbol: "nf-fa-circle",
 	},
 	{
-		color: "#006E00",
-		selectedColor: "#22AA22",
-		hoverBorderColor: "#5DFF5D",
-		selectedBorderColor: "#00FF00",
-		symbol: "nf-fa-diamond",
+		Color: "#006E00",
+		SelectedColor: "#22AA22",
+		HoverBorderColor: "#5DFF5D",
+		SelectedBorderColor: "#00FF00",
+		Symbol: "nf-fa-diamond",
 	},
 	{
-		color: "#4B0082",
-		selectedColor: "#7F33B5",
-		hoverBorderColor: "#B066FF",
-		selectedBorderColor: "#9932CC",
-		symbol: "nf-md-star",
+		Color: "#4B0082",
+		SelectedColor: "#7F33B5",
+		HoverBorderColor: "#B066FF",
+		SelectedBorderColor: "#9932CC",
+		Symbol: "nf-md-star",
 	},
 	{
-		color: "#FF8C00",
-		selectedColor: "#FFB347",
-		hoverBorderColor: "#FFD580",
-		selectedBorderColor: "#FFA500",
-		symbol: "nf-md-hexagon",
+		Color: "#FF8C00",
+		SelectedColor: "#FFB347",
+		HoverBorderColor: "#FFD580",
+		SelectedBorderColor: "#FFA500",
+		Symbol: "nf-md-hexagon",
 	},
 	{
-		color: "#008B8B",
-		selectedColor: "#33CCCC",
-		hoverBorderColor: "#66FFFF",
-		selectedBorderColor: "#00CED1",
-		symbol: "nf-md-octagon",
+		Color: "#008B8B",
+		SelectedColor: "#33CCCC",
+		HoverBorderColor: "#66FFFF",
+		SelectedBorderColor: "#00CED1",
+		Symbol: "nf-md-octagon",
 	},
 	{
-		color: "#8B4513",
-		selectedColor: "#CD853F",
-		hoverBorderColor: "#DEB887",
-		selectedBorderColor: "#A0522D",
-		symbol: "nf-md-heart",
+		Color: "#8B4513",
+		SelectedColor: "#CD853F",
+		HoverBorderColor: "#DEB887",
+		SelectedBorderColor: "#A0522D",
+		Symbol: "nf-md-heart",
 	},
 ];
 
@@ -108,7 +108,7 @@ JUST PROVIDE THE JSON AND NOTHING ELSE.
 
 The user's topic of interest is:
 [topic]`,
-GenerateOptionsUsingAI: `
+	GenerateOptionsUsingAI: `
 You are the AI of a quiz game.
 Generate a list of answers relevant to the Question the correct answer index.
 generate 2 things for the question:
@@ -129,5 +129,5 @@ JUST PROVIDE THE JSON AND NOTHING ELSE.
 
 The user's Question that they want to generate options for is:
 [question]
-`
+`,
 };

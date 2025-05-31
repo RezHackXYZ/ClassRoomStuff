@@ -32,7 +32,7 @@ export async function WaitForAwnser(questionid, gamePin) {
 
 	const { data: questionsData } = await supabase
 		.from("questions")
-		.select("id,questionstext,correctanswer")
+		.select("*")
 		.eq("gameid", Number(gamePin))
 		.order("id", { ascending: true });
 
@@ -47,5 +47,6 @@ export async function WaitForAwnser(questionid, gamePin) {
 		correctAnswer: questionsData[currentQuestion.v].correctanswer,
 		answers: answers.map((answer) => answer.content),
 		questionid: questionsData[currentQuestion.v].id,
+		media: questionsData[currentQuestion.v].media || null,
 	};
 }

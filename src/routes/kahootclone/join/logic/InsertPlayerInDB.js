@@ -1,4 +1,6 @@
 import { supabase } from "$lib/supabase";
+import toast from "svelte-5-french-toast";
+
 
 export async function addPlayer(name, gamePin) {
 	const { data, error } = await supabase
@@ -11,7 +13,7 @@ export async function addPlayer(name, gamePin) {
 		.select("id");
 
 	if (error) {
-		alert("Failed to join game: " + error.message + "\n\nPlease try again.");
+		toast.error("Failed to join game: " + error.message + "\n\nPlease try again.");
 		return;
 	}
 

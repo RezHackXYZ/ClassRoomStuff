@@ -86,7 +86,6 @@ export function newGame() {
 }
 
 function GameWin() {
-	//ShowAlert("You win!", "success");
 	toast.success("You win!");
 
 	data.value[WordLegnth.v].push(words.v.length);
@@ -165,7 +164,7 @@ export function ButtonPressed(key) {
 				SendWord(CurrentWord.v);
 				CurrentWord.v = [];
 			} else {
-				//ShowAlert("Not a valid word", "error");
+				toast.error("Not a valid word");
 			}
 		}
 		return;

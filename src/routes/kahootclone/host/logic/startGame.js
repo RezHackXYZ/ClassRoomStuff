@@ -1,18 +1,15 @@
 import { supabase } from "$lib/supabase.js";
 import { LobbyConnection } from "./UpdatePlayersList.js";
-import {
-	questions,
-	Status,
-	Totalplayers,
-	totalQuetions,
-	players,
-} from "./HostsData.svelte.js";
+import { questions, Status, Totalplayers, totalQuetions, players } from "./HostsData.svelte.js";
 import { WaitForAwnser } from "./WaitForAwnser.js";
+import toast from "svelte-5-french-toast";
 
 export async function startGame(gamePin) {
 	if (players.v.length == 0) {
-		alert("you need at least 1 person to start the game!");
+		toast.error("you need at least 1 person to start the game!");
 		return;
+
+		
 	}
 
 	await supabase.removeChannel(LobbyConnection);

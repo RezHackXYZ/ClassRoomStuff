@@ -14,5 +14,5 @@ export async function GetCurrentPlayers(gamePin) {
 		return;
 	}
 
-	players.v = data ? data.map(player => player.playername) : [];
+	players.v = data ? data.map((player) => player.playername) : [];
 }

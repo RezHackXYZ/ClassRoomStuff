@@ -1,12 +1,14 @@
 import { addPlayer } from "./InsertPlayerInDB.js";
 import { validateGamePin } from "./validateGamePin.js";
 import { Checking } from "./JoinGameData.svelte.js";
+import toast from "svelte-5-french-toast";
+
 
 export async function joinGame(pin, name) {
 	Checking.v = true;
 
 	if (!(await validateGamePin(pin))) {
-		alert("Invalid game pin. Please try again.");
+		toast.error("Invalid game pin. Please try again.");
 		Checking.v = false;
 		return;
 	}

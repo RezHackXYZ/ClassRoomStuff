@@ -27,5 +27,5 @@ export async function UpLoadFiles(file) {
 	// Retrieve public URL
 	const { data: publicData } = supabase.storage.from("useruploadedcontent").getPublicUrl(filePath);
 
-	toast.success(publicData.publicUrl);
+	return publicData.publicUrl;
 }

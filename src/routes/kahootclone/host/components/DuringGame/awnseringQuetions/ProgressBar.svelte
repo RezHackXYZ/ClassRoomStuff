@@ -1,5 +1,5 @@
 <script>
-	import { currentQuestion, totalQuetions } from "./../../../logic/HostsData.svelte.js";
+	import { currentQuestion, totalQuetions } from "../../../logic/HostsData.svelte.js";
 </script>
 
 <div class="mt-5 mb-2 flex w-full items-center justify-center gap-3">

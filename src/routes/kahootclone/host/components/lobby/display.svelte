@@ -2,14 +2,15 @@
 	import StartGame from "./buttons/startGame.svelte";
 	import Players from "./PlayersGUI/players.svelte";
 
-	let props = $props();
-    let gamePin = props.gamePin;
+	import { gamePin } from "../../logic/HostsData.svelte.js";
+
+	console.log("Game Pin: " + gamePin.v);
 </script>
 
 <h1 class="m-[0] text-9xl">HOSTING</h1>
 <h1 class="m-[0] text-7xl">Game Pin:</h1>
 <h1 class="m-[0] rounded-2xl bg-gray-700 pt-1.5 pr-2 pb-0 pl-2 font-mono text-5xl">
-	{gamePin}
+	{gamePin.v}
 </h1>
 <Players />
-<StartGame {gamePin} />
+<StartGame gamePin={gamePin.v} />

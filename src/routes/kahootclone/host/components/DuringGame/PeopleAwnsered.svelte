@@ -1,5 +1,5 @@
 <script>
-	import { PeopleAwnseredQ, Totalplayers } from "./../../logic/HostsData.svelte.js";
+	import { PeopleAwnseredQ, Totalplayers } from "../../logic/HostsData.svelte.js";
 </script>
 
 <div class="mt-2 mb-3 flex w-full flex-col rounded-2xl border-2 border-green-400 p-2">

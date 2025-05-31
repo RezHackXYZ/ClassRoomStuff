@@ -26,7 +26,7 @@
 					--border-color-checked: {AnswersSymbolAndColorScheme[index].SelectedBorderColor};
 					--border-color-hover: {AnswersSymbolAndColorScheme[index].HoverBorderColor};
 				"
-				class="w-full cursor-pointer rounded-lg border-[5px] border-[var(--border-color)] bg-[var(--bg-color)] pt-1 pr-2 pb-1 pl-2 text-center text-3xl transition-all peer-checked:border-[var(--border-color-checked)] peer-checked:border-[var(--border-color-checked)] peer-checked:bg-[var(--bg-color-checked)] hover:border-[var(--border-color-hover)]"
+				class="w-full cursor-pointer rounded-lg border-[5px] border-[var(--border-color)] bg-[var(--bg-color)] pt-1 pr-2 pb-1 pl-2 text-center text-3xl transition-all peer-checked:border-[var(--border-color-checked)] peer-checked:bg-[var(--bg-color-checked)] hover:border-[var(--border-color-hover)]"
 			>
 				<i class="nf {AnswersSymbolAndColorScheme[index].Symbol}"></i>
 				{answer}

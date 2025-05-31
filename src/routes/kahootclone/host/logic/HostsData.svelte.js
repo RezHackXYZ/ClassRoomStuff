@@ -8,3 +8,5 @@ export let PeopleAwnseredQ = $state({ v: 0 });
 export let Totalplayers = $state({ v: 3 });
 
 export let CurrentQuestionDetails = $state({ v: {} });
+
+export let gamePin = $state({ v: "" });

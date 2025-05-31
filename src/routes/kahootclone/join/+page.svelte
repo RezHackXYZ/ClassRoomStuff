@@ -1,6 +1,8 @@
 <script>
+	import toast from "svelte-5-french-toast";
 	import { joinGame } from "./logic/joinGame.js";
 	import { Checking } from "./logic/JoinGameData.svelte.js";
+	
 
 	let pin;
 	let name;
@@ -35,7 +37,7 @@
 				class="mt-2 cursor-pointer rounded-full bg-green-700 p-2 transition-all hover:scale-110 hover:-rotate-10"
 				on:click={() => {
 					if (!pin || !name) {
-						alert("Please fill in the game pin and your name.");
+						toast.error("Please fill in the game pin and your name.");
 					} else {
 						joinGame(pin, name);
 					}
