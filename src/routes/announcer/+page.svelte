@@ -15,10 +15,10 @@
 		{#if PlayingAnnouncement.v == true}
 			<p class="text-center text-5xl">{CurrentText.v}</p>
 		{:else}
-			<h1 class="text-center text-4xl">Most Announced announcements</h1>
+			<h1 class="text-center text-4xl">Reuse past announcements:</h1>
 			<List />
 			<hr class="my-5 w-full border-gray-600" />
-			<h1 class="text-center text-4xl">Or announce something else</h1>
+			<h1 class="text-center text-4xl">Or announce something new:</h1>
 			<CustomText />
 			<Add />{/if}
 	</div>
