@@ -12,11 +12,8 @@
 
 	export function SelectStudent() {
 		if (RandomNamesState.NotSelectedYet.length != 0) {
-			let randomIndex = Math.floor(
-				Math.random() * RandomNamesState.NotSelectedYet.length
-			);
-			RandomNamesState.selectedStudent =
-				RandomNamesState.NotSelectedYet[randomIndex];
+			let randomIndex = Math.floor(Math.random() * RandomNamesState.NotSelectedYet.length);
+			RandomNamesState.selectedStudent = RandomNamesState.NotSelectedYet[randomIndex];
 
 			RandomNamesState.Selected = [
 				RandomNamesState.NotSelectedYet[randomIndex],
@@ -24,7 +21,7 @@
 			];
 			RandomNamesState.NotSelectedYet.splice(randomIndex, 1);
 		} else {
-			toast.error("All students have been selected.", "warning");
+			toast.error("All students have been selected.");
 		}
 	}
 
@@ -44,7 +41,6 @@
 
 	//let TempNames = localStorage.getItem("Names") || "";
 	let TempNames = "";
-
 
 	if (TempNames != "") {
 		RandomNamesState.NotSelectedYet = JSON.parse(TempNames);
@@ -76,9 +72,7 @@
 		>
 		<h1>Random student selector</h1>
 		<div>
-			<button
-				aria-label="Back to main menu"
-				onclick={() => (TabOpen.v = true)}
+			<button aria-label="Back to main menu" onclick={() => (TabOpen.v = true)}
 				><span class="front"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -104,11 +98,7 @@
 	<div id="UperLayer">
 		<div id="wrapClose">
 			<EditNameOfStudents />
-			<button
-				class="close"
-				onclick={() => (TabOpen.v = false)}
-				aria-label="close">CLOSE</button
-			>
+			<button class="close" onclick={() => (TabOpen.v = false)} aria-label="close">CLOSE</button>
 		</div>
 	</div>
 {/if}

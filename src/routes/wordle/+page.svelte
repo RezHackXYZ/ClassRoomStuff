@@ -5,18 +5,28 @@
 	import { handleKey } from "./logic.svelte.js";
 	import Right from "./InfoAndSetings/main.svelte";
 	import { OpenTab } from "./InfoAndSetings/main.svelte";
+	import { data } from "./logic.svelte";
 
 	onMount(() => {
 		window.addEventListener("keydown", handleKey);
+
+		data.value = JSON.parse(localStorage.getItem("WordleGamesData")) || {
+			3: [],
+			4: [],
+			5: [],
+			6: [],
+			7: [],
+			8: [],
+			9: [],
+			10: [],
+		};
 	});
 </script>
 
 <div id="nav">
 	<div></div>
 	<div>
-		<button
-			aria-label="Back to main menu"
-			onclick={() => OpenTab("WordLength")}
+		<button aria-label="Back to main menu" onclick={() => OpenTab("WordLength")}
 			><span class="front"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
