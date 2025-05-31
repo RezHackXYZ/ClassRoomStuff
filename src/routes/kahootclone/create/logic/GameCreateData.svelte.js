@@ -1,8 +1,6 @@
 import { DefaultQuestions } from "$lib/config.js";
 
-export let Wait = $state({
-	v: false,
-});
+export let Wait = $state({ v: false });
 export let questions = $state({
 	v: [
 		{

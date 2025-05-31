@@ -3,9 +3,12 @@
 	import GenerateOptionsUsingAI from "../buttons/GenerateOptionsUsingAI.svelte";
 	import Answers from "./answers.svelte";
 	import { questions } from "../../logic/GameCreateData.svelte.js";
+	import { UpLoadFiles } from "../../logic/UpLoadFiles.js";
 
 	let props = $props();
 	let index = props.index;
+
+	let files;
 </script>
 
 <div class="flex items-center gap-3">
@@ -50,5 +53,6 @@
 			{/each}
 		</div>
 		<GenerateOptionsUsingAI {index} />
+		<input type="file" onchange={() => UpLoadFiles(files[0])} bind:files accept="image/*,video/*" />
 	</div>
 </div>
