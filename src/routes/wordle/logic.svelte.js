@@ -2,6 +2,8 @@ import wordExists from "word-exists";
 import { generate } from "random-words";
 import toast from "svelte-5-french-toast";
 
+export let jsConfetti = $state({ v: null });
+
 export let WordLegnth = $state({ v: 5 });
 
 let CorrectWord = generate({
@@ -87,6 +89,8 @@ export function newGame() {
 
 function GameWin() {
 	toast.success("You win!");
+
+	jsConfetti.v.addConfetti();
 
 	data.value[WordLegnth.v].push(words.v.length);
 	localStorage.setItem("WordleGamesData", JSON.stringify(data.value));

@@ -2,13 +2,18 @@
 	import Keyboard from "./game/keyboard.svelte";
 	import Display from "./game/display.svelte";
 	import { onMount } from "svelte";
-	import { handleKey } from "./logic.svelte.js";
+	import { handleKey,jsConfetti } from "./logic.svelte.js";
 	import Right from "./InfoAndSetings/main.svelte";
 	import { OpenTab } from "./InfoAndSetings/main.svelte";
 	import { data } from "./logic.svelte";
 
+	import JSConfetti from "js-confetti";
+
+
 	onMount(() => {
 		window.addEventListener("keydown", handleKey);
+
+		jsConfetti.v = new JSConfetti();
 
 		data.value = JSON.parse(localStorage.getItem("WordleGamesData")) || {
 			3: [],
