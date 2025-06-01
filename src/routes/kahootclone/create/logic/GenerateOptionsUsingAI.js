@@ -3,6 +3,11 @@ import { AiPrompts } from "$lib/config.js";
 import toast from "svelte-5-french-toast";
 
 export function GenerateOptionsUsingAI(index) {
+	if (!questions.v[index].name) {
+		toast.error("Please enter a question to generate options.");
+		return;
+	}
+
 	fetch("https://ai.hackclub.com/chat/completions", {
 		method: "POST",
 		headers: {
