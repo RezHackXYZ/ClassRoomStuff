@@ -10,7 +10,7 @@
 			onclick={() => {
 				AddMostUsedAnnouncement(CurrentText.v);
 				CurrentText.v = "";
-			}}>Add "{CurrentText.v}" to "Most Announced announcements"</button
+			}}>Add "{CurrentText.v}" to "Reuse past announcements"</button
 		>
 	</div>
 {/if}
