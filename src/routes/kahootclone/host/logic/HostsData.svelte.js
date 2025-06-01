@@ -10,3 +10,6 @@ export let Totalplayers = $state({ v: 3 });
 export let CurrentQuestionDetails = $state({ v: {} });
 
 export let gamePin = $state({ v: "" });
+
+export let timeLeft = $state({ v: 0 });
+export let TotalTimeLeft = $state({ v: 0 });

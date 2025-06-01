@@ -1,12 +1,23 @@
 import { supabase } from "$lib/supabase.js";
 import { onNewPlayerAwnsered } from "./onNewPlayerAwnsered.js";
-import { currentQuestion, questions, CurrentQuestionDetails } from "./HostsData.svelte.js";
+import {
+	currentQuestion,
+	questions,
+	CurrentQuestionDetails,
+	TotalTimeLeft,
+	timeLeft,
+	PeopleAwnseredQ,
+	totalQuetions,
+} from "./HostsData.svelte.js";
+import { GameOver } from "./GameOver.js";
 
 let WaitingForAwnserConection;
+let TimeLimitInterval;
 
 export async function WaitForAwnser(questionid, gamePin) {
 	if (questionid != 0) {
 		await supabase.removeChannel(WaitingForAwnserConection);
+		clearInterval(TimeLimitInterval);
 	}
 
 	await supabase
@@ -48,5 +59,31 @@ export async function WaitForAwnser(questionid, gamePin) {
 		answers: answers.map((answer) => answer.content),
 		questionid: questionsData[currentQuestion.v].id,
 		media: questionsData[currentQuestion.v].media || null,
+		timeLimit: questionsData[currentQuestion.v].timelimit,
 	};
+
+	TotalTimeLeft.v = CurrentQuestionDetails.v.timeLimit;
+	timeLeft.v = CurrentQuestionDetails.v.timeLimit;
+	console.log("Time left:", timeLeft.v);
+	console.log("Total time left:", TotalTimeLeft.v);
+
+	if (TotalTimeLeft.v != null) {
+		TimeLimitInterval = setInterval(() => {
+			console.log("Time left:", timeLeft.v);
+			if (timeLeft.v > 0) {
+				timeLeft.v--;
+				console.log("Time left after decrement:", timeLeft.v);
+			} else {
+				supabase.removeChannel(WaitingForAwnserConection);
+				currentQuestion.v++;
+				if (currentQuestion.v == totalQuetions.v) {
+					//GameOver(gamePin);
+					return;
+				}
+				PeopleAwnseredQ.v = 0;
+
+				WaitForAwnser(currentQuestion.v, gamePin);
+			}
+		}, 1000);
+	}
 }

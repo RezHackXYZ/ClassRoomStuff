@@ -44,6 +44,20 @@
 					<option value={i + 2}>{i + 2}</option>
 				{/each}
 			</select>
+			<select
+				bind:value={questions.v[index].timeLimit}
+				class="h-fit rounded-xl bg-gray-800 p-1 text-center text-white"
+			>
+				<option disabled selected>Time Limit</option>
+				<option value={null}>infinite</option>
+				<option value={5}>5 sec</option>
+				<option value={10}>10 sec</option>
+				<option value={15}>15 sec</option>
+				<option value={30}>30 sec</option>
+				<option value={60}>1 min</option>
+				<option value={120}>2 min</option>
+				<option value={300}>5 min</option>
+			</select>
 			<DeleteQuestion {index} />
 		</div>
 

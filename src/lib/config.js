@@ -62,11 +62,13 @@ export let DefaultQuestions = [
 		name: "What should you do when you're free?",
 		answers: ["Do something in real life!", "Play video games", "Code!", "Touch grass!"],
 		correctAnswer: 2,
+		timeLimit: 30,
 	},
 	{
 		name: "Is RezHackXYZ the best programmer in the world?",
 		answers: ["Yes :)", "No :("],
 		correctAnswer: 0,
+		timeLimit: 5,
 	},
 	{
 		name: "Best place in the world?",
@@ -81,6 +83,7 @@ export let DefaultQuestions = [
 			"Twitter",
 		],
 		correctAnswer: 4,
+		timeLimit: 120,
 	},
 ];
 

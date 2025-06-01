@@ -9,6 +9,7 @@ export let questions = $state({
 			name: "",
 			answers: ["", "", "", ""],
 			correctAnswer: undefined,
+			timeLimit: 30,
 		},
 	],
 });
@@ -22,6 +23,7 @@ export function AddQuestion() {
 		name: "",
 		answers: ["", "", "", ""],
 		correctAnswer: undefined,
+		timeLimit: 30,
 	});
 }
 

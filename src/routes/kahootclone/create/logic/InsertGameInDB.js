@@ -20,6 +20,7 @@ export async function createGame(questions, gamePin) {
 		gameid: gamePin,
 		questionstext: q.name,
 		correctanswer: q.correctAnswer,
+		timelimit: q.timeLimit,
 		media: q.media || null,
 	}));
 
