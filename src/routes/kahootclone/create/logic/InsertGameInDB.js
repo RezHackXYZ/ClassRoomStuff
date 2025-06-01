@@ -19,8 +19,8 @@ export async function createGame(questions, gamePin) {
 	});
 
 	if (gameError) {
-		return;
 		Wait.v = false;
+		return;
 	}
 
 	// Prepare questions and answers for batch insertion
@@ -47,8 +47,9 @@ export async function createGame(questions, gamePin) {
 	);
 
 	if (questionsError) {
-		return;
 		Wait.v = false;
+
+		return;
 	}
 
 	const answersData = [];
@@ -71,8 +72,8 @@ export async function createGame(questions, gamePin) {
 	});
 
 	if (answersError) {
+		Wait.v = false
 		return;
-		Wait.v = false;
 	}
 
 	window.location.href = `/kahootclone/host?gamepin=${gamePin}`;

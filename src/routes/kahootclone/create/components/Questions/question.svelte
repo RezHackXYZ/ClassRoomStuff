@@ -8,7 +8,7 @@
 	let props = $props();
 	let index = props.index;
 
-	let files;
+	let files = $state();
 </script>
 
 <div class="flex items-center gap-3">
