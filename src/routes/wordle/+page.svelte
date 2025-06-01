@@ -129,15 +129,6 @@
 		border: 2px solid #444;
 		font-family: "JetBrains Mono", monospace;
 	}
-	h1 {
-		text-align: center;
-		margin: 5px 0px;
-		text-decoration: underline #444;
-		position: fixed;
-		top: 0;
-		left: 50%;
-		transform: translate(-50%, 0);
-	}
 
 	span {
 		font-size: 0.5em;

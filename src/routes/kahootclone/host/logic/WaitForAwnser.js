@@ -64,15 +64,11 @@ export async function WaitForAwnser(questionid, gamePin) {
 
 	TotalTimeLeft.v = CurrentQuestionDetails.v.timeLimit;
 	timeLeft.v = CurrentQuestionDetails.v.timeLimit;
-	console.log("Time left:", timeLeft.v);
-	console.log("Total time left:", TotalTimeLeft.v);
 
 	if (TotalTimeLeft.v != null) {
 		TimeLimitInterval = setInterval(() => {
-			console.log("Time left:", timeLeft.v);
 			if (timeLeft.v > 0) {
 				timeLeft.v--;
-				console.log("Time left after decrement:", timeLeft.v);
 			} else {
 				supabase.removeChannel(WaitingForAwnserConection);
 				currentQuestion.v++;

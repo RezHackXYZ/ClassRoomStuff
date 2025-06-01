@@ -20,7 +20,7 @@ export async function UpLoadFiles(file) {
 	});
 
 	if (result.error) {
-		console.error("Upload error:", result.error.message);
+		toast.error("Upload error:"+ result.error.message);
 		return;
 	}
 

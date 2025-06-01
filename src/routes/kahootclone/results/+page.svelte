@@ -18,8 +18,6 @@
 			.eq("gameid", gamePin);
 
 		players = fetchedPlayers.sort((a, b) => b.score - a.score);
-
-		console.log(players);
 	});
 </script>
 

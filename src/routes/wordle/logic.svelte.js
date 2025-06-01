@@ -10,8 +10,6 @@ let CorrectWord = generate({
 	minLength: WordLegnth.v,
 	maxLength: WordLegnth.v,
 });
-
-console.log("CorrectWord: ", CorrectWord);
 export let words = $state({ v: [] });
 export let CurrentWord = $state({ v: [] });
 export let keys = $state({
@@ -52,7 +50,6 @@ export function newGame() {
 		minLength: WordLegnth.v,
 		maxLength: WordLegnth.v,
 	});
-	console.log("CorrectWord: ", CorrectWord);
 	words.v = [];
 	CurrentWord.v = [];
 	keys.v = [

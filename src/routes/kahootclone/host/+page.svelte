@@ -11,9 +11,6 @@
 		gamePin.v = new URLSearchParams(new URL(window.location.href).search).get("gamepin");
 
 
-
-		console.log("Game Pin: " + gamePin.v);
-
 		GetCurrentPlayers(gamePin.v);
 		AutoUpdatePlayersList(gamePin.v);
 	});

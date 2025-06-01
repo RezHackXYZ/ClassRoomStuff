@@ -1,4 +1,5 @@
 import { supabase } from "$lib/supabase.js";
+import toast from "svelte-5-french-toast";
 import { players } from "./HostsData.svelte.js";
 
 export async function GetCurrentPlayers(gamePin) {
@@ -7,10 +8,8 @@ export async function GetCurrentPlayers(gamePin) {
 		.select("playername")
 		.eq("gameid", Number(gamePin));
 
-	console.log("Current players data:", JSON.stringify(data));
-
 	if (error) {
-		console.error("Error fetching players:", error);
+		toast.error("Error fetching players:"+ error);
 		return;
 	}
 

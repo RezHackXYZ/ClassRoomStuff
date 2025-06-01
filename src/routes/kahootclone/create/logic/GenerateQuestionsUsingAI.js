@@ -27,7 +27,6 @@ export function GenerateQuestionsUsingAI() {
 	})
 		.then((response) => response.json())
 		.then((data) => {
-			console.log(data);
 			questions.v = JSON.parse(data.choices[0].message.content);
 		})
 		.catch((error) => {

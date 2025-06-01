@@ -4,7 +4,6 @@
 
 	import { gamePin } from "../../logic/HostsData.svelte.js";
 
-	console.log("Game Pin: " + gamePin.v);
 </script>
 
 <h1 class="m-[0] text-9xl">HOSTING</h1>
