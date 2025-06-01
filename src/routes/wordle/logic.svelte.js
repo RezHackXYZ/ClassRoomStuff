@@ -50,6 +50,7 @@ export function newGame() {
 		minLength: WordLegnth.v,
 		maxLength: WordLegnth.v,
 	});
+	console.log("CorrectWord: ", CorrectWord);
 	words.v = [];
 	CurrentWord.v = [];
 	keys.v = [
