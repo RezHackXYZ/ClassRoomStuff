@@ -18,3 +18,5 @@ export let timetableData = $state({
 });
 
 export let colseModal = $state({ v: false });
+
+export let ShowSeconds = $state({ v: true });

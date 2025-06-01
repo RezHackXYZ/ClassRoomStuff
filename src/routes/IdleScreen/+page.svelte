@@ -1,12 +1,16 @@
-<script module>
+<script>
 	import { Modal, Content, Trigger } from "sv-popup";
 
 	import Time from "./components/time/DisplayCollsOfTime.svelte";
 	import TimeTable from "./components/timetable/DisplayRowsOfTimetable.svelte";
 	import EditTimetableDiv from "./components/timetable/EditTimetable.svelte";
-	import { colseModal } from "./logic/TimeAndTableData.svelte.js";
+	import { colseModal, ShowSeconds } from "./logic/TimeAndTableData.svelte.js";
+	import { on } from "svelte/events";
+	import { onMount } from "svelte";
 
-	export let ShowSeconds = $state({ v: true });
+	onMount(() => {
+		ShowSeconds.v = localStorage.getItem("ShowSeconds") || "true" == "true" ? true : false;
+	});
 </script>
 
 <div class="flex h-full flex-col">

@@ -2,11 +2,11 @@
 	import { onMount } from "svelte";
 	import Row from "./row.svelte";
 
-	let ShowSeconds;
+	import {ShowSeconds} from "../../logic/TimeAndTableData.svelte.js";
+
 	let ampm;
 
 	onMount(() => {
-		ShowSeconds = localStorage.getItem("ShowSeconds") || "true" == "true" ? true : false;
 		setInterval(() => {
 			ampm = new Date().getHours() >= 12 ? "PM" : "AM";
 		}, 1000);
@@ -21,7 +21,7 @@
 		<Row type={"min"} digit={0} />
 		<Row type={"min"} digit={1} />
 
-		{#if ShowSeconds}
+		{#if ShowSeconds.v}
 			<h1 class="text-[75px] leading-none text-gray-500">.</h1>
 
 			<Row type={"sec"} digit={0} />
