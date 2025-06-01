@@ -11,28 +11,31 @@ export function GenerateQuestionsUsingAI() {
 		return;
 	}
 
-	fetch("https://ai.hackclub.com/chat/completions", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			messages: [
-				{
-					role: "user",
-					content: AiPrompts.GenerateQuestionsUsingAI.replace("[topic]", topic),
-				},
-			],
-		}),
-	})
-		.then((response) => response.json())
-		.then((data) => {
-			questions.v = JSON.parse(data.choices[0].message.content);
-		})
-		.catch((error) => {
-			toast.error("Error:" + error);
-			return;
+	const fetchQuestions = async () => {
+		const response = await fetch("https://ai.hackclub.com/chat/completions", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				messages: [
+					{
+						role: "user",
+						content: AiPrompts.GenerateQuestionsUsingAI.replace("[topic]", topic),
+					},
+				],
+			}),
 		});
+		const data = await response.json();
+		questions.v = JSON.parse(data.choices[0].message.content);
+	};
 
-	toast.success("added!");
+	toast.promise(
+		fetchQuestions(),
+		{
+			loading: "Generating questions...",
+			success: "Questions added!",
+			error: (err) => "Error: " + err.message || err,
+		}
+	);
 }
