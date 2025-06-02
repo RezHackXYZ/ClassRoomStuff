@@ -59,20 +59,28 @@ export let AnswersSymbolAndColorScheme = [
 
 export let DefaultQuestions = [
 	{
-		name: "What should you do when you're free?",
-		answers: ["Do something in real life!", "Play video games", "Code!", "Touch grass!"],
-		correctAnswer: 2,
-		timeLimit: 30,
+		questionText: "What should you do when you're free?",
+		timeLimit: 15,
+		type: "SingleAnswer",
+		options: ["Do something in real life!", "Play video games", "Code!", "Touch grass!"],
+		CorrectOption: 2,
+		hasMedia: false,
+		mediaURL: null,
 	},
 	{
-		name: "Is RezHackXYZ the best programmer in the world?",
-		answers: ["Yes :)", "No :("],
-		correctAnswer: 0,
+		questionText: "Is RezHackXYZ the best programmer in the world?",
 		timeLimit: 5,
+		type: "SingleAnswer",
+		options: ["Yes :)", "No :("],
+		CorrectOption: 0,
+		hasMedia: true,
+		mediaURL: "https://github.com/RezHackXYZ.png",
 	},
 	{
-		name: "Best place in the world?",
-		answers: [
+		questionText: "Best place in the world?",
+		timeLimit: 5,
+		type: "SingleAnswer",
+		options: [
 			"Google",
 			"Microsoft",
 			"Apple",
@@ -82,55 +90,8 @@ export let DefaultQuestions = [
 			"Facebook",
 			"Twitter",
 		],
-		correctAnswer: 4,
-		timeLimit: 120,
+		CorrectOption: 4,
+		hasMedia: false,
+		mediaURL: null,
 	},
 ];
-
-export let AiPrompts = {
-	GenerateQuestionsUsingAI: `
-You are the AI of a quiz game.
-Generate a list of quiz questions with possible answers and the correct answer index.
-Each question must have:
-- A "name" (question text)
-- An "answers" array (minimum 2, maximum 8 options)
-- A "correctAnswer" (index starting from 0)
-Ensure the questions are diverse.
-Example format:
-{
-"name": "What is the capital of France?",
-"answers": [
-	"Paris",
-	"London",
-	"Berlin",
-	"Madrid"
-],
-"correctAnswer": 0
-}
-JUST PROVIDE THE JSON AND NOTHING ELSE.
-
-The user's topic of interest is:
-[topic]`,
-	GenerateOptionsUsingAI: `
-You are the AI of a quiz game.
-Generate a list of answers relevant to the Question the correct answer index.
-generate 2 things for the question:
-- An "answers" array (minimum 2, maximum 8 options)
-- A "correctAnswer" (index starting from 0)
-Ensure the questions are diverse.
-Example format if the question is "What is the capital of France?":
-{
-"answers": [
-	"Paris",
-	"London",
-	"Berlin",
-	"Madrid"
-],
-"correctAnswer": 0
-}
-JUST PROVIDE THE JSON AND NOTHING ELSE.
-
-The user's Question that they want to generate options for is:
-[question]
-`,
-};

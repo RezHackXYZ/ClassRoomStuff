@@ -1,96 +1,56 @@
 <script>
 	import { AnswersSymbolAndColorScheme } from "$lib/config.js";
+	import { QuestionsData, selectedQuestionIndex } from "./create.svelte.js";
 </script>
 
 <div class="flex h-full w-full flex-col gap-2 overflow-y-auto rounded border-2 p-3 pr-5">
-	<h1 class="text-4xl">How it will look</h1>
+	<h1 class="text-4xl">How Question number {selectedQuestionIndex.v + 1} will look</h1>
 
 	<div class="grid h-full place-items-center">
 		<div class="card w-4/5">
 			<h1 class="flex flex-col text-3xl">
-				<span class="text-5xl">1.</span>What is the capital of France?
+				<span class="text-5xl">{selectedQuestionIndex.v + 1}.</span>
+				{QuestionsData.v[selectedQuestionIndex.v].questionText}
 			</h1>
+			{#if QuestionsData.v[selectedQuestionIndex.v].mediaURL && QuestionsData.v[selectedQuestionIndex.v].hasMedia}
+				<div class="flex justify-center">
+					<div class="mt-1 w-fit rounded border-2">
+						{#if QuestionsData.v[selectedQuestionIndex.v].mediaURL.match(/\.(mp4|webm|ogg|mov|avi|mkv)$/i)}
+							<!-- svelte-ignore a11y_media_has_caption -->
+							<video
+								src={QuestionsData.v[selectedQuestionIndex.v].mediaURL}
+								controls
+								class="h-75 rounded"
+							></video>
+						{:else}
+							<img
+								src={QuestionsData.v[selectedQuestionIndex.v].mediaURL}
+								alt="Question media"
+								class="h-75 rounded"
+							/>{/if}
+					</div>
+				</div>
+			{/if}
 			<div class="mt-5 grid grid-cols-2 gap-5 gap-x-3">
-				<div class="flex">
-					<input type="radio" id="O{0}" name="question" class="peer sr-only" value={0} />
-
-					<label
-						for="O{1}"
-						style="
-					--border-color: {AnswersSymbolAndColorScheme[0].Color};
-					--bg-color: {AnswersSymbolAndColorScheme[0].Color};
-					--border-color-checked: {AnswersSymbolAndColorScheme[0].SelectedColor};
-					--bg-color-checked: {AnswersSymbolAndColorScheme[0].SelectedColor};
-					--border-color-hover: {AnswersSymbolAndColorScheme[0].HoverBorderColor};
-					--border-color-checked: {AnswersSymbolAndColorScheme[0].SelectedBorderColor};
-					--border-color-hover: {AnswersSymbolAndColorScheme[0].HoverBorderColor};
+				{#each QuestionsData.v[selectedQuestionIndex.v].options as question, questionIndex}
+					<div class="flex">
+						<span
+							style="
+					--border-color: {AnswersSymbolAndColorScheme[questionIndex].Color};
+					--bg-color: {AnswersSymbolAndColorScheme[questionIndex].Color};
+					--border-color-checked: {AnswersSymbolAndColorScheme[questionIndex].SelectedColor};
+					--bg-color-checked: {AnswersSymbolAndColorScheme[questionIndex].SelectedColor};
+					--border-color-hover: {AnswersSymbolAndColorScheme[questionIndex].HoverBorderColor};
+					--border-color-checked: {AnswersSymbolAndColorScheme[questionIndex].SelectedBorderColor};
+					--border-color-hover: {AnswersSymbolAndColorScheme[questionIndex].HoverBorderColor};
 				"
-						class="w-full cursor-pointer rounded-lg border-[5px] border-[var(--border-color)] bg-[var(--bg-color)] pt-1 pr-2 pb-1 pl-2 text-center text-3xl transition-all peer-checked:border-[var(--border-color-checked)] peer-checked:bg-[var(--bg-color-checked)] hover:border-[var(--border-color-hover)]"
-					>
-						<i class="nf {AnswersSymbolAndColorScheme[0].Symbol}"></i>
-						answer 1
-					</label>
-				</div>
-				<div class="flex">
-					<input type="radio" id="O{1}" name="question" class="peer sr-only" value={1} />
-
-					<label
-						for="O{1}"
-						style="
-					--border-color: {AnswersSymbolAndColorScheme[1].Color};
-					--bg-color: {AnswersSymbolAndColorScheme[1].Color};
-					--border-color-checked: {AnswersSymbolAndColorScheme[1].SelectedColor};
-					--bg-color-checked: {AnswersSymbolAndColorScheme[1].SelectedColor};
-					--border-color-hover: {AnswersSymbolAndColorScheme[1].HoverBorderColor};
-					--border-color-checked: {AnswersSymbolAndColorScheme[1].SelectedBorderColor};
-					--border-color-hover: {AnswersSymbolAndColorScheme[1].HoverBorderColor};
-				"
-						class="w-full cursor-pointer rounded-lg border-[5px] border-[var(--border-color)] bg-[var(--bg-color)] pt-1 pr-2 pb-1 pl-2 text-center text-3xl transition-all peer-checked:border-[var(--border-color-checked)] peer-checked:bg-[var(--bg-color-checked)] hover:border-[var(--border-color-hover)]"
-					>
-						<i class="nf {AnswersSymbolAndColorScheme[1].Symbol}"></i>
-						answer 2
-					</label>
-				</div>
-				<div class="flex">
-					<input type="radio" id="O{2}" name="question" class="peer sr-only" value={2} />
-
-					<label
-						for="O{1}"
-						style="
-					--border-color: {AnswersSymbolAndColorScheme[2].Color};
-					--bg-color: {AnswersSymbolAndColorScheme[2].Color};
-					--border-color-checked: {AnswersSymbolAndColorScheme[2].SelectedColor};
-					--bg-color-checked: {AnswersSymbolAndColorScheme[2].SelectedColor};
-					--border-color-hover: {AnswersSymbolAndColorScheme[2].HoverBorderColor};
-					--border-color-checked: {AnswersSymbolAndColorScheme[2].SelectedBorderColor};
-					--border-color-hover: {AnswersSymbolAndColorScheme[2].HoverBorderColor};
-				"
-						class="w-full cursor-pointer rounded-lg border-[5px] border-[var(--border-color)] bg-[var(--bg-color)] pt-1 pr-2 pb-1 pl-2 text-center text-3xl transition-all peer-checked:border-[var(--border-color-checked)] peer-checked:bg-[var(--bg-color-checked)] hover:border-[var(--border-color-hover)]"
-					>
-						<i class="nf {AnswersSymbolAndColorScheme[2].Symbol}"></i>
-						answer 3
-					</label>
-				</div>
-				<div class="flex">
-					<input type="radio" id="O{3}" name="question" class="peer sr-only" value={3} />
-
-					<label
-						for="O{1}"
-						style="
-					--border-color: {AnswersSymbolAndColorScheme[3].Color};
-					--bg-color: {AnswersSymbolAndColorScheme[3].Color};
-					--border-color-checked: {AnswersSymbolAndColorScheme[3].SelectedColor};
-					--bg-color-checked: {AnswersSymbolAndColorScheme[3].SelectedColor};
-					--border-color-hover: {AnswersSymbolAndColorScheme[3].HoverBorderColor};
-					--border-color-checked: {AnswersSymbolAndColorScheme[3].SelectedBorderColor};
-					--border-color-hover: {AnswersSymbolAndColorScheme[3].HoverBorderColor};
-				"
-						class="w-full cursor-pointer rounded-lg border-[5px] border-[var(--border-color)] bg-[var(--bg-color)] pt-1 pr-2 pb-1 pl-2 text-center text-3xl transition-all peer-checked:border-[var(--border-color-checked)] peer-checked:bg-[var(--bg-color-checked)] hover:border-[var(--border-color-hover)]"
-					>
-						<i class="nf {AnswersSymbolAndColorScheme[3].Symbol}"></i>
-						answer 4
-					</label>
-				</div>
+							class="w-full cursor-pointer rounded-lg border-[5px] border-[var(--border-color)] bg-[var(--bg-color)] pt-1 pr-2 pb-1 pl-2 text-center text-3xl transition-all peer-checked:border-[var(--border-color-checked)] peer-checked:bg-[var(--bg-color-checked)] hover:border-[var(--border-color-hover)]"
+						>
+							<i class="nf {AnswersSymbolAndColorScheme[questionIndex].Symbol}"></i>
+							{question}
+						</span>
+					</div>
+				{/each}
 			</div>
 		</div>
 	</div>
