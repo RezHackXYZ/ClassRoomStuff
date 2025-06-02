@@ -13,5 +13,3 @@ export let QuestionsData = $state({
 	],
 });
 
-
-$inspect(QuestionsData.v);
