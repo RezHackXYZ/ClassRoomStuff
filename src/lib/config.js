@@ -59,11 +59,11 @@ export let AnswersSymbolAndColorScheme = [
 
 export let DefaultQuestions = [
 	{
-		questionText: "What should you do when you're free?",
+		questionText: "What should you do when you're free?", 
 		timeLimit: 15,
 		type: "SingleAnswer",
 		options: ["Do something in real life!", "Play video games", "Code!", "Touch grass!"],
-		CorrectOption: 2,
+		CorrectOption: { SingleAnswer: 2 },
 		hasMedia: false,
 		mediaURL: null,
 	},
