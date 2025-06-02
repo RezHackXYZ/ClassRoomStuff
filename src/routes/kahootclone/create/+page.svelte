@@ -3,13 +3,6 @@
 	import QuestionsList from "./QuestionsList.svelte";
 	import QuestionOptions from "./QuestionOptions.svelte";
 	import Buttons from "./Buttons.svelte";
-
-	import { QuestionsData } from "./create.svelte.js";
-	import { onMount } from "svelte";
-
-	onMount(() => {
-		$inspect(QuestionsData.v);
-	});
 </script>
 
 <div class="flex h-full justify-between">
