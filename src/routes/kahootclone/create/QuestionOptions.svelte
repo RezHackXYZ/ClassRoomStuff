@@ -129,7 +129,7 @@
 								name="options"
 								class="ratio"
 								value={index}
-								bind:group={QuestionsData.v[selectedQuestionIndex.v].CorrectOption}
+								bind:group={QuestionsData.v[selectedQuestionIndex.v].CorrectOption.SingleAnswer}
 							/>
 							<input type="text" placeholder="Option 1" bind:value={Option} class="input w-1/3" />
 							<button

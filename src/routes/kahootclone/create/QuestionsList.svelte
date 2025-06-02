@@ -21,7 +21,7 @@
 					timeLimit: 15,
 					type: "SingleAnswer",
 					options: ["", "", "", ""],
-					CorrectOption: null,
+					CorrectOption:  { SingleAnswer:null},
 					hasMedia: false,
 					mediaURL: null,
 				});
