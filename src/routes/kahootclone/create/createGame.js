@@ -1,51 +1,83 @@
 import { supabase } from "$lib/supabase.js";
-import { QuestionsData } from "./create.svelte.js";
+import { QuestionsData, wait } from "./create.svelte.js";
 import toast from "svelte-5-french-toast";
 
 export async function createGame() {
-	let GamesData;
-	try {
-		GamesData = await toast.promise(
-			(async () => {
-				let { data, error } = await supabase.from("games").insert([{}]).select("id,gamepin");
-				if (error) {
-					throw new Error(error.message);
-				}
-				return data;
-			})(),
-			{
-				loading: "Adding Game...",
-				success: "Game added!",
-				error: (err) => `Could not add game.\nError: ${err.message}\n\n Please try again.`,
-			},
-		);
+	wait.v = true;
+	const gamePin = Math.floor(Math.random() * 1000000)
+		.toString()
+		.padStart(6, "0");
 
-		await toast.promise(
-			(async () => {
-				const { data, error } = await supabase
-					.from("questions")
-					.insert(
-						QuestionsData.v.map((_, index) => ({
-							...QuestionsData.v[index],
-							gameid: GamesData[0].id,
-						})),
-					)
-					.select();
-				if (error) {
-					throw new Error(error.message);
-				}
-				return data;
-			})(),
-			{
-				loading: "Adding Questions and Answers...",
-				success: "Questions and Answers added!",
-				error: (err) =>
-					`Could not add Questions and Answers.\nError: ${err.message}\n\n Please try again.`,
-			},
-		);
-	} catch (error) {
+	const questionsData = QuestionsData.v.map((q) => ({
+		gameid: gamePin,
+		questionstext: q.questionText,
+		correctanswer: q.CorrectOption.SingleAnswer,
+		timeLimit: q.TimeLimit,
+		media: q.hasMedia ? q.mediaURL : null,
+	}));
+
+	const insertGamePromise = supabase.from("games").insert({
+		creator: "anonymous",
+		creationdate: new Date().toISOString(),
+		status: "lobby",
+		gamepin: gamePin,
+	});
+
+	const { data: gameData, error: gameError } = await toast.promise(insertGamePromise, {
+		loading: "Creating game...",
+		success: "Game created!",
+		error: (err) =>
+			"Failed to create game: " + (err?.message || "Unknown error") + "\n\nPlease try again.",
+	});
+
+	if (gameError) {
+		wait.v = false;
 		return;
 	}
 
-	toast.success(`Game created! Your game pin is: ${GamesData[0].gamepin}`);
+	const insertQuestionsPromise = supabase.from("questions").insert(questionsData).select("id");
+
+	const { data: questionsResult, error: questionsError } = await toast.promise(
+		insertQuestionsPromise,
+		{
+			loading: "Inserting questions...",
+			success: "Questions inserted!",
+			error: (err) =>
+				"Failed to insert questions: " +
+				(err?.message || "Unknown error") +
+				"\n\nPlease try again.",
+		},
+	);
+
+	if (questionsError) {
+		wait.v = false;
+		return;
+	}
+
+	const answersData = [];
+	questionsResult.forEach((question, index) => {
+		QuestionsData.v[index].options.forEach((answer) => {
+			answersData.push({
+				questionid: question.id,
+				content: answer,
+			});
+		});
+	});
+
+	const insertAnswersPromise = supabase.from("answers").insert(answersData);
+
+	const { error: answersError } = await toast.promise(insertAnswersPromise, {
+		loading: "Inserting answers...",
+		success: "Answers inserted!",
+		error: (err) =>
+			"Failed to insert answers: " + (err?.message || "Unknown error") + "\n\nPlease try again.",
+	});
+
+	if (answersError) {
+		wait.v = false;
+		return;
+	}
+
+	window.location.href = `/kahootclone/host?gamepin=${gamePin}`;
+	wait.v = false;
 }

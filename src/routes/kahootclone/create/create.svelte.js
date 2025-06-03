@@ -12,4 +12,4 @@ export let QuestionsData = $state({
 		},
 	],
 });
-
+export let wait = $state({ v: false });

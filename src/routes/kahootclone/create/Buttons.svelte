@@ -2,7 +2,7 @@
 	import toast from "svelte-5-french-toast";
 
 	import { DefaultQuestions } from "$lib/config.js";
-	import { QuestionsData } from "./create.svelte";
+	import { QuestionsData, wait } from "./create.svelte";
 	import { createGame } from "./createGame.js";
 
 	let userInput = "";
@@ -87,7 +87,13 @@ The user's topic of interest is:
 	<button class="btn flex items-center gap-1" onclick={() => GenerateQuestionsUsingAI()}>
 		<i class="nf nf-md-cpu_64_bit"></i> Generate Questions Using AI
 	</button>
-	<button class="btn flex items-center gap-1" onclick={() => createGame()}>
-		<i class="nf nf-md-play"></i> Start Game
-	</button>
+	{#if wait.v == true}
+		<button class="btn dull flex cursor-not-allowed items-center gap-1" disabled>
+			<i class="nf nf-md-play"></i> Creating Game
+		</button>
+	{:else}
+		<button class="btn flex items-center gap-1" onclick={() => createGame()}>
+			<i class="nf nf-md-play"></i> Start Game
+		</button>
+	{/if}
 </div>
