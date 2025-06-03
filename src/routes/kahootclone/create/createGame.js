@@ -3,6 +3,9 @@ import { QuestionsData, wait } from "./create.svelte.js";
 import toast from "svelte-5-french-toast";
 
 export async function createGame() {
+	if (wait.v) {
+		return;
+	}
 	wait.v = true;
 	const gamePin = Math.floor(Math.random() * 1000000)
 		.toString()
@@ -12,7 +15,7 @@ export async function createGame() {
 		gameid: gamePin,
 		questionstext: q.questionText,
 		correctanswer: q.CorrectOption.SingleAnswer,
-		timeLimit: q.TimeLimit,
+		timeLimit: q.timelimit,
 		media: q.hasMedia ? q.mediaURL : null,
 	}));
 
