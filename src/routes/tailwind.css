@@ -1,34 +1,39 @@
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=JetBrains+Mono:wght@200&family=Sour+Gummy:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
 @import "tailwindcss";
 
 :root {
-	@apply bg-gray-950 font-[Sour_Gummy] text-white;
+	@apply bg-gray-950 font-[Space_Grotesk] text-white;
 }
 
 .btn {
-	@apply flex cursor-pointer items-center gap-1 rounded border-2 border-white bg-gray-600 px-4 py-2 font-bold text-white transition-all hover:scale-105 hover:bg-gray-500 hover:shadow-lg;
-
-	&.compact {
-		@apply px-1 py-0.5;
-	}
-
-	&.circular {
-		@apply rounded-full;
-		&.compact {
-			@apply px-0.75 py-0.75;
-		}
-	}
+	@apply flex cursor-pointer items-center gap-1 rounded border-2 border-white bg-gray-700 px-4 py-2 font-bold text-white transition-all hover:scale-105 hover:bg-gray-500 hover:shadow-lg;
 
 	&.dull {
 		@apply border-gray-700 bg-transparent text-gray-700 hover:bg-gray-700 hover:text-white;
 	}
 
+	&.slim {
+		@apply px-1 py-3;
+	}
+
 	&.green {
 		@apply bg-green-600 hover:bg-green-500;
+	}
+	&.red {
+		@apply bg-red-600 hover:bg-red-500;
 	}
 }
 
 .card {
 	@apply cursor-pointer rounded border-2 border-gray-700 bg-gray-800 p-4 shadow-[4px_4px_0px_0px_white] transition-all hover:-translate-0.5 hover:shadow-[6px_6px_0px_0px_white] active:translate-0.5 active:shadow-[2px_2px_0px_0px_white];
+}
+
+.input {
+	@apply w-full rounded border-2 border-gray-700 bg-gray-800 px-4 py-2 text-white transition-all placeholder:text-gray-500 focus:border-white focus:outline-none;
+}
+
+.ratio {
+	@apply h-6 w-6;
 }

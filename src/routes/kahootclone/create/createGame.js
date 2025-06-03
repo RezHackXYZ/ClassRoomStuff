@@ -1,9 +1,24 @@
-import { supabase } from "$lib/supabase";
+import { supabase } from "$lib/supabase.js";
+import { QuestionsData, wait } from "./create.svelte.js";
 import toast from "svelte-5-french-toast";
-import { Wait } from "./GameCreateData.svelte.js";
 
-export async function createGame(questions, gamePin) {
-	// Insert game
+export async function createGame() {
+	if (wait.v) {
+		return;
+	}
+	wait.v = true;
+	const gamePin = Math.floor(Math.random() * 1000000)
+		.toString()
+		.padStart(6, "0");
+
+	const questionsData = QuestionsData.v.map((q) => ({
+		gameid: gamePin,
+		questionstext: q.questionText,
+		correctanswer: q.CorrectOption.SingleAnswer,
+		timeLimit: q.timelimit,
+		media: q.hasMedia ? q.mediaURL : null,
+	}));
+
 	const insertGamePromise = supabase.from("games").insert({
 		creator: "anonymous",
 		creationdate: new Date().toISOString(),
@@ -19,18 +34,9 @@ export async function createGame(questions, gamePin) {
 	});
 
 	if (gameError) {
-		Wait.v = false;
+		wait.v = false;
 		return;
 	}
-
-	// Prepare questions and answers for batch insertion
-	const questionsData = questions.map((q) => ({
-		gameid: gamePin,
-		questionstext: q.name,
-		correctanswer: q.correctAnswer,
-		timelimit: q.timeLimit,
-		media: q.media || null,
-	}));
 
 	const insertQuestionsPromise = supabase.from("questions").insert(questionsData).select("id");
 
@@ -47,14 +53,13 @@ export async function createGame(questions, gamePin) {
 	);
 
 	if (questionsError) {
-		Wait.v = false;
-
+		wait.v = false;
 		return;
 	}
 
 	const answersData = [];
 	questionsResult.forEach((question, index) => {
-		questions[index].answers.forEach((answer) => {
+		QuestionsData.v[index].options.forEach((answer) => {
 			answersData.push({
 				questionid: question.id,
 				content: answer,
@@ -72,9 +77,10 @@ export async function createGame(questions, gamePin) {
 	});
 
 	if (answersError) {
-		Wait.v = false
+		wait.v = false;
 		return;
 	}
 
 	window.location.href = `/kahootclone/host?gamepin=${gamePin}`;
+	wait.v = false;
 }
