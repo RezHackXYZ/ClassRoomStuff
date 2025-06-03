@@ -3,6 +3,8 @@ import { QuestionsData, wait } from "./create.svelte.js";
 import toast from "svelte-5-french-toast";
 
 export async function createGame() {
+	console.log("Creating game rn!");
+	
 	if (wait.v) {
 		return;
 	}
