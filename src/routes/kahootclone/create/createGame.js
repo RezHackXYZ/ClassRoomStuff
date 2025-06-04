@@ -17,7 +17,7 @@ export async function createGame() {
 		gameid: gamePin,
 		questionstext: q.questionText,
 		correctanswer: q.CorrectOption.SingleAnswer,
-		timeLimit: q.timelimit,
+		timelimit: q.timelimit,
 		media: q.hasMedia ? q.mediaURL : null,
 	}));
 
@@ -36,8 +36,8 @@ export async function createGame() {
 	});
 
 	if (gameError) {
-		wait.v = false;
-		return;
+		//wait.v = false;
+		//return;
 	}
 
 	const insertQuestionsPromise = supabase.from("questions").insert(questionsData).select("id");
