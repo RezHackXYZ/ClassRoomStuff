@@ -63,6 +63,11 @@ The user's topic of interest is:
 			"Enter the topic and number of questions you want with any instructions for the ai, note: doing this will delete all you previous questions and its not undo able",
 		);
 
+		if (!userInput) {
+			toast.error("Please enter the topic to generate questions.");
+			return;
+		}
+
 		await toast.promise(
 			(async () => {
 				try {
