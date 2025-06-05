@@ -44,7 +44,6 @@
 
 	button {
 		background: none;
-		font-family: "JetBrains Mono", monospace;
 		color: #888;
 		width: 80px;
 		height: 70px;

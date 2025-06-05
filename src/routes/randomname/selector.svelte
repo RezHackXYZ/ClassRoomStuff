@@ -114,7 +114,6 @@
 		color: white;
 		transform: translateY(-4px);
 		transition: all 0.1s ease-in-out;
-		font-family: "JetBrains Mono", monospace;
 		font-size: 25px;
 		gap: 5px;
 	}

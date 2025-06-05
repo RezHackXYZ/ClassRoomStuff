@@ -107,7 +107,6 @@
 		color: white;
 		transform: translateY(-4px);
 		transition: all 0.1s ease-in-out;
-		font-family: "JetBrains Mono", monospace;
 		font-size: 25px;
 	}
 
@@ -115,7 +114,6 @@
 		height: 90%;
 		display: flex;
 		margin: 0;
-		font-family: "Sour Gummy", sans-serif;
 		background-color: #121212;
 		color: white;
 	}
@@ -127,7 +125,6 @@
 		margin: 20px;
 		margin-top: 5px;
 		border: 2px solid #444;
-		font-family: "JetBrains Mono", monospace;
 	}
 
 	span {
