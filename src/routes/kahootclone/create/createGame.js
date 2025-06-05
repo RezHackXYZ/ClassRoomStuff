@@ -1,10 +1,13 @@
 import { supabase } from "$lib/supabase.js";
 import { QuestionsData, wait } from "./create.svelte.js";
+import { IsAllValuesFilled } from "./IsAllValuesFilled.js";
 import toast from "svelte-5-french-toast";
 
 export async function createGame() {
+	if (!IsAllValuesFilled()) return;
+
 	console.log("Creating game rn!");
-	
+
 	if (wait.v) {
 		return;
 	}
