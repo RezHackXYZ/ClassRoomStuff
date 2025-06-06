@@ -17,6 +17,9 @@
 	&.slim {
 		@apply px-1 py-3;
 	}
+	&.mini {
+		@apply px-0.5 py-0.5;
+	}
 
 	&.green {
 		@apply bg-green-600 hover:bg-green-500;
