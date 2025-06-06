@@ -52,6 +52,9 @@
 	};
 
 	import { OpenTab } from "./wordle/InfoAndSetings/main.svelte";
+	import { Modal, Content, Trigger } from "sv-popup";
+	import { colseModal, ShowSeconds } from "./IdleScreen/logic/TimeAndTableData.svelte.js";
+	import EditTimetableDiv from "./IdleScreen/components/timetable/EditTimetable.svelte";
 </script>
 
 <div class="mb-1 flex items-center justify-between rounded border-2">
@@ -79,8 +82,28 @@
 	</span>
 	<div class="flex gap-2">
 		{#if CurrentPage == "/wordle"}
-			<button class="btn dull mini" onclick={() => OpenTab("WordLength")}> Change word legnth </button>
+			<button class="btn dull mini" onclick={() => OpenTab("WordLength")}>
+				Change word legnth
+			</button>
 			<button class="btn dull mini" onclick={() => OpenTab("Stats")}>Stats </button>
+		{:else if CurrentPage == "/IdleScreen"}
+			<button
+				class="btn dull mini"
+				onclick={() => {
+					ShowSeconds.v = !ShowSeconds.v;
+					localStorage.setItem("ShowSeconds", String(ShowSeconds.v));
+				}}
+			>
+				{#if ShowSeconds.v}Disable Seconds{:else}Enable Seconds{/if}</button
+			>
+			<Modal big={true} close={colseModal.v}>
+				<Content>
+					<EditTimetableDiv />
+				</Content>
+				<Trigger>
+					<button class="btn dull mini">Edit timetable </button>
+				</Trigger>
+			</Modal>
 		{/if}
 	</div>
 </div>

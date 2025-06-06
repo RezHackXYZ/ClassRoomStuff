@@ -15,23 +15,7 @@
 
 <div class="flex h-full flex-col">
 	<div>
-		<button
-			class="btn"
-			onclick={() => {
-				ShowSeconds.v = !ShowSeconds.v;
-				localStorage.setItem("ShowSeconds", String(ShowSeconds.v));
-			}}
-		>
-			{#if ShowSeconds.v}Disable Seconds{:else}Enable Seconds{/if}</button
-		>
-		<Modal big={true} close={colseModal.v}>
-			<Content>
-				<EditTimetableDiv />
-			</Content>
-			<Trigger>
-				<button class="btn">Edit timetable </button>
-			</Trigger>
-		</Modal>
+		
 	</div>
 
 	<div class="flex flex-1 flex-col items-center justify-center">
