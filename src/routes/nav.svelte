@@ -46,7 +46,7 @@
 			conformOnBack: null,
 		},
 		"/IdleScreen": {
-			title: "A Idle Screen",
+			title: "Time Table",
 			conformOnBack: null,
 		},
 	};
@@ -74,8 +74,7 @@
 			src="https://hc-cdn.hel1.your-objectstorage.com/s/v3/4a82e0c815624c7786ca2a5addbcc74487da8940_group_8__2_.svg"
 			class="h-6"
 			alt=""
-		/>Go back
-		<i class="nf nf-md-keyboard_backspace"></i>
+		/>Home
 	</button>
 	<span class="text-lg font-medium">
 		{details[CurrentPage].title}
@@ -83,9 +82,11 @@
 	<div class="flex gap-2">
 		{#if CurrentPage == "/wordle"}
 			<button class="btn dull mini" onclick={() => OpenTab("WordLength")}>
-				Change word legnth
+				<i class="nf nf-md-arrow_expand_horizontal"></i>Change word length
 			</button>
-			<button class="btn dull mini" onclick={() => OpenTab("Stats")}>Stats </button>
+			<button class="btn dull mini" onclick={() => OpenTab("Stats")}
+				><i class="nf nf-cod-graph"></i> Stats</button
+			>
 		{:else if CurrentPage == "/IdleScreen"}
 			<button
 				class="btn dull mini"
