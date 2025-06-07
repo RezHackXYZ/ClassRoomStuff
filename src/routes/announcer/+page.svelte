@@ -1,5 +1,5 @@
 <script>
-	import { PlayingAnnouncement ,CurrentText} from "./logic/announcerData.svelte.js";
+	import { PlayingAnnouncement, CurrentText } from "./logic/announcerData.svelte.js";
 
 	import List from "./components/CommonAnounceedTexts/list.svelte";
 	import Add from "./components/CustomText/add.svelte";
@@ -11,7 +11,7 @@
 </script>
 
 <div class="flex h-full flex-col items-center justify-center gap-5 p-5">
-	<div class="w-fit rounded-2xl bg-gray-900 p-3">
+	<div class="w-fit rounded border-2 p-3">
 		{#if PlayingAnnouncement.v == true}
 			<p class="text-center text-5xl">{CurrentText.v}</p>
 		{:else}

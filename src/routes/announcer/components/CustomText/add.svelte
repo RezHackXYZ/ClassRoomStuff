@@ -6,7 +6,7 @@
 {#if CurrentText.v}
 	<div class="flex w-full justify-center mt-2">
 		<button
-			class="text-1xl w-fit cursor-pointer self-center rounded-2xl bg-gray-800 p-2.5 transition-all hover:scale-110 hover:bg-gray-600"
+			class="btn dull"
 			onclick={() => {
 				AddMostUsedAnnouncement(CurrentText.v);
 				CurrentText.v = "";
