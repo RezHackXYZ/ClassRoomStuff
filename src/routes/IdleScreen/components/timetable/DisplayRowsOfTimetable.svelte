@@ -20,11 +20,11 @@
 			{:else if RowIndex == 0}
 				<span class="rounded-xl bg-blue-800 p-1.5 text-center text-xl">{time}</span>
 			{:else if RowIndex == new Date().getDay() && timeIndex == 0}
-				<span class="rounded-xl bg-green-600 p-1.5 text-center text-xl"
+				<span class="rounded-xl bg-green-600 p-1.5 text-center text-4xl"
 					>{legend[RowIndex]}</span
 				>
 			{:else if RowIndex == new Date().getDay()}
-				<span class="rounded-xl bg-green-600 p-1.5 text-center text-xl">{time}</span>
+				<span class="rounded-xl bg-green-600 p-1.5 text-center text-4xl">{time}</span>
 			{:else if timeIndex == 0}
 				<span class="rounded-xl bg-green-900 p-1.5 text-center text-xl"
 					>{legend[RowIndex]}</span
