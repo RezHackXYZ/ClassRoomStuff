@@ -3,35 +3,30 @@
 		"name": "Quizlet",
 		"description": "A Kahoot clone built from scratch with a Postgres DB, AI integration, and more.",
 		"link": "/kahootclone",
-		"icon": "nf-md-chat_question",
-		"image": "https://placehold.co/1800x1000?text=screenshot+TBA"
+		"icon": "nf-md-chat_question"
 	},
 	{
 		"name": "CrackTheWord",
 		"description": "Wordle with unlimited tries, customizable world lengths and more.",
 		"link": "/wordle",
-		"icon": "nf-md-file_word_box",
-		"image": "https://placehold.co/1800x1000?text=screenshot+TBA"
+		"icon": "nf-md-file_word_box"
 	},
 	{
 		"name": "ShoutOut",
 		"description": "To let the have computer <strike>talk</strike> shout on them, if they don't listen to you",
 		"link": "/announcer",
-		"icon": "nf-md-speaker_wireless",
-		"image": "https://placehold.co/1800x1000?text=screenshot+TBA"
+		"icon": "nf-md-speaker_wireless"
 	},
 	{
 		"name": "Who's Next?",
 		"description": "to chose any student randomly, with memory of previous names and more.",
 		"link": "/randomname",
-		"icon": "nf-oct-people",
-		"image": "https://placehold.co/1800x1000?text=screenshot+TBA"
+		"icon": "nf-oct-people"
 	},
 	{
 		"name": "Time Table",
 		"description": "The perfect idle screen with the timetable, time and date!",
 		"link": "/IdleScreen",
-		"icon": "nf-cod-table",
-		"image": "https://placehold.co/1800x1000?text=screenshot+TBA"
+		"icon": "nf-cod-table"
 	}
 ]

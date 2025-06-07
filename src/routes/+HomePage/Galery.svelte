@@ -11,7 +11,7 @@
 				<div class="card flex w-full max-w-xs flex-col items-center text-center">
 					<img
 						class="mb-2 w-full rounded border-2 border-white"
-						src={tool.image}
+						src='https://image.thum.io/get/fullpage/wait/5/maxAge/1/https://classroomstuff.xyz/{tool.link}'
 						alt="how the tool {tool.name} looks like"
 					/>
 					<div
