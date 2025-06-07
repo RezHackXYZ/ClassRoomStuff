@@ -9,7 +9,7 @@
 	});
 </script>
 
-<div class="flex h-9/10 flex-col items-center justify-between">
+<div class="flex h-8/10 flex-col items-center justify-between">
 	<div class="flex h-full w-full items-center justify-around">
 		<div class="flex w-[600px] flex-col items-baseline gap-3">
 			{#if FlagAscii == true}
@@ -41,7 +41,7 @@
 				for all the teachers and students needs!
 			</h1>
 		</div>
-		<RightCards />
+		<!--<RightCards />-->
 	</div>
 	<a
 		href="#galarry"
