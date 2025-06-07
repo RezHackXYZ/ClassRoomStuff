@@ -55,6 +55,7 @@
 	import { Modal, Content, Trigger } from "sv-popup";
 	import { colseModal, ShowSeconds } from "./IdleScreen/logic/TimeAndTableData.svelte.js";
 	import EditTimetableDiv from "./IdleScreen/components/timetable/EditTimetable.svelte";
+	import {TabOpen} from "./randomname/+page.svelte";
 </script>
 
 <div class="mb-1 flex items-center justify-between rounded border-2">
@@ -105,6 +106,10 @@
 					<button class="btn dull mini">Edit timetable </button>
 				</Trigger>
 			</Modal>
+		{:else if CurrentPage == "/randomname"}
+			<button class="btn dull mini" onclick={() => (TabOpen.v = true)}>
+				Edit list of names
+			</button>
 		{/if}
 	</div>
 </div>
