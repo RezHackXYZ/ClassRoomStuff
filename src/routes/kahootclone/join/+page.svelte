@@ -2,10 +2,19 @@
 	import toast from "svelte-5-french-toast";
 	import { joinGame } from "./logic/joinGame.js";
 	import { Checking } from "./logic/JoinGameData.svelte.js";
+	import { on } from "svelte/events";
+	import { onMount } from "svelte";
 	
-
 	let pin;
 	let name;
+
+	onMount(() => {
+		const urlParams = new URLSearchParams(window.location.search);
+		const gamepin = urlParams.get('gamepin');
+		if (gamepin) {
+			pin = gamepin;
+		}
+	});
 </script>
 
 <div class="bg-grey-900 flex h-full items-center justify-center">
