@@ -6,8 +6,8 @@
 
 <div class="flex h-full flex-col">
 	<div class="flex flex-1 flex-col items-center justify-center gap-5">
-		<Card />
-		<div class="flex gap-3">
+		<div class="flex flex-col text-center gap-1"><Card /></div>
+		<div class="flex gap-4">
 			<Buttons />
 		</div>
 	</div>
