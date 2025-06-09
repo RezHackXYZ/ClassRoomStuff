@@ -49,6 +49,10 @@
 			title: "Time Table",
 			conformOnBack: null,
 		},
+		"/flashcards": {
+			title: "Flashcards",
+			conformOnBack: null,
+		},	
 	};
 
 	import { OpenTab } from "./wordle/InfoAndSetings/main.svelte";

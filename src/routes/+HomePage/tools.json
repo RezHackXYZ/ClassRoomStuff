@@ -28,5 +28,11 @@
 		"description": "The perfect idle screen with the timetable, time and date!",
 		"link": "/IdleScreen",
 		"icon": "nf-cod-table"
+	},
+	{
+		"name": "Flashcards",
+		"description": "A simple flashcard app to help you learn new things.",
+		"link": "/flashcards",
+		"icon": "nf-md-card_multiple"
 	}
 ]
