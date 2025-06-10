@@ -4,7 +4,7 @@
 	import StatsAndButtons from "./StatsAndButtons.svelte";
 </script>
 
-<div class="flex h-full flex-col">
+<div class="flex h-full flex-col overflow-hidden">
 	<div class="flex flex-1 flex-col items-center justify-center gap-5">
 		<div class="flex flex-col text-center gap-1"><Card /></div>
 		<div class="flex gap-4">
