@@ -9,17 +9,17 @@
 	on:click={() => (statusOfCard.flipped = !statusOfCard.flipped)}
 >
 	<div
-		class={`relative h-full w-full transition-transform duration-500 [transform-style:preserve-3d] ${statusOfCard.flipped ? "rotate-y-180" : ""} ${statusOfCard.exiting ? (statusOfCard.exitingToRight? "card-exit-right" : "card-exit-left") : ""} ${statusOfCard.entering ? "card-enter" : ""} `}
+		class={`relative h-full w-full transition-transform duration-500 transform-3d ${statusOfCard.flipped ? "rotate-y-180" : ""} ${statusOfCard.exiting ? (statusOfCard.exitingToRight ? "card-exit-right" : "card-exit-left") : ""} ${statusOfCard.entering ? "card-enter" : ""} `}
 	>
 		<div
-			class="absolute flex h-full w-full flex-col items-center justify-center gap-5 rounded border-2 bg-blue-800 text-5xl text-white [backface-visibility:hidden]"
+			class="absolute flex h-full w-full flex-col items-center justify-center gap-5 rounded border-2 bg-blue-800 p-4 text-5xl text-white [backface-visibility:hidden]"
 		>
 			<span class="text-3xl text-blue-600">Question</span>
 			{card.Q}
 		</div>
 
 		<div
-			class="absolute flex h-full w-full rotate-y-180 flex-col items-center justify-center gap-5 rounded border-2 bg-green-800 text-5xl text-white [backface-visibility:hidden]"
+			class="absolute flex h-full w-full rotate-y-180 flex-col items-center justify-center gap-5 rounded border-2 bg-green-800 p-4 text-5xl text-white [backface-visibility:hidden]"
 		>
 			<span class="text-3xl text-green-600">Answer</span>
 			{card.a}
