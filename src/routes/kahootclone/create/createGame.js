@@ -12,6 +12,7 @@ export async function createGame() {
 		return;
 	}
 	wait.v = true;
+
 	const gamePin = Math.floor(Math.random() * 1000000)
 		.toString()
 		.padStart(6, "0");
@@ -24,64 +25,60 @@ export async function createGame() {
 		media: q.hasMedia ? q.mediaURL : null,
 	}));
 
-	const insertGamePromise = supabase.from("games").insert({
-		creator: "anonymous",
-		creationdate: new Date().toISOString(),
-		status: "lobby",
-		gamepin: gamePin,
-	});
+	const gameCreationPromise = async () => {
+		const { data: gameData, error: gameError } = await supabase
+			.from("games")
+			.insert([
+				{
+					creator: "anonymous",
+					creationdate: new Date().toISOString(),
+					status: "lobby",
+					gamepin: gamePin,
+				},
+			])
+			.select();
 
-	const { data: gameData, error: gameError } = await toast.promise(insertGamePromise, {
-		loading: "Creating game...",
-		success: "Game created!",
-		error: (err) =>
-			"Failed to create game: " + (err?.message || "Unknown error") + "\n\nPlease try again.",
-	});
+		if (gameError) {
+			throw gameError;
+		}
 
-	if (gameError) {
-		//wait.v = false;
-		//return;
-	}
+		const { data: questionsResult, error: questionsError } = await supabase
+			.from("questions")
+			.insert(questionsData)
+			.select("id");
 
-	const insertQuestionsPromise = supabase.from("questions").insert(questionsData).select("id");
+		if (questionsError) {
+			throw questionsError;
+		}
 
-	const { data: questionsResult, error: questionsError } = await toast.promise(
-		insertQuestionsPromise,
-		{
-			loading: "Inserting questions...",
-			success: "Questions inserted!",
-			error: (err) =>
-				"Failed to insert questions: " +
-				(err?.message || "Unknown error") +
-				"\n\nPlease try again.",
-		},
-	);
-
-	if (questionsError) {
-		wait.v = false;
-		return;
-	}
-
-	const answersData = [];
-	questionsResult.forEach((question, index) => {
-		QuestionsData.v[index].options.forEach((answer) => {
-			answersData.push({
-				questionid: question.id,
-				content: answer,
+		const answersData = [];
+		questionsResult.forEach((question, index) => {
+			QuestionsData.v[index].options.forEach((answer) => {
+				answersData.push({
+					questionid: question.id,
+					content: answer,
+				});
 			});
 		});
-	});
 
-	const insertAnswersPromise = supabase.from("answers").insert(answersData);
+		const { error: answersError } = await supabase
+			.from("answers")
+			.insert(answersData)
+			.select();
 
-	const { error: answersError } = await toast.promise(insertAnswersPromise, {
-		loading: "Inserting answers...",
-		success: "Answers inserted!",
-		error: (err) =>
-			"Failed to insert answers: " + (err?.message || "Unknown error") + "\n\nPlease try again.",
-	});
+		if (answersError) {
+			throw answersError;
+		}
+	};
 
-	if (answersError) {
+	try {
+		await toast.promise(gameCreationPromise(), {
+			loading: "Creating game...",
+			success: "Game created successfully!",
+			error: (err) =>
+				"Failed to create game: " + (err?.message || "Unknown error") + "\n\nPlease try again.",
+		});
+	} catch (error) {
 		wait.v = false;
 		return;
 	}
