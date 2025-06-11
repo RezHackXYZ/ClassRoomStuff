@@ -52,14 +52,16 @@
 		"/flashcards": {
 			title: "Flashcards",
 			conformOnBack: null,
-		},	
+		},
 	};
 
 	import { OpenTab } from "./wordle/InfoAndSetings/main.svelte";
 	import { Modal, Content, Trigger } from "sv-popup";
 	import { colseModal, ShowSeconds } from "./IdleScreen/logic/TimeAndTableData.svelte.js";
 	import EditTimetableDiv from "./IdleScreen/components/timetable/EditTimetable.svelte";
-	import {TabOpen} from "./randomname/+page.svelte";
+	import { TabOpen } from "./randomname/+page.svelte";
+	import { resetDeck } from "./flashcards/logic.svelte";
+	import EditCards from "./flashcards/editCards.svelte";
 </script>
 
 <div class="mb-1 flex items-center justify-between rounded border-2">
@@ -111,9 +113,17 @@
 				</Trigger>
 			</Modal>
 		{:else if CurrentPage == "/randomname"}
-			<button class="btn dull mini" onclick={() => (TabOpen.v = true)}>
-				Edit list of names
-			</button>
+			<button class="btn dull mini" onclick={() => (TabOpen.v = true)}> Edit list of names </button>
+		{:else if CurrentPage == "/flashcards"}
+			<Modal>
+				<Content>
+					<EditCards />
+				</Content>
+				<Trigger>
+					<button class="btn dull mini">Edit Decks</button>
+				</Trigger>
+			</Modal>
+			<button class="btn dull mini" onclick={() => resetDeck}> Reset current Deck </button>
 		{/if}
 	</div>
 </div>
