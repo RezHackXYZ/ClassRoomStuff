@@ -13,14 +13,16 @@
 			<button onclick={() => resetDeck()} class="big btn green">Reset Deck</button>
 		</div>
 	{:else}
-		<div class="flex flex-1 flex-col items-center justify-center gap-5">
-			<div class="flex flex-col gap-1 text-center"><Card /></div>
+		<div class="flex flex-1 flex-col items-center justify-center gap-2">
+			<div class="flex flex-col gap-1 text-center">
+				<div class="flex items-center justify-center p-2">
+					<StatsAndButtons />
+				</div>
+				<Card />
+			</div>
 			<div class="flex gap-4">
 				<Buttons />
 			</div>
-		</div>
-		<div class="flex items-center justify-between p-2 text-gray-700">
-			<StatsAndButtons />
 		</div>
 	{/if}
 </div>

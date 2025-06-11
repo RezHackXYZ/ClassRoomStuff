@@ -28,7 +28,7 @@
 </div>
 
 <p
-	class="invisible mt-4 text-center text-gray-500 opacity-0 transition peer-hover:visible peer-hover:opacity-100"
+	class="invisible mt-2 text-center text-gray-500 opacity-0 transition peer-hover:visible peer-hover:opacity-100"
 >
 	Click to flip the card and see the answer ☝️
 </p>
