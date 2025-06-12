@@ -3,7 +3,13 @@
 	import Card from "./card.svelte";
 	import StatsAndButtons from "./StatsAndButtons.svelte";
 
-	import { stats, resetDeck } from "./logic.svelte.js";
+	import { stats, resetDeck,SetNewDeck } from "./logic.svelte.js";
+	import { onMount } from "svelte";
+	import tempelateDeck from "./tempelateDeck.json";
+
+	onMount(() => {
+		SetNewDeck(JSON.parse(localStorage.getItem("deck")) || tempelateDeck);
+	});
 </script>
 
 <div class="flex h-full flex-col overflow-hidden">

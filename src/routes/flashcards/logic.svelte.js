@@ -1,3 +1,4 @@
+
 export let card = $state({ Q: "", a: "" });
 
 export let statusOfCard = $state({
@@ -8,11 +9,16 @@ export let statusOfCard = $state({
 	entering: false,
 });
 
-let deck = [
+export let deck = [
 	{ Q: "Best programer in the world?", a: "RezHackXYZ" },
 	{ Q: "Best coding community?", a: "HackClub" },
 	{ Q: "Will @Shub go totally bankrupt?", a: "yes!" },
 ];
+
+export function SetNewDeck (newDeck) {
+	deck = newDeck;
+	resetDeck();
+}
 
 export let stats = $state({
 	isDeckEmpty: false,
