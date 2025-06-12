@@ -1,4 +1,3 @@
-
 export let card = $state({ Q: "", a: "" });
 
 export let statusOfCard = $state({
@@ -15,13 +14,14 @@ export let deck = [
 	{ Q: "Will @Shub go totally bankrupt?", a: "yes!" },
 ];
 
-export function SetNewDeck (newDeck) {
+export function SetNewDeck(newDeck, ThisIsOfPageLoad = false) {
 	deck = newDeck;
 	resetDeck();
+	stats.isDeckEmpty = ThisIsOfPageLoad;
 }
 
 export let stats = $state({
-	isDeckEmpty: false,
+	isDeckEmpty: true,
 	AnswerKnown: 0,
 	AnswerNotKnown: 0,
 	AnswerNotChecked: deck.length,

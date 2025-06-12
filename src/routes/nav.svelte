@@ -60,7 +60,7 @@
 	import { colseModal, ShowSeconds } from "./IdleScreen/logic/TimeAndTableData.svelte.js";
 	import EditTimetableDiv from "./IdleScreen/components/timetable/EditTimetable.svelte";
 	import { TabOpen } from "./randomname/+page.svelte";
-	import { resetDeck } from "./flashcards/logic.svelte";
+	import { resetDeck, stats } from "./flashcards/logic.svelte";
 	import EditCards from "./flashcards/editCards.svelte";
 </script>
 
@@ -123,7 +123,7 @@
 					<button class="btn dull mini">Edit Decks</button>
 				</Trigger>
 			</Modal>
-			<button class="btn dull mini" onclick={() => resetDeck}> Reset current Deck </button>
+			<button class="btn dull mini" onclick={() => (stats.isDeckEmpty = true)}> Change Deck</button>
 		{/if}
 	</div>
 </div>

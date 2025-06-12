@@ -1,5 +1,26 @@
 [
-	{ "Q": "Best programer in the world?", "a": "RezHackXYZ" },
-	{ "Q": "Best coding community?", "a": "HackClub" },
-	{ "Q": "Will @Shub go totally bankrupt?", "a": "yes!" }
+	{
+		"deckName": "Tech",
+		"cards": [
+			{ "Q": "What is Svelte?", "a": "Best web dev Framework ever." },
+			{ "Q": "What is a component?", "a": "A reusable piece of UI in Svelte." },
+			{ "Q": "How do you create a reactive variable?", "a": "$: variableName = value;" }
+		]
+	},
+	{
+		"deckName": "Math Basics",
+		"cards": [
+			{ "Q": "What is 2 + 2?", "a": "4" },
+			{ "Q": "What is the square root of 16?", "a": "4" },
+			{ "Q": "What is 5 * 6?", "a": "30" }
+		]
+	},
+	{
+		"deckName": "Geography",
+		"cards": [
+			{ "Q": "What is the capital of France?", "a": "Paris" },
+			{ "Q": "Which continent is Egypt in?", "a": "Africa" },
+			{ "Q": "What is the largest ocean?", "a": "Pacific Ocean" }
+		]
+	}
 ]
