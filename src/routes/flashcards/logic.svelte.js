@@ -8,38 +8,41 @@ export let statusOfCard = $state({
 	entering: false,
 });
 
-export let deck = [
-	{ Q: "Best programer in the world?", a: "RezHackXYZ" },
-	{ Q: "Best coding community?", a: "HackClub" },
-	{ Q: "Will @Shub go totally bankrupt?", a: "yes!" },
-];
+export let StorageDeck = $state({ v: [] });
 
-export function SetNewDeck(newDeck, ThisIsOfPageLoad = false) {
-	deck = newDeck;
+export let deck = $state({ v: [] });
+
+export function SetNewDeck(newDeck, ThisIsOfPageLoad = true) {
+	StorageDeck.v = newDeck;
 	resetDeck();
 	stats.isDeckEmpty = ThisIsOfPageLoad;
+}
+
+export function SelectNewDeck(deckNumber) {
+	deck.v = StorageDeck.v[deckNumber].cards;
+	resetDeck();
 }
 
 export let stats = $state({
 	isDeckEmpty: true,
 	AnswerKnown: 0,
 	AnswerNotKnown: 0,
-	AnswerNotChecked: deck.length,
+	AnswerNotChecked: deck.v.length,
 });
 
 let CurrentDeck = {
 	AnswersKnown: [],
 	AnswersNotKnown: [],
-	AnswersNotChecked: $state.snapshot(deck),
+	AnswersNotChecked: $state.snapshot(deck).v,
 };
 
 export function resetDeck() {
 	CurrentDeck.AnswersKnown = [];
 	CurrentDeck.AnswersNotKnown = [];
-	CurrentDeck.AnswersNotChecked = $state.snapshot(deck);
+	CurrentDeck.AnswersNotChecked = $state.snapshot(deck).v;
 	stats.AnswerKnown = 0;
 	stats.AnswerNotKnown = 0;
-	stats.AnswerNotChecked = deck.length;
+	stats.AnswerNotChecked = deck.v.length;
 	stats.isDeckEmpty = false;
 	SetNewCard();
 }
