@@ -26,6 +26,13 @@
 			</select>
 		</div>
 
+		<div class="mb-2">
+			<label for="NameOfthisDeck" class="text-lg leading-0.5 text-gray-500">
+				Name Of this Deck?
+			</label>
+			<input type="text" class="input mt-1" bind:value={deck[CurrentlyEditingDeckId].deckName} id="NameOfthisDeck" />
+		</div>
+
 		<div class="flex w-full gap-2 text-3xl">
 			<span class="flex-1">Question</span>
 			<span class="flex-1">Answer</span>
@@ -51,6 +58,19 @@
 		{/each}
 	</div>
 	<div class="flex gap-3">
+		<button
+			onclick={() => {
+				if (confirm("Are you sure you want to delete this deck?")) {
+					deck.splice(CurrentlyEditingDeckId, 1);
+					CurrentlyEditingDeckId = Math.max(0, CurrentlyEditingDeckId - 1);
+					toast.success("Deck deleted successfully");
+				}
+			}}
+			class="btn"
+		>
+			<i class="nf nf-md-layers_remove"></i>
+			Delete this Deck
+		</button>
 		<button
 			onclick={() => {
 				deck[CurrentlyEditingDeckId].cards.push({ Q: "", a: "" });
