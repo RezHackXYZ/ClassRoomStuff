@@ -87,7 +87,9 @@
 	<div class="flex gap-3">
 		<button
 			onclick={() => {
-				if (confirm("Are you sure you want to delete this deck?")) {
+				if (deck.length == 2) {
+					toast.error("You need to have at least 1 deck");
+				} else if (confirm("Are you sure you want to delete this deck?")) {
 					deck.splice(CurrentlyEditingDeckId, 1);
 					CurrentlyEditingDeckId = Math.max(0, CurrentlyEditingDeckId - 1);
 					DeckOptions.value = CurrentlyEditingDeckId.toString();
