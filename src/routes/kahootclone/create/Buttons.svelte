@@ -26,6 +26,8 @@ JUST PROVIDE THE JSON AND NOTHING ELSE.
 
 The user's topic of interest is:
 [topic]
+
+The User wants [number of questions] questions.
 `;
 
 	async function ApiCall() {
@@ -38,7 +40,7 @@ The user's topic of interest is:
 				messages: [
 					{
 						role: "user",
-						content: AIPrompt.replace("[topic]", userInput),
+						content: AIPrompt.replace("[topic]", userInput).replace("[number of questions]", numberOfQuestions),
 					},
 				],
 			}),
@@ -60,11 +62,18 @@ The user's topic of interest is:
 	async function GenerateQuestionsUsingAI() {
 		ParsingTry = 0;
 		userInput = prompt(
-			"Enter the topic and number of questions you want with any instructions for the ai, note: doing this will delete all you previous questions and its not undo able",
+			"Enter the topic you want with any instructions for the ai, note: doing this will delete all you previous questions and its not undo able",
 		);
 
 		if (!userInput) {
 			toast.error("Please enter the topic to generate questions.");
+			return;
+		}
+
+		const numberOfQuestions = prompt("How many questions? (e.g. 5, not 'five')", "5");
+
+		if (isNaN(parseInt(numberOfQuestions)) || numberOfQuestions <= 0) {
+			toast.error("Please enter a valid number of questions.");
 			return;
 		}
 
