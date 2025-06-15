@@ -6,6 +6,7 @@
 	import { createGame } from "./createGame.js";
 
 	let userInput = "";
+	let numberOfQuestions;
 
 	let AIPrompt = `
 		You are the AI of a quiz game.
@@ -70,7 +71,7 @@ The User wants [number of questions] questions.
 			return;
 		}
 
-		const numberOfQuestions = prompt("How many questions? (e.g. 5, not 'five')", "5");
+		numberOfQuestions = prompt("How many questions? (e.g. 5, not 'five')", "5");
 
 		if (isNaN(parseInt(numberOfQuestions)) || numberOfQuestions <= 0) {
 			toast.error("Please enter a valid number of questions.");
